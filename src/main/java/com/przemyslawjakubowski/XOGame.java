@@ -24,6 +24,12 @@ public class XOGame {
         return Collections.unmodifiableList(players);
     }
 
+    public void addPlayer(Player player){
+        if(currentGameState.getClass().equals(InitialState.class)){
+            players.add(player);
+        }
+    }
+
     public void start() {
         while (true){
             makeOneStepOfGame();
@@ -31,7 +37,7 @@ public class XOGame {
     }
 
     private void makeOneStepOfGame() {
-        this.currentGameState.performAction(userInputSupplier, output);
+        this.currentGameState.performAction(userInputSupplier, output, this);
         this.currentGameState = currentGameState.goToNextState();
     }
 }

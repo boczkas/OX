@@ -5,10 +5,11 @@ import java.util.function.Supplier;
 
 public class InitialState implements GameState {
     @Override
-    public void performAction(Supplier<String> userInput, Consumer<String> output) {
+    public void performAction(Supplier<String> userInput, Consumer<String> output, XOGame xoGame) {
         output.accept("Bedziem zaczynac!\n");
         output.accept("Podaj imię pierwszego gracza!\n");
-        userInput.get();
+        xoGame.addPlayer(new Player(userInput.get()));
+        output.accept("Podaj imię drugiego gracza!\n");
     }
 
     @Override

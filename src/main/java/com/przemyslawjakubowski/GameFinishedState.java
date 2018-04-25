@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 
 public class GameFinishedState implements GameState {
     @Override
-    public void performAction(Supplier<String> userInput, Consumer<String> output) {
+    public void performAction(Supplier<String> userInput, Consumer<String> output, XOGame xoGame) {
         output.accept("Koniec!");
     }
 
