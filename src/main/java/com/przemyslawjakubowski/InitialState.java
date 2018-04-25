@@ -10,6 +10,8 @@ public class InitialState implements GameState {
         output.accept("Podaj imię pierwszego gracza!\n");
         xoGame.addPlayer(new Player(userInput.get()));
         output.accept("Podaj imię drugiego gracza!\n");
+        xoGame.addPlayer(new Player(userInput.get()));
+
     }
 
     @Override
