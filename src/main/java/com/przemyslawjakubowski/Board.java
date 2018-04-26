@@ -24,8 +24,11 @@ public class Board {
         output.accept(formatInformation);
 
         String userInputString = userInput.get();
+        if(userInputString.startsWith(" ")){
+            userInputString = userInputString.replaceFirst("\\s+", "");
+        }
+
         userInputString = userInputString.replaceAll("\\s+", " ");
-        userInputString = userInputString.replaceFirst("\\s+", "");
         String outputInformation = "";
         Matcher m = inputPattern.matcher(userInputString);
 
