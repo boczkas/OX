@@ -42,9 +42,11 @@ public class Board {
         String[] coordinates = userInputString.split("\\s");
         boolean result = true;
 
-        if(coordinates.length < 2){
+        String lettersRegex = "[a-zA-Z]+";
+        if(coordinates.length != 2 || coordinates[0].matches(lettersRegex) || coordinates[1].matches(lettersRegex)){
             result = false;
         }
+
         else{
             int rowNumber = Integer.parseInt(coordinates[0]);
             int columnNumber = Integer.parseInt(coordinates[1]);
