@@ -6,14 +6,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Board {
-    int rows;
-    int columns;
-    Pattern inputPattern;
+    final int rows;
+    final int columns;
+    final Pattern inputPattern;
+    final BoardStatus boardStatus;
 
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
         this.inputPattern = Pattern.compile("\\d+\\s\\d+");
+        this.boardStatus = new BoardStatus(rows, columns);
     }
 
     public void handleMoves(Supplier<String> userInput, Consumer<String> output) {
@@ -32,6 +34,10 @@ public class Board {
             }
         }
         else{
+            String[] coordinateStringArray = userInputString.split("\\s");
+            Coordinate coordinate = new Coordinate(Integer.parseInt(coordinateStringArray[0]),
+                                                    Integer.parseInt(coordinateStringArray[1]));
+            boardStatus.addSymbolAtPosition(Symbol.O, coordinate);
             outputInformation = "Ładnie powiedziane";
         }
 
@@ -61,5 +67,9 @@ public class Board {
         }
 
         return result;
+    }
+
+    public void print() {
+        boardStatus.print();
     }
 }

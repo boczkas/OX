@@ -39,10 +39,10 @@ public class InitialStateTest {
         initialState.performAction(userInputProvider, output, game);
 
         // then
-        List<Player> players = game.getPlayers();
+        Players players = game.getPlayers();
 
-        Assert.assertTrue(players.get(0).getName().equals("winner"));
-        Assert.assertTrue(players.get(1).getName().equals("loser"));
+        Assert.assertTrue(players.getPlayers().get(0).getName().equals("winner"));
+        Assert.assertTrue(players.getPlayers().get(1).getName().equals("loser"));
 
         // @After
         System.setIn(System.in);

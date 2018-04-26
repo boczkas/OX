@@ -6,7 +6,6 @@ import java.util.function.Supplier;
 public class GameOngoingState implements GameState {
 
 
-
     @Override
     public void performAction(Supplier<String> userInput, Consumer<String> output, XOGame xoGame) {
 
@@ -16,7 +15,10 @@ public class GameOngoingState implements GameState {
 
         output.accept("Gramy PAAAANIE!");
 
-        board.handleMoves(userInput, output);
+        while(true){
+            board.print();
+            board.handleMoves(userInput, output);
+        }
     }
 
     @Override
