@@ -28,7 +28,7 @@ public class InitialStateTest {
         // given
         String playersNames = "winner\nloser\n";
         System.setIn(new ByteArrayInputStream(playersNames.getBytes()));
-
+      
         Supplier<String> userInputProvider = new Scanner(System.in)::nextLine;
         Consumer<String> output = System.out::println;
 
