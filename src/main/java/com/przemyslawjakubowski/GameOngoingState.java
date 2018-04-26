@@ -16,8 +16,6 @@ public class GameOngoingState implements GameState {
 
         output.accept("Gramy PAAAANIE!");
 
-        // while(winnerIsNotPresent) - tu bedziemy sprawdzac czy jest zwyciezca
-
         board.handleMoves(userInput, output);
     }
 

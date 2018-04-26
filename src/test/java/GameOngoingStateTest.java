@@ -20,20 +20,4 @@ public class GameOngoingStateTest {
         // then
         Assert.assertEquals(gameState.getClass(), GameFinishedState.class);
     }
-
-    @Test
-    public void inGameOngoingStateCorrectUsersInputAreAccepted_board3x3(){
-//        // given
-//        String correctCoordinates = "11\n22\n23\n";
-//        System.setIn(new ByteArrayInputStream(correctCoordinates.getBytes()));
-//        Supplier<String> userInputProvider = new Scanner(System.in)::nextLine;
-//        Consumer<String> output = System.out::println;
-//
-//        // when
-//        XOGame game = new XOGame(userInputProvider, output);
-//
-//        GameOngoingState gameOngoingState = new GameOngoingState();
-//        gameOngoingState.performAction(userInputProvider, output, game);
-    }
-
 }
