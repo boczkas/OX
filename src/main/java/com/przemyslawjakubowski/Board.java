@@ -11,11 +11,11 @@ public class Board {
     final Pattern inputPattern;
     final BoardStatus boardStatus;
 
-    public Board(int rows, int columns) {
-        this.rows = rows;
-        this.columns = columns;
+    public Board(BoardStatus boardStatus) {
+        this.rows = boardStatus.getRows();
+        this.columns = boardStatus.getColumns();
         this.inputPattern = Pattern.compile("\\d+\\s\\d+\\s*");
-        this.boardStatus = new BoardStatus(rows, columns);
+        this.boardStatus = boardStatus;
     }
 
     public void handleMoves(Supplier<String> userInput, Consumer<String> output) {
