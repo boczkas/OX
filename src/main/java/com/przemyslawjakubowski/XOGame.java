@@ -1,5 +1,8 @@
 package com.przemyslawjakubowski;
 
+import com.przemyslawjakubowski.states.GameState;
+import com.przemyslawjakubowski.states.InitialState;
+
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 

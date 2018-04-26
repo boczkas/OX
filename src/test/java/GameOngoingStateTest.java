@@ -1,12 +1,8 @@
-import com.przemyslawjakubowski.*;
-import com.przemyslawjakubowski.GameFinishedState;
+import com.przemyslawjakubowski.states.GameFinishedState;
+import com.przemyslawjakubowski.states.GameOngoingState;
+import com.przemyslawjakubowski.states.GameState;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.io.ByteArrayInputStream;
-import java.util.Scanner;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 public class GameOngoingStateTest {
     @Test

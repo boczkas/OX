@@ -1,5 +1,8 @@
 package com.przemyslawjakubowski;
 
+import com.przemyslawjakubowski.states.GameState;
+import com.przemyslawjakubowski.states.InitialState;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

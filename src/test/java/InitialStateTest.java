@@ -1,10 +1,11 @@
 import com.przemyslawjakubowski.*;
-import com.przemyslawjakubowski.InitialState;
+import com.przemyslawjakubowski.states.GameOngoingState;
+import com.przemyslawjakubowski.states.GameState;
+import com.przemyslawjakubowski.states.InitialState;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.ByteArrayInputStream;
-import java.util.List;
 import java.util.Scanner;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -14,7 +15,7 @@ public class InitialStateTest {
     @Test
     public void goToNextState_InitToGameOngoing(){
         // given
-        GameState gameState = new com.przemyslawjakubowski.InitialState();
+        GameState gameState = new InitialState();
 
         // when
         gameState = gameState.goToNextState();

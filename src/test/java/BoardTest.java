@@ -1,4 +1,5 @@
 import com.przemyslawjakubowski.Board;
+import com.przemyslawjakubowski.BoardStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -22,7 +23,7 @@ public class BoardTest {
         Consumer<String> output = System.out::println;
 
         // when
-        Board board = new Board(3,3);
+        Board board = new Board(new BoardStatus(3,3));
         board.handleMoves(userInputProvider, output);
 
         // then

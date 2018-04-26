@@ -11,11 +11,11 @@ public class Board {
     final Pattern inputPattern;
     final BoardStatus boardStatus;
 
-    public Board(int rows, int columns) {
-        this.rows = rows;
-        this.columns = columns;
-        this.inputPattern = Pattern.compile("\\d+\\s\\d+");
-        this.boardStatus = new BoardStatus(rows, columns);
+    public Board(BoardStatus boardStatus) {
+        this.rows = boardStatus.getRows();
+        this.columns = boardStatus.getColumns();
+        this.inputPattern = Pattern.compile("\\d+\\s\\d+\\s*");
+        this.boardStatus = boardStatus;
     }
 
     public void handleMoves(Supplier<String> userInput, Consumer<String> output) {
@@ -24,6 +24,8 @@ public class Board {
         output.accept(formatInformation);
 
         String userInputString = userInput.get();
+        userInputString = userInputString.replaceAll("\\s+", " ");
+        userInputString = userInputString.replaceFirst("\\s+", "");
         String outputInformation = "";
         Matcher m = inputPattern.matcher(userInputString);
 
@@ -56,7 +58,7 @@ public class Board {
         boolean result = true;
 
         String lettersRegex = "[a-zA-Z]+";
-        if(coordinates.length != 2 || coordinates[0].matches(lettersRegex) || coordinates[1].matches(lettersRegex)){
+        if(coordinates.length < 2 || coordinates[0].matches(lettersRegex) || coordinates[1].matches(lettersRegex)){
             result = false;
         }
 

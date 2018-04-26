@@ -43,4 +43,12 @@ public class BoardStatus {
 
         return true;
     }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
 }
