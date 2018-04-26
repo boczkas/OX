@@ -1,6 +1,5 @@
+import com.przemyslawjakubowski.*;
 import com.przemyslawjakubowski.InitialState;
-import com.przemyslawjakubowski.Player;
-import com.przemyslawjakubowski.XOGame;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,10 +12,23 @@ import java.util.function.Supplier;
 public class InitialStateTest {
 
     @Test
+    public void goToNextState_InitToGameOngoing(){
+        // given
+        GameState gameState = new com.przemyslawjakubowski.InitialState();
+
+        // when
+        gameState = gameState.goToNextState();
+
+        // then
+        Assert.assertEquals(gameState.getClass(), GameOngoingState.class);
+    }
+
+    @Test
     public void afterPerformActionOfInitState_2_playersArePresent(){
         // given
         String playersNames = "winner\nloser\n";
         System.setIn(new ByteArrayInputStream(playersNames.getBytes()));
+      
         Supplier<String> userInputProvider = new Scanner(System.in)::nextLine;
         Consumer<String> output = System.out::println;
 
@@ -34,6 +46,5 @@ public class InitialStateTest {
 
         // @After
         System.setIn(System.in);
-
     }
 }
