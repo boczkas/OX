@@ -6,14 +6,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Board {
-    int rows;
-    int columns;
-    Pattern inputPattern;
+    final int rows;
+    final int columns;
+    final Pattern inputPattern;
+    final BoardStatus boardStatus;
 
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
         this.inputPattern = Pattern.compile("\\d+\\s\\d+");
+        this.boardStatus = new BoardStatus(rows, columns);
     }
 
     public void handleMoves(Supplier<String> userInput, Consumer<String> output) {
@@ -32,7 +34,18 @@ public class Board {
             }
         }
         else{
-            outputInformation = "Ładnie powiedziane";
+            String[] coordinateStringArray = userInputString.split("\\s");
+            Coordinate coordinate = new Coordinate(Integer.parseInt(coordinateStringArray[0]),
+                                                    Integer.parseInt(coordinateStringArray[1]));
+            if(boardStatus.checkIfFieldIsEmpty(coordinate)){
+                boardStatus.addSymbolAtPosition(Symbol.O, coordinate);
+                outputInformation = "Ładnie powiedziane";
+            }
+            else{
+                outputInformation = "O Ty oszukisto! Chciałeś oszukać i postawić na zajętym polu!\n" +
+                        "Nie ma takiego grania! Tracisz ruch!";
+            }
+
         }
 
         output.accept(outputInformation);
@@ -42,9 +55,11 @@ public class Board {
         String[] coordinates = userInputString.split("\\s");
         boolean result = true;
 
-        if(coordinates.length < 2){
+        String lettersRegex = "[a-zA-Z]+";
+        if(coordinates.length != 2 || coordinates[0].matches(lettersRegex) || coordinates[1].matches(lettersRegex)){
             result = false;
         }
+
         else{
             int rowNumber = Integer.parseInt(coordinates[0]);
             int columnNumber = Integer.parseInt(coordinates[1]);
@@ -59,5 +74,9 @@ public class Board {
         }
 
         return result;
+    }
+
+    public void print() {
+        boardStatus.print();
     }
 }
