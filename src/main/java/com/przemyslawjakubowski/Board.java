@@ -14,7 +14,7 @@ public class Board {
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        this.inputPattern = Pattern.compile("\\d+\\s\\d+");
+        this.inputPattern = Pattern.compile("\\d+\\s\\d+\\s*");
         this.boardStatus = new BoardStatus(rows, columns);
     }
 
@@ -24,6 +24,8 @@ public class Board {
         output.accept(formatInformation);
 
         String userInputString = userInput.get();
+        userInputString = userInputString.replaceAll("\\s+", " ");
+        userInputString = userInputString.replaceFirst("\\s+", "");
         String outputInformation = "";
         Matcher m = inputPattern.matcher(userInputString);
 
@@ -56,7 +58,7 @@ public class Board {
         boolean result = true;
 
         String lettersRegex = "[a-zA-Z]+";
-        if(coordinates.length != 2 || coordinates[0].matches(lettersRegex) || coordinates[1].matches(lettersRegex)){
+        if(coordinates.length < 2 || coordinates[0].matches(lettersRegex) || coordinates[1].matches(lettersRegex)){
             result = false;
         }
 

@@ -1,4 +1,7 @@
-package com.przemyslawjakubowski;
+package com.przemyslawjakubowski.states;
+
+import com.przemyslawjakubowski.Board;
+import com.przemyslawjakubowski.XOGame;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
