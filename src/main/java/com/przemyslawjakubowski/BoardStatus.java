@@ -35,4 +35,12 @@ public class BoardStatus {
     public void addSymbolAtPosition(Symbol symbol, Coordinate coordinate) {
         symbolsAtCoordinates.put(coordinate, symbol);
     }
+
+    public boolean checkIfFieldIsEmpty(Coordinate coordinate) {
+        if(symbolsAtCoordinates.containsKey(coordinate)){
+            return false;
+        }
+
+        return true;
+    }
 }

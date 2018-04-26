@@ -37,8 +37,15 @@ public class Board {
             String[] coordinateStringArray = userInputString.split("\\s");
             Coordinate coordinate = new Coordinate(Integer.parseInt(coordinateStringArray[0]),
                                                     Integer.parseInt(coordinateStringArray[1]));
-            boardStatus.addSymbolAtPosition(Symbol.O, coordinate);
-            outputInformation = "Ładnie powiedziane";
+            if(boardStatus.checkIfFieldIsEmpty(coordinate)){
+                boardStatus.addSymbolAtPosition(Symbol.O, coordinate);
+                outputInformation = "Ładnie powiedziane";
+            }
+            else{
+                outputInformation = "O Ty oszukisto! Chciałeś oszukać i postawić na zajętym polu!\n" +
+                        "Nie ma takiego grania! Tracisz ruch!";
+            }
+
         }
 
         output.accept(outputInformation);
