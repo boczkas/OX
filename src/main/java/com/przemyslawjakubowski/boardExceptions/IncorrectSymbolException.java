@@ -1,6 +1,6 @@
 package com.przemyslawjakubowski;
 
-public class IncorrectSymbolException extends Exception{
+public class IncorrectSymbolException extends Throwable{
 
     String exceptionMessage;
 
