@@ -10,9 +10,11 @@ public class IncorrectSymbolException extends Throwable{
 
     @Override
     public String toString(){
-        return "Niepoprawny symbol.\n" +
+        return "==========================================\n" +
+                "Niepoprawny symbol.\n" +
                 "Powinenes wyspecyfikowac jeden z X/O.\n" +
-                "Wpisano: " + exceptionMessage;
+                "Wpisano: " + exceptionMessage +
+                "==========================================\n";
     }
 
 }

@@ -9,13 +9,13 @@ import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Board {
+public class MovesHandler {
     final int rows;
     final int columns;
     final Pattern inputPattern;
     final BoardStatus boardStatus;
 
-    public Board(BoardStatus boardStatus) {
+    public MovesHandler(BoardStatus boardStatus) {
         this.rows = boardStatus.getRows();
         this.columns = boardStatus.getColumns();
         this.inputPattern = Pattern.compile("(\\d+)\\s(\\d+)\\s*");
@@ -83,9 +83,5 @@ public class Board {
         }
 
         return result;
-    }
-
-    public void print() {
-        boardStatus.print();
     }
 }

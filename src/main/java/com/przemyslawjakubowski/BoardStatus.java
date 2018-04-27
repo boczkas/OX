@@ -2,6 +2,7 @@ package com.przemyslawjakubowski;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class BoardStatus {
     final int rows;
@@ -12,24 +13,6 @@ public class BoardStatus {
         this.symbolsAtCoordinates = new HashMap<>();
         this.rows = rows;
         this.columns = columns;
-    }
-
-    public void print() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for(int i = 0; i < rows; i++){
-            for(int j = 0; j < columns; j++){
-                Coordinate currentCoordinate = new Coordinate(i, j);
-                if(symbolsAtCoordinates.containsKey(currentCoordinate)){
-                    stringBuilder.append(symbolsAtCoordinates.get(currentCoordinate));
-                }
-                else{
-                    stringBuilder.append(i + " " + j);
-                }
-                stringBuilder.append("\t\t");
-            }
-            stringBuilder.append("\n\n");
-        }
-        System.out.println(stringBuilder);
     }
 
     public void addSymbolAtPosition(Symbol symbol, Coordinate coordinate) {
@@ -50,5 +33,13 @@ public class BoardStatus {
 
     public int getColumns() {
         return columns;
+    }
+
+    public Optional<Symbol> getSymbolAtCoordinate(Coordinate coordinate){
+
+        if(symbolsAtCoordinates.containsKey(coordinate))
+            return Optional.of(symbolsAtCoordinates.get(coordinate));
+
+        return Optional.empty();
     }
 }

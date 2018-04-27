@@ -14,7 +14,8 @@ public class GameOngoingState implements GameState {
 
         output.accept("A tablica to jaka wielka ma być?");
 
-        Board board = new Board(new BoardStatus(3,3));
+        BoardStatus boardStatus = new BoardStatus(3,3);
+        MovesHandler movesHandler = new MovesHandler(boardStatus);
         Players players = xoGame.getPlayers();
         output.accept("Gramy PAAAANIE!");
         output.accept("Kto zaczyna?");
@@ -24,8 +25,8 @@ public class GameOngoingState implements GameState {
         player = getStartingPlayer(userInput, output, players);
 
         while(true){
-            board.print();
-            board.handleMoves(userInput, output, player);
+            Printer.print(boardStatus);
+            movesHandler.handleMoves(userInput, output, player);
             player = players.getOppositePlayer(player);
         }
     }
