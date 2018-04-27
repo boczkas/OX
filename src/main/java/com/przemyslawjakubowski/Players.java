@@ -23,4 +23,13 @@ public class Players {
             players.add(player);
         }
     }
+
+
+    public Player getOppositePlayer(Player actualPlayer) {
+        return players.indexOf(actualPlayer) == 0 ? players.get(1) : players.get(0);
+    }
+
+    public Player getFirstPlayer() {
+        return players.get(0);
+    }
 }

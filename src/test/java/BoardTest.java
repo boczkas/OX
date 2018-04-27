@@ -1,5 +1,7 @@
 import com.przemyslawjakubowski.Board;
 import com.przemyslawjakubowski.BoardStatus;
+import com.przemyslawjakubowski.Player;
+import com.przemyslawjakubowski.Symbol;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -24,7 +26,7 @@ public class BoardTest {
 
         // when
         Board board = new Board(new BoardStatus(3,3));
-        board.handleMoves(userInputProvider, output);
+        board.handleMoves(userInputProvider, output, new Player("Przemek", Symbol.X));
 
         // then
         String[] outArray = outContent.toString().split("\n");
