@@ -14,7 +14,7 @@ public class Board {
     public Board(BoardStatus boardStatus) {
         this.rows = boardStatus.getRows();
         this.columns = boardStatus.getColumns();
-        this.inputPattern = Pattern.compile("\\d+\\s\\d+\\s*");
+        this.inputPattern = Pattern.compile("(\\d+)\\s(\\d+)\\s*");
         this.boardStatus = boardStatus;
     }
 
@@ -28,52 +28,41 @@ public class Board {
 
         userInputString = userInputString.replaceAll("\\s+", " ");
         String outputInformation = "";
-        Matcher m = inputPattern.matcher(userInputString);
+        Matcher matcher = inputPattern.matcher(userInputString);
 
-        if(!m.matches()){
-            outputInformation += formatInformation;
-            if(!areSpecifiedCoordinatesCorrect(userInputString)){
-                outputInformation += sizeInformation;
+        if(matcher.matches()) {
+            Coordinate coordinate;
+            Integer x = Integer.parseInt(matcher.group(1));
+            Integer y = Integer.parseInt(matcher.group(2));
+
+            if(areSpecifiedCoordinatesCorrect(x, y)){
+                coordinate = new Coordinate(x, y);
+
+                if (boardStatus.checkIfFieldIsEmpty(coordinate)) {
+                    boardStatus.addSymbolAtPosition(player.getSymbol(), coordinate);
+                    outputInformation = "Ładnie powiedziane";
+                } else {
+                    outputInformation = "O Ty oszukisto! Chciałeś oszukać i postawić na zajętym polu!\n" +
+                            "Nie ma takiego grania! Tracisz ruch!";
+                }
             }
         }
         else{
-            String[] coordinateStringArray = userInputString.split("\\s");
-            Coordinate coordinate = new Coordinate(Integer.parseInt(coordinateStringArray[0]),
-                                                    Integer.parseInt(coordinateStringArray[1]));
-            if(boardStatus.checkIfFieldIsEmpty(coordinate)){
-                boardStatus.addSymbolAtPosition(player.getSymbol(), coordinate);
-                outputInformation = "Ładnie powiedziane";
-            }
-            else{
-                outputInformation = "O Ty oszukisto! Chciałeś oszukać i postawić na zajętym polu!\n" +
-                        "Nie ma takiego grania! Tracisz ruch!";
-            }
-
+            outputInformation = sizeInformation;
         }
 
         output.accept(outputInformation);
     }
 
-    private boolean areSpecifiedCoordinatesCorrect(String userInputString) {
-        String[] coordinates = userInputString.split("\\s");
+    private boolean areSpecifiedCoordinatesCorrect(Integer x, Integer y) {
         boolean result = true;
 
-        String lettersRegex = "[a-zA-Z]+";
-        if(coordinates.length < 2 || coordinates[0].matches(lettersRegex) || coordinates[1].matches(lettersRegex)){
+        if(x < 0 || y < 0){
             result = false;
         }
 
-        else{
-            int rowNumber = Integer.parseInt(coordinates[0]);
-            int columnNumber = Integer.parseInt(coordinates[1]);
-
-            if(rowNumber < 0 || columnNumber < 0){
-                result = false;
-            }
-
-            if(rowNumber > rows || columnNumber > columns){
-                result = false;
-            }
+        if(x > rows || y > columns){
+            result = false;
         }
 
         return result;

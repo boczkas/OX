@@ -16,8 +16,12 @@ public class GameOngoingState implements GameState {
         Board board = new Board(new BoardStatus(3,3));
         Players players = xoGame.getPlayers();
         output.accept("Gramy PAAAANIE!");
+        output.accept("Kto zaczyna?");
 
-        Player player = players.getFirstPlayer();
+        Player player;
+
+        player = getStartingPlayer(userInput, output, players);
+
         while(true){
             board.print();
             board.handleMoves(userInput, output, player);
@@ -25,9 +29,22 @@ public class GameOngoingState implements GameState {
         }
     }
 
+    private Player getStartingPlayer(Supplier<String> userInput, Consumer<String> output, Players players) {
+        Player player = null;
+        try {
+            output.accept("Ktory gracz zaczyna? X czy O?");
+            player = players.getPlayerBySymbol(userInput.get());
+        } catch (IncorrectSymbolException exception){
+            output.accept(exception.toString());
+            getStartingPlayer(userInput, output, players);
+        }
+        return player;
+    }
+
     @Override
     public GameState goToNextState() {
-        System.out.println();
         return new GameFinishedState();
     }
+
+
 }
