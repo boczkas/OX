@@ -1,8 +1,6 @@
 package com.przemyslawjakubowski.states;
 
-import com.przemyslawjakubowski.Board;
-import com.przemyslawjakubowski.BoardStatus;
-import com.przemyslawjakubowski.XOGame;
+import com.przemyslawjakubowski.*;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -16,12 +14,14 @@ public class GameOngoingState implements GameState {
         output.accept("A tablica to jaka wielka ma być?");
 
         Board board = new Board(new BoardStatus(3,3));
-
+        Players players = xoGame.getPlayers();
         output.accept("Gramy PAAAANIE!");
 
+        Player player = players.getFirstPlayer();
         while(true){
             board.print();
-            board.handleMoves(userInput, output);
+            board.handleMoves(userInput, output, player);
+            player = players.getOppositePlayer(player);
         }
     }
 
