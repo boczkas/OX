@@ -2,6 +2,8 @@ package com.przemyslawjakubowski.states;
 
 import com.przemyslawjakubowski.*;
 import com.przemyslawjakubowski.boardExceptions.IncorrectSymbolException;
+import com.przemyslawjakubowski.player.Player;
+import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.print.Printer;
 
 import java.util.function.Consumer;

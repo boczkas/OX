@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski;
+package com.przemyslawjakubowski.player;
 
 public class Score {
     int score;

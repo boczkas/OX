@@ -1,5 +1,7 @@
 package com.przemyslawjakubowski;
 
+import com.przemyslawjakubowski.player.Symbol;
+
 import java.util.Map;
 import java.util.Optional;
 
@@ -24,23 +26,36 @@ public class Judge {
             if(isInVerticalWinningSequence(coordinate)){
                 isWinner = true;
             }
+//            if(isInHorizontalWinningSequence(coordinate)){
+//                isWinner = true;
+//            }
         }
     }
+
+//    private boolean isInHorizontalWinningSequence(Coordinate coordinate) {
+//        Map<Coordinate, Symbol> column = boardStatus.getElementsInColumn(coordinate.getY());
+//        System.out.println("W tej kolumnie: " + column);
+//
+//        int indexOfTopMostSymbolInSequence = getTopMostIndexOfSymbolInSequence(column, coordinate);
+//    }
+//
+//    private int getTopMostIndexOfSymbolInSequence(Map<Coordinate, Symbol> column, Coordinate coordinate) {
+//        return 0;
+//    }
 
     private boolean isInVerticalWinningSequence(Coordinate coordinate) {
         Map<Coordinate, Symbol> row = boardStatus.getElementsInRow(coordinate.getX());
         System.out.println("W tym wierszu: " + row);
 
-        int leftMostSymbolOfIndex = getLeftMostIndexOfSymbolInSequence(row, coordinate);
-        int rightMostSymbolOfIndex = getRightMostIndexOfSymbolInSequence(row, coordinate);
+        int indexOfLeftMostSymbolInSequence = getLeftMostIndexOfSymbolInSequence(row, coordinate);
+        int indexOfRightMostSymbolInSequence = getRightMostIndexOfSymbolInSequence(row, coordinate);
 
-        System.out.println("Left most: " + leftMostSymbolOfIndex);
-        System.out.println("Right most: " + rightMostSymbolOfIndex);
+        System.out.println("Left most: " + indexOfLeftMostSymbolInSequence);
+        System.out.println("Right most: " + indexOfRightMostSymbolInSequence);
 
-        if(rightMostSymbolOfIndex - leftMostSymbolOfIndex >= 2){
+        if(indexOfRightMostSymbolInSequence - indexOfLeftMostSymbolInSequence >= 2){
             return true;
         }
-
 
         return false;
     }
@@ -77,7 +92,6 @@ public class Judge {
             i++;
             symbol = Optional.ofNullable(row.get(new Coordinate(actualCoordinate.getX(), i)));
         }
-
         return max;
     }
 }

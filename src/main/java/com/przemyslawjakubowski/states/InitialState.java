@@ -1,8 +1,8 @@
 package com.przemyslawjakubowski.states;
 
-import com.przemyslawjakubowski.Player;
-import com.przemyslawjakubowski.Score;
-import com.przemyslawjakubowski.Symbol;
+import com.przemyslawjakubowski.player.Player;
+import com.przemyslawjakubowski.player.Score;
+import com.przemyslawjakubowski.player.Symbol;
 import com.przemyslawjakubowski.XOGame;
 
 import java.util.function.Consumer;

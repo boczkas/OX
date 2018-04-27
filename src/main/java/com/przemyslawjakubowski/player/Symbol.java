@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski;
+package com.przemyslawjakubowski.player;
 
 import com.przemyslawjakubowski.print.Color;
 

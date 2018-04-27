@@ -3,6 +3,7 @@ package com.przemyslawjakubowski;
 import com.przemyslawjakubowski.boardExceptions.BoardIndexOutOfBoundsException;
 import com.przemyslawjakubowski.boardExceptions.FieldNotEmptyException;
 import com.przemyslawjakubowski.boardExceptions.IncorrectCoordinateException;
+import com.przemyslawjakubowski.player.Player;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;

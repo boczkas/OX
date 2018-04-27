@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski;
+package com.przemyslawjakubowski.player;
 
 public class Player {
     private String name;

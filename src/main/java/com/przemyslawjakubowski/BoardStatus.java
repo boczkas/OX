@@ -1,5 +1,7 @@
 package com.przemyslawjakubowski;
 
+import com.przemyslawjakubowski.player.Symbol;
+
 import java.util.*;
 
 public class BoardStatus {
@@ -56,4 +58,14 @@ public class BoardStatus {
         return elementsInRow;
     }
 
+    public Map<Coordinate, Symbol> getElementsInColumn(int column) {
+        Map<Coordinate, Symbol> elementsInColumn = new HashMap<>();
+
+        for(Coordinate coordinate : symbolsAtCoordinates.keySet()){
+            if(coordinate.getY() == column){
+                elementsInColumn.put(coordinate, symbolsAtCoordinates.get(coordinate));
+            }
+        }
+        return elementsInColumn;
+    }
 }
