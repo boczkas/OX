@@ -1,10 +1,10 @@
 package com.przemyslawjakubowski;
 
 public class Player {
-    String name;
-    int score;
+    private String name;
+    private int score;
 
-    Symbol symbol;
+    private final Symbol symbol;
 
 
     public Player(String name, Symbol symbol) {

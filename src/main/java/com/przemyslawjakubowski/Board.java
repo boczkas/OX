@@ -24,10 +24,7 @@ public class Board {
         output.accept(formatInformation);
         output.accept("Ruch wykonuje gracz: " + player.getName() + " (" + player.getSymbol() + ")");
 
-        String userInputString = userInput.get();
-        if(userInputString.startsWith(" ")){
-            userInputString = userInputString.replaceFirst("\\s+", "");
-        }
+        String userInputString = userInput.get().trim();
 
         userInputString = userInputString.replaceAll("\\s+", " ");
         String outputInformation = "";
