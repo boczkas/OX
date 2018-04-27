@@ -1,9 +1,9 @@
-package com.przemyslawjakubowski;
+package com.przemyslawjakubowski.boardExceptions;
 
 public class FieldNotEmptyException extends Throwable {
     String exceptionMessage;
 
-    FieldNotEmptyException( String exceptionMessage){
+    public FieldNotEmptyException( String exceptionMessage){
         this.exceptionMessage = exceptionMessage;
     }
 

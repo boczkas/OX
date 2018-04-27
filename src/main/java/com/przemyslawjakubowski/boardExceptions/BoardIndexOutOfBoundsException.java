@@ -1,8 +1,8 @@
-package com.przemyslawjakubowski;
+package com.przemyslawjakubowski.boardExceptions;
 
 public class BoardIndexOutOfBoundsException extends Throwable {
 
-    BoardIndexOutOfBoundsException( ){
+    public BoardIndexOutOfBoundsException( ){
     }
 
     @Override

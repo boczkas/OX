@@ -1,9 +1,9 @@
-package com.przemyslawjakubowski;
+package com.przemyslawjakubowski.boardExceptions;
 
 public class IncorrectCoordinateException extends Throwable {
     String exceptionMessage;
 
-    IncorrectCoordinateException( String exceptionMessage){
+    public IncorrectCoordinateException( String exceptionMessage){
         this.exceptionMessage = exceptionMessage;
     }
 

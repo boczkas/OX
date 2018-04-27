@@ -1,10 +1,10 @@
-package com.przemyslawjakubowski;
+package com.przemyslawjakubowski.boardExceptions;
 
 public class IncorrectSymbolException extends Throwable{
 
     String exceptionMessage;
 
-    IncorrectSymbolException(String exceptionMessage){
+    public IncorrectSymbolException(String exceptionMessage){
         this.exceptionMessage = exceptionMessage;
     }
 

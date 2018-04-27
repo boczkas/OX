@@ -1,6 +1,7 @@
 package com.przemyslawjakubowski.states;
 
 import com.przemyslawjakubowski.*;
+import com.przemyslawjakubowski.boardExceptions.IncorrectSymbolException;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;

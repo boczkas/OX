@@ -1,5 +1,6 @@
 package com.przemyslawjakubowski;
 
+import com.przemyslawjakubowski.boardExceptions.IncorrectSymbolException;
 import com.przemyslawjakubowski.states.GameState;
 import com.przemyslawjakubowski.states.InitialState;
 

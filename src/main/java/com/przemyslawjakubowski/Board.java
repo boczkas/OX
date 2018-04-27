@@ -1,5 +1,9 @@
 package com.przemyslawjakubowski;
 
+import com.przemyslawjakubowski.boardExceptions.BoardIndexOutOfBoundsException;
+import com.przemyslawjakubowski.boardExceptions.FieldNotEmptyException;
+import com.przemyslawjakubowski.boardExceptions.IncorrectCoordinateException;
+
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
@@ -19,16 +23,14 @@ public class Board {
     }
 
     public void handleMoves(Supplier<String> userInput, Consumer<String> output, Player player) {
-        String sizeInformation = "Przeciez mowiles ze chcesz grac na planszy 3x3, to co Ty mi tu piszesz?!\n";
-        String formatInformation = "Ruch dostarczaj w postaci <numer_wiersza>[Spacja]<numer_kolumny> przykładowo: 1 2\n";
-        output.accept(formatInformation);
         output.accept("Ruch wykonuje gracz: " + player.getName() + " (" + player.getSymbol() + ")");
 
-        String userInputString = userInput.get().trim();
+        handleCoordinateInput(userInput, output, player);
+    }
 
-        userInputString = userInputString.replaceAll("\\s+", " ");
-        String outputInformation = "";
-        Matcher matcher = inputPattern.matcher(userInputString);
+    private void handleCoordinateInput(Supplier<String> userInput, Consumer<String> output, Player player) {
+        String userInputString = userInput.get().trim();
+        Matcher matcher = inputPattern.matcher(userInputString.replaceAll("\\s+", " "));
 
         if(matcher.matches()) {
             Coordinate coordinate;
@@ -40,18 +42,33 @@ public class Board {
 
                 if (boardStatus.checkIfFieldIsEmpty(coordinate)) {
                     boardStatus.addSymbolAtPosition(player.getSymbol(), coordinate);
-                    outputInformation = "Ładnie powiedziane";
                 } else {
-                    outputInformation = "O Ty oszukisto! Chciałeś oszukać i postawić na zajętym polu!\n" +
-                            "Nie ma takiego grania! Tracisz ruch!";
+                    try {
+                        throw new FieldNotEmptyException(coordinate.toString());
+                    } catch (FieldNotEmptyException e) {
+                        output.accept(e.toString());
+                        handleMoves(userInput, output, player);
+                    }
+                }
+            }
+            else{
+                try{
+                    throw new BoardIndexOutOfBoundsException();
+                } catch (BoardIndexOutOfBoundsException e){
+                    output.accept(e.toString());
+                    handleMoves(userInput, output, player);
                 }
             }
         }
         else{
-            outputInformation = sizeInformation;
-        }
+            try {
+                throw new IncorrectCoordinateException(userInputString);
+            } catch (IncorrectCoordinateException e){
+                output.accept(e.toString());
+                handleMoves(userInput, output, player);
+            }
 
-        output.accept(outputInformation);
+        }
     }
 
     private boolean areSpecifiedCoordinatesCorrect(Integer x, Integer y) {
@@ -61,7 +78,7 @@ public class Board {
             result = false;
         }
 
-        if(x > rows || y > columns){
+        if(x >= rows || y >= columns){
             result = false;
         }
 
