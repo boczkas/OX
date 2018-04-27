@@ -2,15 +2,15 @@ package com.przemyslawjakubowski;
 
 public class Player {
     private String name;
-    private int score;
+    private Score score;
 
     private final Symbol symbol;
 
 
-    public Player(String name, Symbol symbol) {
+    public Player(String name, Symbol symbol, Score score) {
         this.name = name;
-        this.score = 0;
         this.symbol = symbol;
+        this.score = score;
     }
 
     public String getName() {

@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski;
+package com.przemyslawjakubowski.print;
 
 public enum Color {
     ANSI_DEFAULT("\u001B[0m"),

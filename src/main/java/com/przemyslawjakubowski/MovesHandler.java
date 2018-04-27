@@ -22,13 +22,12 @@ public class MovesHandler {
         this.boardStatus = boardStatus;
     }
 
-    public void handleMoves(Supplier<String> userInput, Consumer<String> output, Player player) {
+    public void handleMoves(Supplier<String> userInput, Consumer<String> output, Player player, Judge judge) {
         output.accept("Ruch wykonuje gracz: " + player.getName() + " (" + player.getSymbol() + ")");
-
-        handleCoordinateInput(userInput, output, player);
+        handleCoordinateInput(userInput, output, player, judge);
     }
 
-    private void handleCoordinateInput(Supplier<String> userInput, Consumer<String> output, Player player) {
+    private void handleCoordinateInput(Supplier<String> userInput, Consumer<String> output, Player player, Judge judge) {
         String userInputString = userInput.get().trim();
         Matcher matcher = inputPattern.matcher(userInputString.replaceAll("\\s+", " "));
 
@@ -42,12 +41,13 @@ public class MovesHandler {
 
                 if (boardStatus.checkIfFieldIsEmpty(coordinate)) {
                     boardStatus.addSymbolAtPosition(player.getSymbol(), coordinate);
+                    judge.checkWinner(coordinate);
                 } else {
                     try {
                         throw new FieldNotEmptyException(coordinate.toString());
                     } catch (FieldNotEmptyException e) {
                         output.accept(e.toString());
-                        handleMoves(userInput, output, player);
+                        handleMoves(userInput, output, player, judge);
                     }
                 }
             }
@@ -56,7 +56,7 @@ public class MovesHandler {
                     throw new BoardIndexOutOfBoundsException();
                 } catch (BoardIndexOutOfBoundsException e){
                     output.accept(e.toString());
-                    handleMoves(userInput, output, player);
+                    handleMoves(userInput, output, player, judge);
                 }
             }
         }
@@ -65,7 +65,7 @@ public class MovesHandler {
                 throw new IncorrectCoordinateException(userInputString);
             } catch (IncorrectCoordinateException e){
                 output.accept(e.toString());
-                handleMoves(userInput, output, player);
+                handleMoves(userInput, output, player, judge);
             }
 
         }
