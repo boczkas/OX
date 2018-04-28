@@ -26,22 +26,29 @@ public class Judge {
             if(isInVerticalWinningSequence(coordinate)){
                 isWinner = true;
             }
-//            if(isInHorizontalWinningSequence(coordinate)){
-//                isWinner = true;
-//            }
+            if(isInHorizontalWinningSequence(coordinate)){
+                isWinner = true;
+            }
+
         }
     }
 
-//    private boolean isInHorizontalWinningSequence(Coordinate coordinate) {
-//        Map<Coordinate, Symbol> column = boardStatus.getElementsInColumn(coordinate.getY());
-//        System.out.println("W tej kolumnie: " + column);
-//
-//        int indexOfTopMostSymbolInSequence = getTopMostIndexOfSymbolInSequence(column, coordinate);
-//    }
-//
-//    private int getTopMostIndexOfSymbolInSequence(Map<Coordinate, Symbol> column, Coordinate coordinate) {
-//        return 0;
-//    }
+    private boolean isInHorizontalWinningSequence(Coordinate coordinate) {
+        Map<Coordinate, Symbol> column = boardStatus.getElementsInColumn(coordinate.getY());
+        System.out.println("W tej kolumnie: " + column);
+
+        int indexOfTopMostSymbolInSequence = getTopMostIndexOfSymbolInSequence(column, coordinate);
+        int indexOfBottomMostSymbolInSequence = getBottomMostIndexOfSymbolInSequence(column, coordinate);
+        System.out.println("top Most: " + indexOfTopMostSymbolInSequence);
+        System.out.println("bootom Most: " + indexOfBottomMostSymbolInSequence);
+
+        if(indexOfTopMostSymbolInSequence - indexOfBottomMostSymbolInSequence >= 2){
+            return true; // todo przeczytac z konfiguracji wartosc
+        }
+        return false;
+    }
+
+
 
     private boolean isInVerticalWinningSequence(Coordinate coordinate) {
         Map<Coordinate, Symbol> row = boardStatus.getElementsInRow(coordinate.getX());
@@ -53,7 +60,7 @@ public class Judge {
         System.out.println("Left most: " + indexOfLeftMostSymbolInSequence);
         System.out.println("Right most: " + indexOfRightMostSymbolInSequence);
 
-        if(indexOfRightMostSymbolInSequence - indexOfLeftMostSymbolInSequence >= 2){
+        if(indexOfRightMostSymbolInSequence - indexOfLeftMostSymbolInSequence >= 2){ // todo przeczytac z konfiguracji wartosc
             return true;
         }
 
@@ -92,6 +99,43 @@ public class Judge {
             i++;
             symbol = Optional.ofNullable(row.get(new Coordinate(actualCoordinate.getX(), i)));
         }
+
         return max;
+    }
+
+    private int getTopMostIndexOfSymbolInSequence(Map<Coordinate, Symbol> column, Coordinate actualCoordinate) {
+        Symbol actualSymbol = column.get(actualCoordinate);
+        Optional<Symbol> symbol = Optional.ofNullable(column.get(new Coordinate(actualCoordinate.getX(), actualCoordinate.getY())));
+
+        int max = Integer.MIN_VALUE;
+        int i = actualCoordinate.getX();
+
+        while (symbol.isPresent()){
+            if(symbol.get().equals(actualSymbol) && i > max){
+                max = i;
+            }
+            i++;
+            symbol = Optional.ofNullable(column.get(new Coordinate(i, actualCoordinate.getY())));
+        }
+
+        return max;
+    }
+
+    private int getBottomMostIndexOfSymbolInSequence(Map<Coordinate, Symbol> column, Coordinate actualCoordinate){
+        Symbol actualSymbol = column.get(actualCoordinate);
+        Optional<Symbol> symbol = Optional.ofNullable(column.get(new Coordinate(actualCoordinate.getX(), actualCoordinate.getY())));
+
+        int min = Integer.MAX_VALUE;
+        int i = actualCoordinate.getX();
+
+        while(symbol.isPresent()){
+            if(symbol.get().equals(actualSymbol) && i < min){
+                min = i;
+            }
+            i--;
+            symbol = Optional.ofNullable(column.get(new Coordinate(i, actualCoordinate.getY())));
+        }
+
+        return min;
     }
 }
