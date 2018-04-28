@@ -40,28 +40,21 @@ public class Judge {
 
     private boolean isInHorizontalWinningSequence(Coordinate coordinate) {
         Map<Coordinate, Symbol> column = boardStatus.getElementsInColumn(coordinate.getY());
-        System.out.println("W tej kolumnie: " + column);
 
         int indexOfTopMostSymbolInSequence = getTopMostIndexOfSymbolInSequence(column, coordinate);
         int indexOfBottomMostSymbolInSequence = getBottomMostIndexOfSymbolInSequence(column, coordinate);
-        System.out.println("top Most: " + indexOfTopMostSymbolInSequence);
-        System.out.println("bootom Most: " + indexOfBottomMostSymbolInSequence);
 
-        if(indexOfTopMostSymbolInSequence - indexOfBottomMostSymbolInSequence >= 2){
-            return true; // todo przeczytac z konfiguracji wartosc
+        if(indexOfTopMostSymbolInSequence - indexOfBottomMostSymbolInSequence >= 2){ // todo przeczytac z konfiguracji wartosc
+            return true;
         }
         return false;
     }
 
     private boolean isInVerticalWinningSequence(Coordinate coordinate) {
         Map<Coordinate, Symbol> row = boardStatus.getElementsInRow(coordinate.getX());
-        System.out.println("W tym wierszu: " + row);
 
         int indexOfLeftMostSymbolInSequence = getLeftMostIndexOfSymbolInSequence(row, coordinate);
         int indexOfRightMostSymbolInSequence = getRightMostIndexOfSymbolInSequence(row, coordinate);
-
-        System.out.println("Left most: " + indexOfLeftMostSymbolInSequence);
-        System.out.println("Right most: " + indexOfRightMostSymbolInSequence);
 
         if(indexOfRightMostSymbolInSequence - indexOfLeftMostSymbolInSequence >= 2){ // todo przeczytac z konfiguracji wartosc
             return true;
@@ -71,11 +64,9 @@ public class Judge {
 
     private boolean isInLeftRightWinningSequence(Coordinate coordinate){
         Map<Coordinate, Symbol> diagonal = boardStatus.getElementsInLeftDiagonal(coordinate);
-        System.out.println("W tej przekątnej: " + diagonal);
+
         Coordinate coordinateOfLeftTopSymbolInSequence = getCoordinateOfLeftTopSymbolInSequence(diagonal, coordinate);
         Coordinate coordinateOfRightBottomSymbolInSequence = getCoordinateOfRightBottomSymbolInSequence(diagonal, coordinate);
-        System.out.println("Left top: " + coordinateOfLeftTopSymbolInSequence);
-        System.out.println("Bottom right: " + coordinateOfRightBottomSymbolInSequence);
 
         if(coordinateOfRightBottomSymbolInSequence.getX() - coordinateOfLeftTopSymbolInSequence.getX() >= 2){
             return true;
@@ -85,12 +76,8 @@ public class Judge {
 
     private boolean isInRightLeftWinningSequence(Coordinate coordinate) {
         Map<Coordinate, Symbol> diagonal = boardStatus.getElementsInRightDiagonal(coordinate);
-        System.out.println("W tej przekątnej: " + diagonal);
         Coordinate coordinateOfRightTopSymbolInSequence = getCoordinateOfRightTopSymbolInSequence(diagonal, coordinate);
         Coordinate coordinateOfLeftBottomSymbolInSequence = getCoordinateOfLeftBottomSymbolInSequence(diagonal, coordinate);
-
-        System.out.println("Right top: " + coordinateOfRightTopSymbolInSequence);
-        System.out.println("Bottom left: " + coordinateOfLeftBottomSymbolInSequence);
 
         if(coordinateOfLeftBottomSymbolInSequence.getX() - coordinateOfRightTopSymbolInSequence.getX() >=2){
             return true;
