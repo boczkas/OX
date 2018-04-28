@@ -32,6 +32,9 @@ public class Judge {
             if(isInLeftRightWinningSequence(coordinate)){
                 isWinner = true;
             }
+            if(isInRightLeftWinningSequence(coordinate)){
+                isWinner = true;
+            }
         }
     }
 
@@ -49,7 +52,7 @@ public class Judge {
         }
         return false;
     }
-    
+
     private boolean isInVerticalWinningSequence(Coordinate coordinate) {
         Map<Coordinate, Symbol> row = boardStatus.getElementsInRow(coordinate.getX());
         System.out.println("W tym wierszu: " + row);
@@ -80,6 +83,55 @@ public class Judge {
         return false;
     }
 
+    private boolean isInRightLeftWinningSequence(Coordinate coordinate) {
+        Map<Coordinate, Symbol> diagonal = boardStatus.getElementsInRightDiagonal(coordinate);
+        System.out.println("W tej przekątnej: " + diagonal);
+        Coordinate coordinateOfRightTopSymbolInSequence = getCoordinateOfRightTopSymbolInSequence(diagonal, coordinate);
+        Coordinate coordinateOfLeftBottomSymbolInSequence = getCoordinateOfLeftBottomSymbolInSequence(diagonal, coordinate);
+
+        System.out.println("Right top: " + coordinateOfRightTopSymbolInSequence);
+        System.out.println("Bottom left: " + coordinateOfLeftBottomSymbolInSequence);
+
+        if(coordinateOfLeftBottomSymbolInSequence.getX() - coordinateOfRightTopSymbolInSequence.getX() >=2){
+            return true;
+        }
+        return false;
+    }
+
+    private Coordinate getCoordinateOfLeftBottomSymbolInSequence(Map<Coordinate,Symbol> diagonal, Coordinate actualCoordinate) {
+        Symbol actualSymbol = diagonal.get(actualCoordinate);
+
+        Coordinate bottomLeft = actualCoordinate;
+        Coordinate checking = new Coordinate(actualCoordinate.getX() + 1, actualCoordinate.getY() - 1);
+
+        while (diagonal.containsKey(checking)){
+            if(diagonal.get(checking).equals(actualSymbol)){
+                bottomLeft = checking;
+            }
+            else
+                break;
+            checking = new Coordinate(checking.getX() + 1, checking.getY() - 1);
+        }
+        return bottomLeft;
+    }
+
+    private Coordinate getCoordinateOfRightTopSymbolInSequence(Map<Coordinate,Symbol> diagonal, Coordinate actualCoordinate) {
+        Symbol actualSymbol = diagonal.get(actualCoordinate);
+
+        Coordinate topRight = actualCoordinate;
+        Coordinate checking = new Coordinate(actualCoordinate.getX() - 1, actualCoordinate.getY() + 1);
+
+        while (diagonal.containsKey(checking)){
+            if(diagonal.get(checking).equals(actualSymbol)){
+                topRight = checking;
+            }
+            else
+                break;
+            checking = new Coordinate(checking.getX() - 1, checking.getY() + 1);
+        }
+        return topRight;
+    }
+
     private Coordinate getCoordinateOfRightBottomSymbolInSequence(Map<Coordinate,Symbol> diagonal, Coordinate actualCoordinate) {
         Symbol actualSymbol = diagonal.get(actualCoordinate);
         Coordinate bottomRight = actualCoordinate;
@@ -89,6 +141,8 @@ public class Judge {
             if(diagonal.get(checking).equals(actualSymbol)){
                 bottomRight = checking;
             }
+            else
+                break;
             checking = new Coordinate(checking.getX() + 1, checking.getY() + 1);
         }
         return bottomRight;
@@ -104,6 +158,8 @@ public class Judge {
             if(diagonal.get(checking).equals(actualSymbol)){
                 topLeft = checking;
             }
+            else
+                break;
             checking = new Coordinate(checking.getX() - 1, checking.getY() - 1);
         }
         return topLeft;
@@ -121,6 +177,8 @@ public class Judge {
             if(symbol.get().equals(actualSymbol) && i < min){
                 min = i;
             }
+            else
+                break;
             i--;
             symbol = Optional.ofNullable(row.get(new Coordinate(actualCoordinate.getX(), i)));
         }
@@ -139,6 +197,8 @@ public class Judge {
             if(symbol.get().equals(actualSymbol) && i > max){
                 max = i;
             }
+            else
+                break;
             i++;
             symbol = Optional.ofNullable(row.get(new Coordinate(actualCoordinate.getX(), i)));
         }
@@ -157,6 +217,8 @@ public class Judge {
             if(symbol.get().equals(actualSymbol) && i > max){
                 max = i;
             }
+            else
+                break;
             i++;
             symbol = Optional.ofNullable(column.get(new Coordinate(i, actualCoordinate.getY())));
         }
@@ -175,6 +237,8 @@ public class Judge {
             if(symbol.get().equals(actualSymbol) && i < min){
                 min = i;
             }
+            else
+                break;
             i--;
             symbol = Optional.ofNullable(column.get(new Coordinate(i, actualCoordinate.getY())));
         }

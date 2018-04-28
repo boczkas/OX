@@ -72,26 +72,54 @@ public class BoardStatus {
     public Map<Coordinate,Symbol> getElementsInLeftDiagonal(Coordinate currentCoordinate) {
         Map<Coordinate, Symbol> elementsInDiagonal = new HashMap<>();
 
-        int x = currentCoordinate.getX();
-        int y = currentCoordinate.getY();
+        int row = currentCoordinate.getX();
+        int column = currentCoordinate.getY();
 
-        while(x >= 0 && y >= 0){
-            Coordinate coordinate = new Coordinate(x, y);
-            elementsInDiagonal.put(coordinate, symbolsAtCoordinates.get(coordinate));
-            x--;
-            y--;
+        while(row >= 0 && column >= 0){
+            addElementToDiagonal(elementsInDiagonal, row, column);
+            row--;
+            column--;
         }
 
-        x = currentCoordinate.getX();
-        y = currentCoordinate.getY();
+        row = currentCoordinate.getX();
+        column = currentCoordinate.getY();
 
-        while (x < rows && y < columns){ // todo przemienic na zaczytywanie z konfiguracji
-            Coordinate coordinate = new Coordinate(x, y);
-            elementsInDiagonal.put(coordinate, symbolsAtCoordinates.get(coordinate));
-            x++;
-            y++;
+        while (row < rows && column < columns){ // todo przemienic na zaczytywanie z konfiguracji
+            addElementToDiagonal(elementsInDiagonal, row, column);
+            row++;
+            column++;
         }
 
         return elementsInDiagonal;
+    }
+
+    public Map<Coordinate,Symbol> getElementsInRightDiagonal(Coordinate currentCoordinate) {
+        Map<Coordinate, Symbol> elementsInDiagonal = new HashMap<>();
+        int row = currentCoordinate.getX();
+        int column = currentCoordinate.getY();
+
+        while (row >= 0 && column < columns){
+            addElementToDiagonal(elementsInDiagonal, row, column);
+            row--;
+            column++;
+        }
+
+        row = currentCoordinate.getX();
+        column = currentCoordinate.getY();
+
+        while (row < rows && column >= 0){
+            addElementToDiagonal(elementsInDiagonal, row, column);
+            row++;
+            column--;
+        }
+
+        return elementsInDiagonal;
+    }
+
+    private void addElementToDiagonal(Map<Coordinate, Symbol> elementsInDiagonal, int row, int column) {
+        Coordinate coordinate = new Coordinate(row, column);
+        if(symbolsAtCoordinates.containsKey(coordinate)){
+            elementsInDiagonal.put(coordinate, symbolsAtCoordinates.get(coordinate));
+        }
     }
 }
