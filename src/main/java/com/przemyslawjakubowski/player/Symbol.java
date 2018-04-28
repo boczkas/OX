@@ -1,4 +1,6 @@
-package com.przemyslawjakubowski;
+package com.przemyslawjakubowski.player;
+
+import com.przemyslawjakubowski.print.Color;
 
 public enum Symbol {
     X(Color.ANSI_CYAN + "X" + Color.ANSI_DEFAULT),

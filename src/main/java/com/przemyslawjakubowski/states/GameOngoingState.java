@@ -2,30 +2,33 @@ package com.przemyslawjakubowski.states;
 
 import com.przemyslawjakubowski.*;
 import com.przemyslawjakubowski.boardExceptions.IncorrectSymbolException;
+import com.przemyslawjakubowski.player.Player;
+import com.przemyslawjakubowski.player.Players;
+import com.przemyslawjakubowski.print.Printer;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class GameOngoingState implements GameState {
 
-
     @Override
     public void performAction(Supplier<String> userInput, Consumer<String> output, XOGame xoGame) {
 
         output.accept("A tablica to jaka wielka ma być?");
 
-        Board board = new Board(new BoardStatus(3,3));
+        BoardStatus boardStatus = new BoardStatus(3,3);
+        MovesHandler movesHandler = new MovesHandler(boardStatus);
         Players players = xoGame.getPlayers();
         output.accept("Gramy PAAAANIE!");
         output.accept("Kto zaczyna?");
 
         Player player;
-
+        Judge judge = new Judge(boardStatus, 3); // todo zmienic na konfigurowalna wartosc
         player = getStartingPlayer(userInput, output, players);
 
-        while(true){
-            board.print();
-            board.handleMoves(userInput, output, player);
+        while(!judge.isWinnerPresent()){
+            Printer.print(boardStatus);
+            movesHandler.handleMoves(userInput, output, player, judge);
             player = players.getOppositePlayer(player);
         }
     }
@@ -46,6 +49,4 @@ public class GameOngoingState implements GameState {
     public GameState goToNextState() {
         return new GameFinishedState();
     }
-
-
 }

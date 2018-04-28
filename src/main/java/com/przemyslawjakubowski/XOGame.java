@@ -1,12 +1,14 @@
 package com.przemyslawjakubowski;
 
+import com.przemyslawjakubowski.player.Player;
+import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.states.GameState;
 import com.przemyslawjakubowski.states.InitialState;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class XOGame {
+public class    XOGame {
 
     private final Supplier<String> userInputSupplier;
     private final Consumer<String> output;

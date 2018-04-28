@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski;
+package com.przemyslawjakubowski.player;
 
 import com.przemyslawjakubowski.boardExceptions.IncorrectSymbolException;
 import com.przemyslawjakubowski.states.GameState;
@@ -24,7 +24,6 @@ public class Players {
             players.add(player);
         }
     }
-
 
     public Player getOppositePlayer(Player actualPlayer) {
         return players.indexOf(actualPlayer) == 0 ? players.get(1) : players.get(0);

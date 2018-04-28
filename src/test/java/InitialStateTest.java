@@ -1,4 +1,5 @@
 import com.przemyslawjakubowski.*;
+import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.states.GameOngoingState;
 import com.przemyslawjakubowski.states.GameState;
 import com.przemyslawjakubowski.states.InitialState;
