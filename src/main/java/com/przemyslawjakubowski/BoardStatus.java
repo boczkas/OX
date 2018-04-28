@@ -68,4 +68,30 @@ public class BoardStatus {
         }
         return elementsInColumn;
     }
+
+    public Map<Coordinate,Symbol> getElementsInLeftDiagonal(Coordinate currentCoordinate) {
+        Map<Coordinate, Symbol> elementsInDiagonal = new HashMap<>();
+
+        int x = currentCoordinate.getX();
+        int y = currentCoordinate.getY();
+
+        while(x >= 0 && y >= 0){
+            Coordinate coordinate = new Coordinate(x, y);
+            elementsInDiagonal.put(coordinate, symbolsAtCoordinates.get(coordinate));
+            x--;
+            y--;
+        }
+
+        x = currentCoordinate.getX();
+        y = currentCoordinate.getY();
+
+        while (x < rows && y < columns){ // todo przemienic na zaczytywanie z konfiguracji
+            Coordinate coordinate = new Coordinate(x, y);
+            elementsInDiagonal.put(coordinate, symbolsAtCoordinates.get(coordinate));
+            x++;
+            y++;
+        }
+
+        return elementsInDiagonal;
+    }
 }
