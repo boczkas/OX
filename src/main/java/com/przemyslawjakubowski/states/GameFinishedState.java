@@ -13,7 +13,6 @@ public class GameFinishedState implements GameState {
 
     @Override
     public GameState goToNextState() {
-        System.out.println();
         return new InitialState();
     }
 }

@@ -1,5 +1,5 @@
-import com.przemyslawjakubowski.BoardStatus;
-import com.przemyslawjakubowski.Coordinate;
+import com.przemyslawjakubowski.board.BoardStatus;
+import com.przemyslawjakubowski.board.Coordinate;
 import com.przemyslawjakubowski.Judge;
 import com.przemyslawjakubowski.player.Symbol;
 import org.testng.Assert;

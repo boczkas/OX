@@ -1,25 +1,34 @@
 package com.przemyslawjakubowski;
 
+import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForTieException;
+import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForWonException;
+import com.przemyslawjakubowski.gameConfiguration.PointsConfiguration;
+import com.przemyslawjakubowski.gameConfiguration.SymbolsToWin;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Players;
+import com.przemyslawjakubowski.player.Point;
 import com.przemyslawjakubowski.states.GameState;
 import com.przemyslawjakubowski.states.InitialState;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class    XOGame {
+public class XOGame {
 
     private final Supplier<String> userInputSupplier;
     private final Consumer<String> output;
     private GameState currentGameState;
     private Players players;
+    private PointsConfiguration configuration;
+    private SymbolsToWin symbolsToWin;
+
 
     public XOGame(Supplier<String> userInputSupplier, Consumer<String> output) {
         this.userInputSupplier = userInputSupplier;
         this.currentGameState = new InitialState();
         this.output = output;
         this.players = new Players();
+        this.configuration = new PointsConfiguration();
     }
 
     public void start() {
@@ -39,5 +48,18 @@ public class    XOGame {
 
     public Players getPlayers(){
         return players;
+    }
+
+    public void setAmountOfPointsForWinRound(Point pointsForWonRound) throws IncorrectPointsForWonException {
+        configuration.setPointsForWonRound(pointsForWonRound);
+    }
+
+
+    public void setAmountOfPointsForTieRound(Point pointsForTie) throws IncorrectPointsForTieException {
+        configuration.setPointsForTieRound(pointsForTie);
+    }
+
+    public void setSymbolsToWin(SymbolsToWin symbolsToWin) {
+        this.symbolsToWin = symbolsToWin;
     }
 }

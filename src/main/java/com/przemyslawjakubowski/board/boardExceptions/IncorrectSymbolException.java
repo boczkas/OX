@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski.boardExceptions;
+package com.przemyslawjakubowski.board.boardExceptions;
 
 public class IncorrectSymbolException extends Throwable{
 

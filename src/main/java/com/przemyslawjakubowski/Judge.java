@@ -1,5 +1,7 @@
 package com.przemyslawjakubowski;
 
+import com.przemyslawjakubowski.board.BoardStatus;
+import com.przemyslawjakubowski.board.Coordinate;
 import com.przemyslawjakubowski.player.Symbol;
 
 import java.util.Map;

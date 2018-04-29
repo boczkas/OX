@@ -2,12 +2,12 @@ package com.przemyslawjakubowski.player;
 
 public class Player {
     private String name;
-    private Score score;
+    private Point score;
 
     private final Symbol symbol;
 
 
-    public Player(String name, Symbol symbol, Score score) {
+    public Player(String name, Symbol symbol, Point score) {
         this.name = name;
         this.symbol = symbol;
         this.score = score;
