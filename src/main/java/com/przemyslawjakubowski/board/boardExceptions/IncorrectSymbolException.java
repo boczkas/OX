@@ -13,7 +13,7 @@ public class IncorrectSymbolException extends Throwable{
         return "==========================================\n" +
                 "Niepoprawny symbol.\n" +
                 "Powinenes wyspecyfikowac jeden z X/O.\n" +
-                "Wpisano: " + exceptionMessage +
+                "Wpisano: " + exceptionMessage + "\n" +
                 "==========================================\n";
     }
 

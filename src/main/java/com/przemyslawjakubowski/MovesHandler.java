@@ -43,7 +43,7 @@ public class MovesHandler {
                 coordinate = new Coordinate(x, y);
 
                 if (boardStatus.checkIfFieldIsEmpty(coordinate)) {
-                    boardStatus.addSymbolAtPosition(player.getSymbol(), coordinate);
+                    boardStatus.addSymbolAtCoordinate(player.getSymbol(), coordinate);
                     judge.checkWinner(coordinate);
                 } else {
                     try {

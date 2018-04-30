@@ -50,7 +50,7 @@
 
     <groupId>com.przemyslawjakubowski</groupId>
     <artifactId>OXTheGame</artifactId>
-    <version>0.3</version>
+    <version>0.4</version>
     <name>OXGame</name>
     <description>Simple OX Game</description>
 

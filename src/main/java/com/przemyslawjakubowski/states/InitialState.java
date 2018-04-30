@@ -22,9 +22,9 @@ public class InitialState implements GameState {
         }
 
         output.accept("Bedziem zaczynac!\n");
-        output.accept("Podaj imię pierwszego gracza (X)!\n");
+        output.accept("Podaj imię pierwszego gracza (X)!");
         xoGame.addPlayer(new Player(userInput.get(), Symbol.X, new Point(0)));
-        output.accept("Podaj imię drugiego gracza (O)!\n");
+        output.accept("Podaj imię drugiego gracza (O)!");
         xoGame.addPlayer(new Player(userInput.get(), Symbol.O, new Point(0)));
 
     }

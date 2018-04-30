@@ -15,7 +15,7 @@ public class BoardStatus {
         this.columns = columns;
     }
 
-    public void addSymbolAtPosition(final Symbol symbol, final Coordinate coordinate) {
+    public void addSymbolAtCoordinate(final Symbol symbol, final Coordinate coordinate) {
         symbolsAtCoordinates.put(coordinate, symbol);
     }
 

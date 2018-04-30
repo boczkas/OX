@@ -7,6 +7,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -32,6 +34,8 @@ public class InitialStateTest {
         System.setIn(new ByteArrayInputStream(playersNames.getBytes()));
       
         Supplier<String> userInputProvider = new Scanner(System.in)::nextLine;
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
         Consumer<String> output = System.out::println;
 
         // when

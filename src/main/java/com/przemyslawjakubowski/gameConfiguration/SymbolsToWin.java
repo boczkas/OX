@@ -7,17 +7,26 @@ public class SymbolsToWin {
     int symbolsToWin;
     BoardStatus boardStatus;
 
+    public SymbolsToWin(){
+        this(0, new BoardStatus(0,0));
+    }
+
+    public SymbolsToWin(BoardStatus boardStatus) {
+        this(0, boardStatus);
+    }
+
     public SymbolsToWin(int symbolsToWin, BoardStatus boardStatus) {
         this.symbolsToWin = symbolsToWin;
         this.boardStatus = boardStatus;
     }
 
-    public int getSymbolsToWin() {
+
+    public int getAmountOfSymbolsToWin() {
         return symbolsToWin;
     }
 
     public void setSymbolsToWin(int symbolsToWin) throws IncorrectAmountOfSymbolsToWinException {
-        if(symbolsToWin > 0 && (symbolsToWin >= boardStatus.getRows() || symbolsToWin >= boardStatus.getColumns())){
+        if(symbolsToWin > 0 && (symbolsToWin <= boardStatus.getRows() || symbolsToWin <= boardStatus.getColumns())){
             this.symbolsToWin = symbolsToWin;
         }
         else{
