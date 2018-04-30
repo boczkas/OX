@@ -47,8 +47,8 @@ public class InitialStateTest {
         // then
         Players players = game.getPlayers();
 
-        Assert.assertTrue(players.getPlayers().get(0).getName().equals("winner"));
-        Assert.assertTrue(players.getPlayers().get(1).getName().equals("loser"));
+        Assert.assertTrue(players.getNextPlayer().getName().equals("winner"));
+        Assert.assertTrue(players.getNextPlayer().getName().equals("loser"));
 
         // @After
         System.setIn(System.in);

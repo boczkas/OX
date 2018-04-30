@@ -8,7 +8,7 @@ public class SymbolsToWin {
     BoardStatus boardStatus;
 
     public SymbolsToWin(){
-        this(0, new BoardStatus(0,0));
+        this(0, new BoardStatus());
     }
 
     public SymbolsToWin(BoardStatus boardStatus) {

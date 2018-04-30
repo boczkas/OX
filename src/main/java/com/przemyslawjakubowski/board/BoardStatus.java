@@ -1,18 +1,18 @@
 package com.przemyslawjakubowski.board;
 
+import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.BoardDimensionException;
 import com.przemyslawjakubowski.player.Symbol;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 public class BoardStatus {
-    private final int rows;
-    private final int columns;
+    BoardConfiguration boardConfiguration;
     private Map<Coordinate, Symbol> symbolsAtCoordinates;
 
-    public BoardStatus(int rows, int columns) {
+    public BoardStatus() {
         this.symbolsAtCoordinates = new HashMap<>();
-        this.rows = rows;
-        this.columns = columns;
+        this.boardConfiguration = new BoardConfiguration();
     }
 
     public void addSymbolAtCoordinate(final Symbol symbol, final Coordinate coordinate) {
@@ -28,11 +28,11 @@ public class BoardStatus {
     }
 
     public int getRows() {
-        return rows;
+        return boardConfiguration.getRows();
     }
 
     public int getColumns() {
-        return columns;
+        return boardConfiguration.getColumns();
     }
 
     public Optional<Symbol> getSymbolAtCoordinate(final Coordinate coordinate){
@@ -84,7 +84,7 @@ public class BoardStatus {
         row = currentCoordinate.getX();
         column = currentCoordinate.getY();
 
-        while (row < rows && column < columns){ // todo przemienic na zaczytywanie z konfiguracji
+        while (row < boardConfiguration.getRows() && column < boardConfiguration.getColumns()){
             addElementToDiagonal(elementsInDiagonal, row, column);
             row++;
             column++;
@@ -98,7 +98,7 @@ public class BoardStatus {
         int row = currentCoordinate.getX();
         int column = currentCoordinate.getY();
 
-        while (row >= 0 && column < columns){
+        while (row >= 0 && column < boardConfiguration.getColumns()){
             addElementToDiagonal(elementsInDiagonal, row, column);
             row--;
             column++;
@@ -107,7 +107,7 @@ public class BoardStatus {
         row = currentCoordinate.getX();
         column = currentCoordinate.getY();
 
-        while (row < rows && column >= 0){
+        while (row < boardConfiguration.getColumns() && column >= 0){
             addElementToDiagonal(elementsInDiagonal, row, column);
             row++;
             column--;
@@ -121,5 +121,23 @@ public class BoardStatus {
         if(symbolsAtCoordinates.containsKey(coordinate)){
             elementsInDiagonal.put(coordinate, symbolsAtCoordinates.get(coordinate));
         }
+    }
+
+    public void setBoardRows(int rows, Consumer<String> output) {
+        try{
+            boardConfiguration.setRows(rows);
+
+        } catch (BoardDimensionException e) {
+            output.accept(e.toString());
+        }
+    }
+
+    public void setBoardColumns(int columns, Consumer<String> output){
+        try {
+            boardConfiguration.setColumns(columns);
+        } catch (BoardDimensionException e) {
+            output.accept(e.toString());
+        }
+
     }
 }
