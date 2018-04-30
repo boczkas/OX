@@ -1,12 +1,12 @@
-package com.przemyslawjakubowski.gameConfiguration;
+package com.przemyslawjakubowski.board;
 
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.BoardDimensionException;
 
-public class BoardConfiguration {
+public class BoardConfigurationChecker {
     int rows;
     int columns;
 
-    public BoardConfiguration() {
+    public BoardConfigurationChecker() {
         this.rows = 0;
         this.columns = 0;
     }

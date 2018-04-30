@@ -5,7 +5,7 @@ import com.przemyslawjakubowski.board.BoardStatus;
 import com.przemyslawjakubowski.board.boardExceptions.IncorrectSymbolException;
 import com.przemyslawjakubowski.gameConfiguration.SymbolsToWin;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.BoardDimensionException;
-import com.przemyslawjakubowski.gameConfiguration.BoardConfiguration;
+import com.przemyslawjakubowski.board.BoardConfigurationChecker;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectAmountOfSymbolsToWinException;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Players;
@@ -59,12 +59,12 @@ public class GameOngoingState implements GameState {
 
     private int getAmountOfRows(Supplier<String> userInput, Consumer<String> output) {
         output.accept("A plansza to jaka długa ma być?");
-        BoardConfiguration boardConfiguration = new BoardConfiguration();
+        BoardConfigurationChecker boardConfigurationChecker = new BoardConfigurationChecker();
 
         int userRowsEntry = 0;
         try{
             userRowsEntry = Integer.parseInt(userInput.get());
-            boardConfiguration.setRows(userRowsEntry);
+            boardConfigurationChecker.setRows(userRowsEntry);
         } catch (BoardDimensionException e) {
             output.accept(e.toString());
             getAmountOfRows(userInput, output);
@@ -77,12 +77,12 @@ public class GameOngoingState implements GameState {
 
     private int getAmountOfColumns(Supplier<String> userInput, Consumer<String> output) {
         output.accept("A plansza to jaka szeroka ma być?");
-        BoardConfiguration boardConfiguration = new BoardConfiguration();
+        BoardConfigurationChecker boardConfigurationChecker = new BoardConfigurationChecker();
 
         int userColumnsEntry = 0;
         try{
             userColumnsEntry = Integer.parseInt(userInput.get());
-            boardConfiguration.setColumns(userColumnsEntry);
+            boardConfigurationChecker.setColumns(userColumnsEntry);
         } catch (BoardDimensionException e) {
             output.accept(e.toString());
             getAmountOfColumns(userInput, output);
