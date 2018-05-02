@@ -12,18 +12,20 @@ public class Judge {
     boolean isWinner;
     BoardStatus boardStatus;
     SymbolsToWin symbolsToWin;
+    int symbolsCounter;
 
     public Judge(BoardStatus boardStatus, SymbolsToWin symbolsToWin) {
         this.boardStatus = boardStatus;
         this.isWinner = false;
         this.symbolsToWin = symbolsToWin;
+        this.symbolsCounter = 0;
     }
 
     public boolean isWinnerPresent() {
         return isWinner;
     }
 
-    public void checkWinner(final Coordinate coordinate) {
+    public void checkWin(final Coordinate coordinate) {
         Map<Coordinate, Symbol> symbolMap = boardStatus.getSymbolsAtCoordinates();
         int amountOfSymbolsToWin = symbolsToWin.getAmountOfSymbolsToWin();
 
@@ -35,6 +37,16 @@ public class Judge {
 
             isWinner = true;
         }
+
+        symbolsCounter++;
+    }
+
+    public boolean checkTie(){
+
+        if(symbolsCounter == boardStatus.getPossibleAmountOfSymbols()){
+            return true;
+        }
+        return false;
     }
 
     private boolean isInHorizontalWinningSequence(Coordinate coordinate, int amountOfSymbolsToWin) {

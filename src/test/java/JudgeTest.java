@@ -22,7 +22,7 @@ public class JudgeTest {
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(0,0));
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(1,0));
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(2,0));
-        judge.checkWinner(new Coordinate(2,0));
+        judge.checkWin(new Coordinate(2,0));
 
         // then
         Assert.assertTrue(judge.isWinnerPresent());
@@ -41,7 +41,7 @@ public class JudgeTest {
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(0,0));
         boardStatus.addSymbolAtCoordinate(Symbol.O, new Coordinate(1,0));
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(2,0));
-        judge.checkWinner(new Coordinate(2,0));
+        judge.checkWin(new Coordinate(2,0));
 
         // then
         Assert.assertFalse(judge.isWinnerPresent());
@@ -60,7 +60,7 @@ public class JudgeTest {
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(0,0));
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(0,1));
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(0,2));
-        judge.checkWinner(new Coordinate(0,2));
+        judge.checkWin(new Coordinate(0,2));
 
         // then
         Assert.assertTrue(judge.isWinnerPresent());
@@ -79,7 +79,7 @@ public class JudgeTest {
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(0,0));
         boardStatus.addSymbolAtCoordinate(Symbol.O, new Coordinate(0,1));
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(0,2));
-        judge.checkWinner(new Coordinate(0,2));
+        judge.checkWin(new Coordinate(0,2));
 
         // then
         Assert.assertFalse(judge.isWinnerPresent());
@@ -98,7 +98,7 @@ public class JudgeTest {
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(0,0));
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(1,1));
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(2,2));
-        judge.checkWinner(new Coordinate(2,2));
+        judge.checkWin(new Coordinate(2,2));
 
         // then
         Assert.assertTrue(judge.isWinnerPresent());
@@ -117,7 +117,7 @@ public class JudgeTest {
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(0,0));
         boardStatus.addSymbolAtCoordinate(Symbol.O, new Coordinate(1,1));
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(2,2));
-        judge.checkWinner(new Coordinate(2,2));
+        judge.checkWin(new Coordinate(2,2));
 
         // then
         Assert.assertFalse(judge.isWinnerPresent());
@@ -136,7 +136,7 @@ public class JudgeTest {
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(0,2));
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(1,1));
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(2,0));
-        judge.checkWinner(new Coordinate(2,0));
+        judge.checkWin(new Coordinate(2,0));
 
         // then
         Assert.assertTrue(judge.isWinnerPresent());
@@ -155,7 +155,7 @@ public class JudgeTest {
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(0,2));
         boardStatus.addSymbolAtCoordinate(Symbol.O, new Coordinate(1,1));
         boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(2,0));
-        judge.checkWinner(new Coordinate(2,0));
+        judge.checkWin(new Coordinate(2,0));
 
         // then
         Assert.assertFalse(judge.isWinnerPresent());

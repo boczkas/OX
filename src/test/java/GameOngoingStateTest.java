@@ -1,4 +1,4 @@
-import com.przemyslawjakubowski.states.GameFinishedState;
+import com.przemyslawjakubowski.states.RoundFinishedState;
 import com.przemyslawjakubowski.states.GameOngoingState;
 import com.przemyslawjakubowski.states.GameState;
 import org.testng.Assert;
@@ -14,6 +14,6 @@ public class GameOngoingStateTest {
         gameState = gameState.goToNextState();
 
         // then
-        Assert.assertEquals(gameState.getClass(), GameFinishedState.class);
+        Assert.assertEquals(gameState.getClass(), RoundFinishedState.class);
     }
 }

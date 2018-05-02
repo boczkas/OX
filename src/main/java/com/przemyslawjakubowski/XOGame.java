@@ -23,6 +23,7 @@ public class XOGame {
     private Players players;
     private PointsConfiguration configuration;
     private SymbolsToWin symbolsToWin;
+    private int roundsCounter;
 
 
     public XOGame(Supplier<String> userInputSupplier, Consumer<String> output) {
@@ -32,6 +33,7 @@ public class XOGame {
         this.players = new Players();
         this.configuration = new PointsConfiguration();
         this.boardStatus = new BoardStatus();
+        this.roundsCounter = 0;
     }
 
     public void start() {
@@ -76,5 +78,13 @@ public class XOGame {
 
     public SymbolsToWin getSymbolsToWin() {
         return symbolsToWin;
+    }
+
+    public void increaseRoundsCounter(){
+        this.roundsCounter++;
+    }
+
+    public int getRoundNumber(){
+        return roundsCounter;
     }
 }

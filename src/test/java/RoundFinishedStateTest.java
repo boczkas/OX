@@ -1,15 +1,15 @@
-import com.przemyslawjakubowski.states.GameFinishedState;
+import com.przemyslawjakubowski.states.RoundFinishedState;
 import com.przemyslawjakubowski.states.GameState;
 import com.przemyslawjakubowski.states.InitialState;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class GameFinishedStateTest {
+public class RoundFinishedStateTest {
     @Test
     public void goToNextState_GameFinishedStateToInitialState(){
         // given
-        GameState gameState = new GameFinishedState();
+        GameState gameState = new RoundFinishedState();
 
         // when
         gameState = gameState.goToNextState();

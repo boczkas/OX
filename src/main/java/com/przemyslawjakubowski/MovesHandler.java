@@ -44,7 +44,7 @@ public class MovesHandler {
 
                 if (boardStatus.checkIfFieldIsEmpty(coordinate)) {
                     boardStatus.addSymbolAtCoordinate(player.getSymbol(), coordinate);
-                    judge.checkWinner(coordinate);
+                    judge.checkWin(coordinate);
                 } else {
                     try {
                         throw new FieldNotEmptyException(coordinate.toString());

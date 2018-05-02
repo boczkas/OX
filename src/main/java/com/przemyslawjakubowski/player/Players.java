@@ -43,7 +43,13 @@ public class Players {
     }
 
     public Player getStartingPlayer() {
-        return startingPlayer;
+        Player currentPlayer = getNextPlayer();
+
+        if(currentPlayer.equals(startingPlayer)){
+            return currentPlayer;
+        }
+
+        return getNextPlayer();
     }
 
     void setStartingPlayer(Player player){
