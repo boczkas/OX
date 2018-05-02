@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski.states;
+package com.przemyslawjakubowski.mainStates;
 
 import com.przemyslawjakubowski.XOGame;
 import com.przemyslawjakubowski.player.Player;
@@ -51,6 +51,7 @@ public class GameFinishedState implements GameState{
 
     @Override
     public GameState goToNextState() {
+        System.exit(0);
         return new InitialState();
     }
 }

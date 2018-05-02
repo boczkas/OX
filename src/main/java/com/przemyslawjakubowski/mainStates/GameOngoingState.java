@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski.states;
+package com.przemyslawjakubowski.mainStates;
 
 import com.przemyslawjakubowski.*;
 import com.przemyslawjakubowski.board.BoardStatus;
@@ -21,14 +21,19 @@ public class GameOngoingState implements GameState {
         Judge judge = new Judge(boardStatus, xoGame.getSymbolsToWin());
         Player player = players.getStartingPlayer();
 
-        while(!(judge.isWinnerPresent() || judge.checkTie())){
+        EndRequest endRequest = EndRequest.NO;
+        while(!(judge.isWinnerPresent() || judge.checkTie()|| endRequest.equals(EndRequest.YES))){
             Printer.printBoard(boardStatus, output);
-            movesHandler.handleMoves(userInput, output, player, judge);
+            endRequest = movesHandler.handleMoves(userInput, output, player, judge);
             player = players.getNextPlayer();
         }
 
-        printWinningMessage(player, judge, output, boardStatus);
-        addPointsFromRound(player, players, judge);
+        if(endRequest.equals(EndRequest.NO)){
+            printWinningMessage(player, judge, output, boardStatus);
+            addPointsFromRound(player, players, judge);
+        }
+
+        xoGame.setEndRequest(endRequest);
     }
 
     private void addPointsFromRound(Player currentPlayer, Players players, Judge judge) {

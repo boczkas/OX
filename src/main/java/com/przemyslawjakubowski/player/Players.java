@@ -1,11 +1,10 @@
 package com.przemyslawjakubowski.player;
 
 import com.przemyslawjakubowski.board.boardExceptions.IncorrectSymbolException;
-import com.przemyslawjakubowski.states.GameState;
-import com.przemyslawjakubowski.states.InitialState;
+import com.przemyslawjakubowski.mainStates.GameState;
+import com.przemyslawjakubowski.mainStates.InitialState;
 
 import java.util.*;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Players {
