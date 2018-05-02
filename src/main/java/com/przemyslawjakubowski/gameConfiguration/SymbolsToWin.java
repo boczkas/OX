@@ -1,5 +1,6 @@
 package com.przemyslawjakubowski.gameConfiguration;
 
+import com.przemyslawjakubowski.board.BoardConfiguration;
 import com.przemyslawjakubowski.board.BoardStatus;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectAmountOfSymbolsToWinException;
 
@@ -8,7 +9,7 @@ public class SymbolsToWin {
     BoardStatus boardStatus;
 
     public SymbolsToWin(){
-        this(0, new BoardStatus());
+        this(0, new BoardStatus(new BoardConfiguration()));
     }
 
     public SymbolsToWin(BoardStatus boardStatus) {

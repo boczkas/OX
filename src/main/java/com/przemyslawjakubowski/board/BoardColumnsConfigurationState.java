@@ -3,40 +3,37 @@ package com.przemyslawjakubowski.board;
 import com.przemyslawjakubowski.XOGame;
 import com.przemyslawjakubowski.gameConfiguration.SymbolsToWinConfigurationState;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.BoardDimensionException;
-import com.przemyslawjakubowski.states.GameOngoingState;
+import com.przemyslawjakubowski.states.GameConfigurationState;
 import com.przemyslawjakubowski.states.GameState;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class BoardColumnsConfigurationState implements GameState {
+public class BoardColumnsConfigurationState implements GameConfigurationState {
 
     boolean isColumnsConfigurationSuccessful;
 
     @Override
     public void performAction(Supplier<String> userInput, Consumer<String> output, XOGame xoGame) {
-        BoardStatus boardStatus =xoGame.getBoardStatus();
+        BoardStatus boardStatus = xoGame.getBoardStatus();
         isColumnsConfigurationSuccessful = true;
         setBoardColumns(userInput, output, boardStatus);
     }
 
     private void setBoardColumns(Supplier<String> userInput, Consumer<String> output, BoardStatus boardStatus) {
         output.accept("A plansza to jaka szeroka ma być?");
-
-        int columns = getAmountOfColumns(userInput, output);
+        BoardConfiguration boardConfiguration = new BoardConfiguration();
+        int columns = tryToSetConfiguration(userInput, output, boardConfiguration);
 
         if(isColumnsConfigurationSuccessful){
             boardStatus.setBoardColumns(columns, output);
         }
     }
 
-    private int getAmountOfColumns(Supplier<String> userInput, Consumer<String> output) {
-
-        BoardConfiguration boardConfiguration = new BoardConfiguration();
-
+    private int tryToSetConfiguration(Supplier<String> userInput, Consumer<String> output, BoardConfiguration boardConfiguration) {
         int userColumnsEntry = 0;
         try{
-            userColumnsEntry = Integer.parseInt(userInput.get());
+            userColumnsEntry = Integer.parseInt(askUserForInput(userInput));
             boardConfiguration.setColumns(userColumnsEntry);
         } catch (BoardDimensionException e) {
             output.accept(e.toString());
@@ -54,5 +51,10 @@ public class BoardColumnsConfigurationState implements GameState {
             return new SymbolsToWinConfigurationState();
         }
         return new BoardColumnsConfigurationState();
+    }
+
+    @Override
+    public String askUserForInput(Supplier<String> userInput) {
+        return userInput.get();
     }
 }

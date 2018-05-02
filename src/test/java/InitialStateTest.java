@@ -1,4 +1,5 @@
 import com.przemyslawjakubowski.*;
+import com.przemyslawjakubowski.board.BoardRowsConfigurationState;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.states.GameOngoingState;
 import com.przemyslawjakubowski.states.GameState;
@@ -24,7 +25,7 @@ public class InitialStateTest {
         gameState = gameState.goToNextState();
 
         // then
-        Assert.assertEquals(gameState.getClass(), GameOngoingState.class);
+        Assert.assertEquals(gameState.getClass(), BoardRowsConfigurationState.class);
     }
 
     @Test
