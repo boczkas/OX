@@ -19,15 +19,14 @@ public class GameFinishedState implements GameState{
         Point firstPlayerScore = firstPlayer.getScore();
         Point secondPlayerScore = secondPlayer.getScore();
 
-        printScoreStatus(firstPlayer, secondPlayer, output);
-
         if(firstPlayerScore.getValue() > secondPlayerScore.getValue()){
-            printGratulationString(output, firstPlayer);
+            printCongratulationString(output, firstPlayer, secondPlayer);
         }
         else if(firstPlayerScore.getValue() < secondPlayerScore.getValue()){
-            printGratulationString(output, secondPlayer);
+            printCongratulationString(output, secondPlayer, firstPlayer);
         }
         else{
+            printScoreStatus(firstPlayer, secondPlayer, output);
             printTieString(output);
         }
     }
@@ -43,9 +42,11 @@ public class GameFinishedState implements GameState{
                          "???????????????  REMIS  ??????????????????????????????\n");
     }
 
-    private void printGratulationString(Consumer<String> output, Player player) {
+    private void printCongratulationString(Consumer<String> output, Player winner, Player loser) {
         output.accept("!!!!!!!!!!!!!!!  GRATULACJE  !!!!!!!!!!!!!!!!!!!!!!!!!!\n" +
-                          "Wygyrywa gracz: " + player.getName() + "\n" +
+                          "Wygyrywa: " + winner.getSymbol() + ". " + winner.getSymbol() +
+                          ": " + winner.getScore().getValue() + " " +
+                          loser.getSymbol() + ": " + loser.getScore().getValue() + "\n" +
                           "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
     }
 
