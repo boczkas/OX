@@ -10,9 +10,9 @@ public class BoardStatus {
     BoardConfiguration boardConfiguration;
     private Map<Coordinate, Symbol> symbolsAtCoordinates;
 
-    public BoardStatus() {
+    public BoardStatus(BoardConfiguration boardConfiguration) {
         this.symbolsAtCoordinates = new HashMap<>();
-        this.boardConfiguration = new BoardConfiguration();
+        this.boardConfiguration = boardConfiguration;
     }
 
     public void addSymbolAtCoordinate(final Symbol symbol, final Coordinate coordinate) {

@@ -1,5 +1,6 @@
 package com.przemyslawjakubowski;
 
+import com.przemyslawjakubowski.board.BoardConfiguration;
 import com.przemyslawjakubowski.board.BoardStatus;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForTieException;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForWonException;
@@ -31,7 +32,7 @@ public class XOGame {
         this.output = output;
         this.players = new Players();
         this.configuration = new PointsConfiguration();
-        this.boardStatus = new BoardStatus();
+        this.boardStatus = new BoardStatus(new BoardConfiguration());
     }
 
     public void start() {
