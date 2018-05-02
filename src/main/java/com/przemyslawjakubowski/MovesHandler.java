@@ -1,8 +1,10 @@
 package com.przemyslawjakubowski;
 
-import com.przemyslawjakubowski.boardExceptions.BoardIndexOutOfBoundsException;
-import com.przemyslawjakubowski.boardExceptions.FieldNotEmptyException;
-import com.przemyslawjakubowski.boardExceptions.IncorrectCoordinateException;
+import com.przemyslawjakubowski.board.BoardStatus;
+import com.przemyslawjakubowski.board.Coordinate;
+import com.przemyslawjakubowski.board.boardExceptions.BoardIndexOutOfBoundsException;
+import com.przemyslawjakubowski.board.boardExceptions.FieldNotEmptyException;
+import com.przemyslawjakubowski.board.boardExceptions.IncorrectCoordinateException;
 import com.przemyslawjakubowski.player.Player;
 
 import java.util.function.Consumer;
@@ -41,7 +43,7 @@ public class MovesHandler {
                 coordinate = new Coordinate(x, y);
 
                 if (boardStatus.checkIfFieldIsEmpty(coordinate)) {
-                    boardStatus.addSymbolAtPosition(player.getSymbol(), coordinate);
+                    boardStatus.addSymbolAtCoordinate(player.getSymbol(), coordinate);
                     judge.checkWinner(coordinate);
                 } else {
                     try {

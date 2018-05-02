@@ -1,5 +1,8 @@
 package com.przemyslawjakubowski;
 
+import com.przemyslawjakubowski.board.BoardStatus;
+import com.przemyslawjakubowski.board.Coordinate;
+import com.przemyslawjakubowski.gameConfiguration.SymbolsToWin;
 import com.przemyslawjakubowski.player.Symbol;
 
 import java.util.Map;
@@ -8,9 +11,9 @@ import java.util.Optional;
 public class Judge {
     boolean isWinner;
     BoardStatus boardStatus;
-    int symbolsToWin;
+    SymbolsToWin symbolsToWin;
 
-    public Judge(BoardStatus boardStatus, int symbolsToWin) {
+    public Judge(BoardStatus boardStatus, SymbolsToWin symbolsToWin) {
         this.boardStatus = boardStatus;
         this.isWinner = false;
         this.symbolsToWin = symbolsToWin;
@@ -22,64 +25,60 @@ public class Judge {
 
     public void checkWinner(final Coordinate coordinate) {
         Map<Coordinate, Symbol> symbolMap = boardStatus.getSymbolsAtCoordinates();
-        if(symbolMap.size() >= 3){   //todo magic number, ktory ma byc iloscia do zwycieztwa
-            if(isInVerticalWinningSequence(coordinate)){
-                isWinner = true;
-            }
-            if(isInHorizontalWinningSequence(coordinate)){
-                isWinner = true;
-            }
-            if(isInLeftRightWinningSequence(coordinate)){
-                isWinner = true;
-            }
-            if(isInRightLeftWinningSequence(coordinate)){
-                isWinner = true;
-            }
+        int amountOfSymbolsToWin = symbolsToWin.getAmountOfSymbolsToWin();
+
+        if(symbolMap.size() >= amountOfSymbolsToWin &&
+                (isInVerticalWinningSequence(coordinate, amountOfSymbolsToWin) ||
+                isInHorizontalWinningSequence(coordinate, amountOfSymbolsToWin) ||
+                isInLeftRightDiagonalWinningSequence(coordinate, amountOfSymbolsToWin) ||
+                isInRightLefDiagonalWinningSequence(coordinate, amountOfSymbolsToWin))){
+
+            isWinner = true;
         }
     }
 
-    private boolean isInHorizontalWinningSequence(Coordinate coordinate) {
+    private boolean isInHorizontalWinningSequence(Coordinate coordinate, int amountOfSymbolsToWin) {
         Map<Coordinate, Symbol> column = boardStatus.getElementsInColumn(coordinate.getY());
 
         int indexOfTopMostSymbolInSequence = getTopMostIndexOfSymbolInSequence(column, coordinate);
         int indexOfBottomMostSymbolInSequence = getBottomMostIndexOfSymbolInSequence(column, coordinate);
 
-        if(indexOfTopMostSymbolInSequence - indexOfBottomMostSymbolInSequence >= 2){ // todo przeczytac z konfiguracji wartosc
+        if(indexOfTopMostSymbolInSequence - indexOfBottomMostSymbolInSequence >= amountOfSymbolsToWin - 1){
             return true;
         }
         return false;
     }
 
-    private boolean isInVerticalWinningSequence(Coordinate coordinate) {
+    private boolean isInVerticalWinningSequence(Coordinate coordinate, int amountOfSymbolsToWin) {
         Map<Coordinate, Symbol> row = boardStatus.getElementsInRow(coordinate.getX());
 
         int indexOfLeftMostSymbolInSequence = getLeftMostIndexOfSymbolInSequence(row, coordinate);
         int indexOfRightMostSymbolInSequence = getRightMostIndexOfSymbolInSequence(row, coordinate);
 
-        if(indexOfRightMostSymbolInSequence - indexOfLeftMostSymbolInSequence >= 2){ // todo przeczytac z konfiguracji wartosc
+        if(indexOfRightMostSymbolInSequence - indexOfLeftMostSymbolInSequence >= amountOfSymbolsToWin - 1){
             return true;
         }
         return false;
     }
 
-    private boolean isInLeftRightWinningSequence(Coordinate coordinate){
+    private boolean isInLeftRightDiagonalWinningSequence(Coordinate coordinate, int amountOfSymbolsToWin){
         Map<Coordinate, Symbol> diagonal = boardStatus.getElementsInLeftDiagonal(coordinate);
 
         Coordinate coordinateOfLeftTopSymbolInSequence = getCoordinateOfLeftTopSymbolInSequence(diagonal, coordinate);
         Coordinate coordinateOfRightBottomSymbolInSequence = getCoordinateOfRightBottomSymbolInSequence(diagonal, coordinate);
 
-        if(coordinateOfRightBottomSymbolInSequence.getX() - coordinateOfLeftTopSymbolInSequence.getX() >= 2){
+        if(coordinateOfRightBottomSymbolInSequence.getX() - coordinateOfLeftTopSymbolInSequence.getX() >= amountOfSymbolsToWin - 1){
             return true;
         }
         return false;
     }
 
-    private boolean isInRightLeftWinningSequence(Coordinate coordinate) {
+    private boolean isInRightLefDiagonalWinningSequence(Coordinate coordinate, int amountOfSymbolsToWin) {
         Map<Coordinate, Symbol> diagonal = boardStatus.getElementsInRightDiagonal(coordinate);
         Coordinate coordinateOfRightTopSymbolInSequence = getCoordinateOfRightTopSymbolInSequence(diagonal, coordinate);
         Coordinate coordinateOfLeftBottomSymbolInSequence = getCoordinateOfLeftBottomSymbolInSequence(diagonal, coordinate);
 
-        if(coordinateOfLeftBottomSymbolInSequence.getX() - coordinateOfRightTopSymbolInSequence.getX() >=2){
+        if(coordinateOfLeftBottomSymbolInSequence.getX() - coordinateOfRightTopSymbolInSequence.getX() >= amountOfSymbolsToWin - 1){
             return true;
         }
         return false;

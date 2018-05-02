@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski;
+package com.przemyslawjakubowski.board;
 
 import com.przemyslawjakubowski.player.Symbol;
 
@@ -15,7 +15,7 @@ public class BoardStatus {
         this.columns = columns;
     }
 
-    public void addSymbolAtPosition(final Symbol symbol, final Coordinate coordinate) {
+    public void addSymbolAtCoordinate(final Symbol symbol, final Coordinate coordinate) {
         symbolsAtCoordinates.put(coordinate, symbol);
     }
 
@@ -47,7 +47,7 @@ public class BoardStatus {
         return Collections.unmodifiableMap(symbolsAtCoordinates);
     }
 
-    Map<Coordinate, Symbol> getElementsInRow(int row){
+    public Map<Coordinate, Symbol> getElementsInRow(int row){
         Map<Coordinate, Symbol> elementsInRow = new HashMap<>();
 
         for(Coordinate coordinate : symbolsAtCoordinates.keySet()){

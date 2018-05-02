@@ -1,20 +1,21 @@
 package com.przemyslawjakubowski.print;
 
-import com.przemyslawjakubowski.BoardStatus;
-import com.przemyslawjakubowski.Coordinate;
+import com.przemyslawjakubowski.board.BoardStatus;
+import com.przemyslawjakubowski.board.Coordinate;
 import com.przemyslawjakubowski.player.Symbol;
 
 import java.util.Optional;
+import java.util.function.Consumer;
 
 public class Printer {
 
-    public static void print(BoardStatus boardStatus) {
+    public static void printBoard(BoardStatus boardStatus, Consumer<String> output) {
         StringBuilder stringBuilder = new StringBuilder();
         for(int i = 0; i < boardStatus.getRows(); i++){
             prepareColumnString(boardStatus, stringBuilder, i);
             stringBuilder.append("\n\n");
         }
-        System.out.println(stringBuilder);
+        output.accept(stringBuilder.toString());
     }
 
     private static void prepareColumnString(BoardStatus boardStatus, StringBuilder stringBuilder, int i) {

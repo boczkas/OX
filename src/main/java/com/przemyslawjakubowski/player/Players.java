@@ -1,6 +1,6 @@
 package com.przemyslawjakubowski.player;
 
-import com.przemyslawjakubowski.boardExceptions.IncorrectSymbolException;
+import com.przemyslawjakubowski.board.boardExceptions.IncorrectSymbolException;
 import com.przemyslawjakubowski.states.GameState;
 import com.przemyslawjakubowski.states.InitialState;
 
@@ -32,7 +32,7 @@ public class Players {
     public Player getPlayerBySymbol(String symbol) throws IncorrectSymbolException {
         String trimmedSymbol = symbol.trim();
 
-        if(trimmedSymbol.equals("X") && trimmedSymbol.equals("O")){
+        if(!(trimmedSymbol.equals("X") || trimmedSymbol.equals("O"))){
             throw new IncorrectSymbolException(symbol);
         }
 
