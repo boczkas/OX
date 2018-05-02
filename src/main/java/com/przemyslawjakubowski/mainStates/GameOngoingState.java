@@ -31,6 +31,7 @@ public class GameOngoingState implements GameState {
         if(endRequest.equals(EndRequest.NO)){
             printWinningMessage(player, judge, output, boardStatus);
             addPointsFromRound(players, judge);
+            players.setStartingPlayerForNextRound();
         }
 
         xoGame.setEndRequest(endRequest);
