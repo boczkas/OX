@@ -53,6 +53,6 @@ public class BoardRowsConfigurationState implements GameConfigurationState {
 
     @Override
     public String askUserForInput(Supplier<String> userInput) {
-        return userInput.get();
+        return userInput.get().trim();
     }
 }
