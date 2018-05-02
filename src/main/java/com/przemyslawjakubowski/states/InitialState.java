@@ -1,5 +1,6 @@
 package com.przemyslawjakubowski.states;
 
+import com.przemyslawjakubowski.board.BoardRowsConfigurationState;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForTieException;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForWonException;
 import com.przemyslawjakubowski.player.Point;
@@ -31,6 +32,6 @@ public class InitialState implements GameState {
 
     @Override
     public GameState goToNextState() {
-        return new GameOngoingState();
+        return new BoardRowsConfigurationState();
     }
 }

@@ -4,19 +4,16 @@ import com.przemyslawjakubowski.board.boardExceptions.IncorrectSymbolException;
 import com.przemyslawjakubowski.states.GameState;
 import com.przemyslawjakubowski.states.InitialState;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Players {
-    private List<Player> players;
+    Queue<Player> players;
+    Player startingPlayer;
 
     public Players() {
-        this.players = new ArrayList<>();
-    }
-
-    public List<Player> getPlayers() {
-        return Collections.unmodifiableList(players);
+        this.players = new LinkedBlockingQueue<>();
     }
 
     public void addPlayer(Player player, GameState currentGameState){
@@ -25,8 +22,10 @@ public class Players {
         }
     }
 
-    public Player getOppositePlayer(Player actualPlayer) {
-        return players.indexOf(actualPlayer) == 0 ? players.get(1) : players.get(0);
+    public Player getNextPlayer() {
+        Player current = players.remove();
+        players.add(current);
+        return current;
     }
 
     public Player getPlayerBySymbol(String symbol) throws IncorrectSymbolException {
@@ -36,6 +35,18 @@ public class Players {
             throw new IncorrectSymbolException(symbol);
         }
 
-        return players.get(0).getSymbol().toString().contains(trimmedSymbol) ? players.get(0) : players.get(1);
+        Player current = getNextPlayer();
+        if(current.getSymbol().toString().contains(trimmedSymbol)){
+            return current;
+        }
+        return getNextPlayer();
+    }
+
+    public Player getStartingPlayer() {
+        return startingPlayer;
+    }
+
+    void setStartingPlayer(Player player){
+        this.startingPlayer = player;
     }
 }

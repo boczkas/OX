@@ -1,3 +1,4 @@
+import com.przemyslawjakubowski.board.BoardConfiguration;
 import com.przemyslawjakubowski.board.BoardStatus;
 import com.przemyslawjakubowski.board.Coordinate;
 import com.przemyslawjakubowski.Judge;
@@ -6,11 +7,16 @@ import com.przemyslawjakubowski.player.Symbol;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.function.Consumer;
+
 public class JudgeTest {
     @Test
     public void isWinner_XinVerticalSequenceOf3_On_3x3_board_returnsTrue(){
         // given
-        BoardStatus boardStatus = new BoardStatus(3, 3);
+        BoardStatus boardStatus = new BoardStatus(new BoardConfiguration());
+        Consumer<String> output = System.out::println;
+        boardStatus.setBoardColumns(3, output);
+        boardStatus.setBoardRows(3, output);
         Judge judge = new Judge(boardStatus, new SymbolsToWin(3, boardStatus));
 
         // when
@@ -26,7 +32,10 @@ public class JudgeTest {
     @Test
     public void isWinner_XinVerticalSequenceOf2_On_3x3_board_returnsFalse(){
         // given
-        BoardStatus boardStatus = new BoardStatus(3, 3);
+        BoardStatus boardStatus = new BoardStatus(new BoardConfiguration());
+        Consumer<String> output = System.out::println;
+        boardStatus.setBoardColumns(3, output);
+        boardStatus.setBoardRows(3, output);
         Judge judge = new Judge(boardStatus, new SymbolsToWin(3, boardStatus));
 
         // when
@@ -42,7 +51,10 @@ public class JudgeTest {
     @Test
     public void isWinner_XinHorizontalSequenceOf3_On_3x3_board_returnsTrue(){
         // given
-        BoardStatus boardStatus = new BoardStatus(3,3);
+        BoardStatus boardStatus = new BoardStatus(new BoardConfiguration());
+        Consumer<String> output = System.out::println;
+        boardStatus.setBoardColumns(3, output);
+        boardStatus.setBoardRows(3, output);
         Judge judge =  new Judge(boardStatus, new SymbolsToWin(3, boardStatus));
 
         // when
@@ -58,7 +70,10 @@ public class JudgeTest {
     @Test
     public void isWinner_XinHorizontalSequenceOf2_On_3x3_board_returnsFalse(){
         // given
-        BoardStatus boardStatus = new BoardStatus(3,3);
+        BoardStatus boardStatus = new BoardStatus(new BoardConfiguration());
+        Consumer<String> output = System.out::println;
+        boardStatus.setBoardColumns(3, output);
+        boardStatus.setBoardRows(3, output);
         Judge judge = new Judge(boardStatus, new SymbolsToWin(3, boardStatus));
 
         // when
@@ -74,7 +89,10 @@ public class JudgeTest {
     @Test
     public void isWinner_XinLeftRightDiagonalSequenceOf3_On_3x3_board_returnsTrue(){
         // given
-        BoardStatus boardStatus = new BoardStatus(3,3);
+        BoardStatus boardStatus = new BoardStatus(new BoardConfiguration());
+        Consumer<String> output = System.out::println;
+        boardStatus.setBoardColumns(3, output);
+        boardStatus.setBoardRows(3, output);
         Judge judge =  new Judge(boardStatus, new SymbolsToWin(3, boardStatus));
 
         // when
@@ -90,7 +108,10 @@ public class JudgeTest {
     @Test
     public void isWinner_XinLeftRightDiagonalSequenceOf3_On_3x3_board_returnsFalse(){
         // given
-        BoardStatus boardStatus = new BoardStatus(3,3);
+        BoardStatus boardStatus = new BoardStatus(new BoardConfiguration());
+        Consumer<String> output = System.out::println;
+        boardStatus.setBoardColumns(3, output);
+        boardStatus.setBoardRows(3, output);
         Judge judge =  new Judge(boardStatus, new SymbolsToWin(3, boardStatus));
 
         // when
@@ -106,7 +127,10 @@ public class JudgeTest {
     @Test
     public void isWinner_XinRightLeftDiagonalSequenceOf3_On_3x3_board_returnsTrue(){
         // given
-        BoardStatus boardStatus = new BoardStatus(3,3);
+        BoardStatus boardStatus = new BoardStatus(new BoardConfiguration());
+        Consumer<String> output = System.out::println;
+        boardStatus.setBoardColumns(3, output);
+        boardStatus.setBoardRows(3, output);
         Judge judge =  new Judge(boardStatus, new SymbolsToWin(3, boardStatus));
 
         // when
@@ -122,7 +146,10 @@ public class JudgeTest {
     @Test
     public void isWinner_XinRightLeftDiagonalSequenceOf2_On_3x3_board_returnsFalse(){
         // given
-        BoardStatus boardStatus = new BoardStatus(3,3);
+        BoardStatus boardStatus = new BoardStatus(new BoardConfiguration());
+        Consumer<String> output = System.out::println;
+        boardStatus.setBoardColumns(3, output);
+        boardStatus.setBoardRows(3, output);
         Judge judge = new Judge(boardStatus, new SymbolsToWin(3, boardStatus));
 
         // when

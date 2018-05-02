@@ -1,5 +1,7 @@
 package com.przemyslawjakubowski;
 
+import com.przemyslawjakubowski.board.BoardConfiguration;
+import com.przemyslawjakubowski.board.BoardStatus;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForTieException;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForWonException;
 import com.przemyslawjakubowski.gameConfiguration.PointsConfiguration;
@@ -18,6 +20,7 @@ public class XOGame {
     private final Supplier<String> userInputSupplier;
     private final Consumer<String> output;
     private GameState currentGameState;
+    private BoardStatus boardStatus;
     private Players players;
     private PointsConfiguration configuration;
     private SymbolsToWin symbolsToWin;
@@ -29,6 +32,7 @@ public class XOGame {
         this.output = output;
         this.players = new Players();
         this.configuration = new PointsConfiguration();
+        this.boardStatus = new BoardStatus(new BoardConfiguration());
     }
 
     public void start() {
@@ -61,5 +65,17 @@ public class XOGame {
 
     public void setSymbolsToWin(SymbolsToWin symbolsToWin) {
         this.symbolsToWin = symbolsToWin;
+    }
+
+    public BoardStatus getBoardStatus() {
+        return boardStatus;
+    }
+
+    public void setBoardStatus(BoardStatus boardStatus) {
+        this.boardStatus = boardStatus;
+    }
+
+    public SymbolsToWin getSymbolsToWin() {
+        return symbolsToWin;
     }
 }

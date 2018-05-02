@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski.gameConfiguration;
+package com.przemyslawjakubowski.board;
 
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.BoardDimensionException;
 

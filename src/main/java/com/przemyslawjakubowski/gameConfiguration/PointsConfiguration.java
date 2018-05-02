@@ -3,7 +3,7 @@ package com.przemyslawjakubowski.gameConfiguration;
 import com.przemyslawjakubowski.player.Point;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForTieException;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForWonException;
-
+// todo 16.05 stworzyc stan PointsConfiguration state
 public class PointsConfiguration {
     private Point pointsForWon;
     private Point pointsForTie;
