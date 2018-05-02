@@ -30,20 +30,22 @@ public class GameOngoingState implements GameState {
 
         if(endRequest.equals(EndRequest.NO)){
             printWinningMessage(player, judge, output, boardStatus);
-            addPointsFromRound(player, players, judge);
+            addPointsFromRound(players, judge);
         }
 
         xoGame.setEndRequest(endRequest);
     }
 
-    private void addPointsFromRound(Player currentPlayer, Players players, Judge judge) {
+    private void addPointsFromRound(Players players, Judge judge) {
+        Player winner = players.getNextPlayer();
+
         if(judge.isWinnerPresent()){
-            currentPlayer.increaseScoreForWin();
+            winner.increaseScoreForWin();
         }
         else{
-            currentPlayer.increaseScoreForTie();
-            currentPlayer = players.getNextPlayer();
-            currentPlayer.increaseScoreForTie();
+            winner.increaseScoreForTie();
+            Player loser = players.getNextPlayer();
+            loser.increaseScoreForTie();
         }
     }
 
