@@ -22,7 +22,7 @@ public class GameOngoingState implements GameState {
         Player player = players.getStartingPlayer();
 
         EndRequest endRequest = EndRequest.NO;
-        while(!(judge.isWinnerPresent() || judge.checkTie()|| endRequest.equals(EndRequest.YES))){
+        while(!(judge.isWinnerPresent() || judge.isTie()|| endRequest.equals(EndRequest.YES))){
             Printer.printBoard(boardStatus, output);
             endRequest = movesHandler.handleMoves(userInput, output, player, judge);
             player = players.getNextPlayer();
@@ -30,23 +30,23 @@ public class GameOngoingState implements GameState {
 
         if(endRequest.equals(EndRequest.NO)){
             printWinningMessage(player, judge, output, boardStatus);
-            addPointsFromRound(players, judge);
+            addPointsFromRound(players, judge.isWinnerPresent());
             players.setStartingPlayerForNextRound();
         }
 
         xoGame.setEndRequest(endRequest);
     }
 
-    private void addPointsFromRound(Players players, Judge judge) {
-        Player winner = players.getNextPlayer();
+    private void addPointsFromRound(Players players, boolean isWinnerPresent) {
+        Player player = players.getNextPlayer();
 
-        if(judge.isWinnerPresent()){
-            winner.increaseScoreForWin();
+        if(isWinnerPresent){
+            player.increaseScoreForWin();
         }
         else{
-            winner.increaseScoreForTie();
-            Player loser = players.getNextPlayer();
-            loser.increaseScoreForTie();
+            player.increaseScoreForTie();
+            player = players.getNextPlayer();
+            player.increaseScoreForTie();
         }
     }
 

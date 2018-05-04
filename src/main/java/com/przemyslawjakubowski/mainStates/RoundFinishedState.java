@@ -9,6 +9,7 @@ import java.util.function.Supplier;
 
 public class RoundFinishedState implements GameState {
     int roundNumber;
+    final int ROUNDS = 3;
     EndRequest endRequest;
 
     @Override
@@ -22,7 +23,7 @@ public class RoundFinishedState implements GameState {
 
     @Override
     public GameState goToNextState() {
-        if(roundNumber < 3 && endRequest.equals(EndRequest.NO)){
+        if(roundNumber < ROUNDS && endRequest.equals(EndRequest.NO)){
             return new GameOngoingState();
         }
         return new GameFinishedState();
