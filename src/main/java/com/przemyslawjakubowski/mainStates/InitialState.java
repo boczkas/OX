@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski.states;
+package com.przemyslawjakubowski.mainStates;
 
 import com.przemyslawjakubowski.board.BoardRowsConfigurationState;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForTieException;

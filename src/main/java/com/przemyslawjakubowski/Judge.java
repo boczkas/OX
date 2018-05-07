@@ -41,7 +41,7 @@ public class Judge {
         symbolsCounter++;
     }
 
-    public boolean checkTie(){
+    public boolean isTie(){
 
         if(symbolsCounter == boardStatus.getPossibleAmountOfSymbols()){
             return true;

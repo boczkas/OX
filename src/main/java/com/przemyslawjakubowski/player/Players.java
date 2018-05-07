@@ -1,16 +1,16 @@
 package com.przemyslawjakubowski.player;
 
 import com.przemyslawjakubowski.board.boardExceptions.IncorrectSymbolException;
-import com.przemyslawjakubowski.states.GameState;
-import com.przemyslawjakubowski.states.InitialState;
+import com.przemyslawjakubowski.mainStates.GameState;
+import com.przemyslawjakubowski.mainStates.InitialState;
 
 import java.util.*;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Players {
     Queue<Player> players;
     Player startingPlayer;
+    Player nextRoundStartingPlayer;
 
     public Players() {
         this.players = new LinkedBlockingQueue<>();
@@ -28,6 +28,18 @@ public class Players {
         return current;
     }
 
+    public Player getPlayerByName(String name){
+        String trimmedName = name.trim();
+
+        // todo 17.05 add throwing exception in case of incorrect name
+
+        Player current = getNextPlayer();
+        if(current.getName().equals(trimmedName)){
+            return current;
+        }
+        return getNextPlayer();
+    }
+
     public Player getPlayerBySymbol(String symbol) throws IncorrectSymbolException {
         String trimmedSymbol = symbol.trim();
 
@@ -43,16 +55,18 @@ public class Players {
     }
 
     public Player getStartingPlayer() {
-        Player currentPlayer = getNextPlayer();
-
-        if(currentPlayer.equals(startingPlayer)){
-            return currentPlayer;
-        }
-
-        return getNextPlayer();
+        return getPlayerByName(startingPlayer.getName());
     }
 
-    void setStartingPlayer(Player player){
-        this.startingPlayer = player;
+    public void setStartingPlayer(Player player){
+        startingPlayer = getPlayerByName(player.getName());
+        nextRoundStartingPlayer = getNextPlayer();
+        getNextPlayer();
+    }
+
+    public void setStartingPlayerForNextRound(){
+        Player temp = startingPlayer;
+        startingPlayer = nextRoundStartingPlayer;
+        nextRoundStartingPlayer = temp;
     }
 }

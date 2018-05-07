@@ -3,8 +3,8 @@ package com.przemyslawjakubowski.board;
 import com.przemyslawjakubowski.XOGame;
 import com.przemyslawjakubowski.gameConfiguration.SymbolsToWinConfigurationState;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.BoardDimensionException;
-import com.przemyslawjakubowski.states.GameConfigurationState;
-import com.przemyslawjakubowski.states.GameState;
+import com.przemyslawjakubowski.mainStates.GameConfigurationState;
+import com.przemyslawjakubowski.mainStates.GameState;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -55,6 +55,6 @@ public class BoardColumnsConfigurationState implements GameConfigurationState {
 
     @Override
     public String askUserForInput(Supplier<String> userInput) {
-        return userInput.get();
+        return userInput.get().trim();
     }
 }

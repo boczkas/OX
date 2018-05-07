@@ -9,8 +9,8 @@ import com.przemyslawjakubowski.gameConfiguration.SymbolsToWin;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.player.Point;
-import com.przemyslawjakubowski.states.GameState;
-import com.przemyslawjakubowski.states.InitialState;
+import com.przemyslawjakubowski.mainStates.GameState;
+import com.przemyslawjakubowski.mainStates.InitialState;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -25,6 +25,7 @@ public class XOGame {
     private PointsConfiguration configuration;
     private SymbolsToWin symbolsToWin;
     private int roundsCounter;
+    private EndRequest endRequest;
 
 
     public XOGame(Supplier<String> userInputSupplier, Consumer<String> output) {
@@ -35,6 +36,7 @@ public class XOGame {
         this.configuration = new PointsConfiguration();
         this.roundsCounter = 0;
         this.boardStatus = new BoardStatus(new BoardConfiguration());
+        this.endRequest = EndRequest.NO;
     }
 
     public void start() {
@@ -87,5 +89,13 @@ public class XOGame {
 
     public int getRoundNumber(){
         return roundsCounter;
+    }
+
+    public EndRequest getEndRequest() {
+        return endRequest;
+    }
+
+    public void setEndRequest(EndRequest endRequest) {
+        this.endRequest = endRequest;
     }
 }

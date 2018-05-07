@@ -1,6 +1,6 @@
-import com.przemyslawjakubowski.states.RoundFinishedState;
-import com.przemyslawjakubowski.states.GameOngoingState;
-import com.przemyslawjakubowski.states.GameState;
+import com.przemyslawjakubowski.mainStates.RoundFinishedState;
+import com.przemyslawjakubowski.mainStates.GameOngoingState;
+import com.przemyslawjakubowski.mainStates.GameState;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

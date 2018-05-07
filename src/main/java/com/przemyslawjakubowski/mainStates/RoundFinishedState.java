@@ -1,5 +1,6 @@
-package com.przemyslawjakubowski.states;
+package com.przemyslawjakubowski.mainStates;
 
+import com.przemyslawjakubowski.EndRequest;
 import com.przemyslawjakubowski.XOGame;
 import com.przemyslawjakubowski.board.BoardStatus;
 
@@ -8,6 +9,8 @@ import java.util.function.Supplier;
 
 public class RoundFinishedState implements GameState {
     int roundNumber;
+    final int ROUNDS = 3;
+    EndRequest endRequest;
 
     @Override
     public void performAction(Supplier<String> userInput, Consumer<String> output, XOGame xoGame) {
@@ -15,11 +18,12 @@ public class RoundFinishedState implements GameState {
         boardStatus.resetBoardSymbols();
         xoGame.increaseRoundsCounter();
         roundNumber = xoGame.getRoundNumber();
+        endRequest = xoGame.getEndRequest();
     }
 
     @Override
     public GameState goToNextState() {
-        if(roundNumber < 3){
+        if(roundNumber < ROUNDS && endRequest.equals(EndRequest.NO)){
             return new GameOngoingState();
         }
         return new GameFinishedState();

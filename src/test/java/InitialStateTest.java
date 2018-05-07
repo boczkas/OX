@@ -1,9 +1,8 @@
 import com.przemyslawjakubowski.*;
 import com.przemyslawjakubowski.board.BoardRowsConfigurationState;
 import com.przemyslawjakubowski.player.Players;
-import com.przemyslawjakubowski.states.GameOngoingState;
-import com.przemyslawjakubowski.states.GameState;
-import com.przemyslawjakubowski.states.InitialState;
+import com.przemyslawjakubowski.mainStates.GameState;
+import com.przemyslawjakubowski.mainStates.InitialState;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
