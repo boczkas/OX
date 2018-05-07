@@ -5,6 +5,7 @@ import com.przemyslawjakubowski.board.boardExceptions.IncorrectSymbolException;
 import com.przemyslawjakubowski.mainStates.GameConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameOngoingState;
 import com.przemyslawjakubowski.mainStates.GameState;
+import com.przemyslawjakubowski.output.OutputConsumer;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -14,12 +15,12 @@ public class StartingPlayerConfigurationState implements GameConfigurationState 
     boolean startingPlayerSetCorrectly = true;
 
     @Override
-    public void performAction(Supplier<String> userInput, Consumer<String> output, XOGame xoGame) {
+    public void performAction(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
 
         tryToSetConfiguration(userInput, output, xoGame);
     }
 
-    private void tryToSetConfiguration(Supplier<String> userInput, Consumer<String> output, XOGame xoGame) {
+    private void tryToSetConfiguration(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
         try {
             Players players = xoGame.getPlayers();
             output.accept("Ktory gracz zaczyna? X czy O?");

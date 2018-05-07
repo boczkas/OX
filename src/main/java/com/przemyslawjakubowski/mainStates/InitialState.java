@@ -3,6 +3,7 @@ package com.przemyslawjakubowski.mainStates;
 import com.przemyslawjakubowski.board.BoardRowsConfigurationState;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForTieException;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForWonException;
+import com.przemyslawjakubowski.output.OutputConsumer;
 import com.przemyslawjakubowski.player.Point;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Symbol;
@@ -13,7 +14,7 @@ import java.util.function.Supplier;
 
 public class InitialState implements GameState {
     @Override
-    public void performAction(Supplier<String> userInput, Consumer<String> output, XOGame xoGame) {
+    public void performAction(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
         try{
             xoGame.setAmountOfPointsForWinRound(new Point(3));
             xoGame.setAmountOfPointsForTieRound(new Point(1));

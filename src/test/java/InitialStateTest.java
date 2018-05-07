@@ -1,5 +1,6 @@
 import com.przemyslawjakubowski.*;
 import com.przemyslawjakubowski.board.BoardRowsConfigurationState;
+import com.przemyslawjakubowski.output.OutputConsumer;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.mainStates.GameState;
 import com.przemyslawjakubowski.mainStates.InitialState;
@@ -36,7 +37,7 @@ public class InitialStateTest {
         Supplier<String> userInputProvider = new Scanner(System.in)::nextLine;
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        Consumer<String> output = System.out::println;
+        OutputConsumer output = new OutputConsumer(System.out::println);
 
         // when
         XOGame game = new XOGame(userInputProvider, output);

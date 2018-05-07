@@ -5,6 +5,7 @@ import com.przemyslawjakubowski.board.Coordinate;
 import com.przemyslawjakubowski.board.boardExceptions.BoardIndexOutOfBoundsException;
 import com.przemyslawjakubowski.board.boardExceptions.FieldNotEmptyException;
 import com.przemyslawjakubowski.board.boardExceptions.IncorrectCoordinateException;
+import com.przemyslawjakubowski.output.OutputConsumer;
 import com.przemyslawjakubowski.player.Player;
 
 import java.util.function.Consumer;
@@ -25,12 +26,12 @@ public class MovesHandler {
         this.boardStatus = boardStatus;
     }
 
-    public EndRequest handleMoves(Supplier<String> userInput, Consumer<String> output, Player player, Judge judge) {
+    public EndRequest handleMoves(Supplier<String> userInput, OutputConsumer output, Player player, Judge judge) {
         output.accept("Ruch wykonuje gracz: " + player.getName() + " (" + player.getSymbol() + ")");
         return handleCoordinateInput(userInput, output, player, judge);
     }
 
-    private EndRequest handleCoordinateInput(Supplier<String> userInput, Consumer<String> output, Player player, Judge judge) {
+    private EndRequest handleCoordinateInput(Supplier<String> userInput, OutputConsumer output, Player player, Judge judge) {
         String userInputString = userInput.get().trim();
         if(userInputString.contains("end") || userInputString.contains("koniec")){
             return EndRequest.YES;

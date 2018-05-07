@@ -3,6 +3,7 @@ package com.przemyslawjakubowski.gameConfiguration;
 import com.przemyslawjakubowski.XOGame;
 import com.przemyslawjakubowski.board.BoardStatus;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectAmountOfSymbolsToWinException;
+import com.przemyslawjakubowski.output.OutputConsumer;
 import com.przemyslawjakubowski.player.StartingPlayerConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameState;
@@ -15,12 +16,12 @@ public class SymbolsToWinConfigurationState implements GameConfigurationState {
     boolean isConfiguredCorrectly = true;
 
     @Override
-    public void performAction(Supplier<String> userInput, Consumer<String> output, XOGame xoGame) {
+    public void performAction(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
         SymbolsToWin symbolsToWin = askUserForSymbolsToWin(userInput, output, xoGame.getBoardStatus());
         xoGame.setSymbolsToWin(symbolsToWin);
     }
 
-    private SymbolsToWin askUserForSymbolsToWin(Supplier<String> userInput, Consumer<String> output, BoardStatus boardStatus) {
+    private SymbolsToWin askUserForSymbolsToWin(Supplier<String> userInput, OutputConsumer output, BoardStatus boardStatus) {
         output.accept("Ile symboli w rzędzie daje zwycięztwo?");
         String userEntry = askUserForInput(userInput);
         SymbolsToWin symbolsToWin = new SymbolsToWin(boardStatus);
@@ -30,7 +31,7 @@ public class SymbolsToWinConfigurationState implements GameConfigurationState {
         return symbolsToWin;
     }
 
-    private void tryToSetConfiguration(Consumer<String> output, String userEntry, SymbolsToWin symbolsToWin) {
+    private void tryToSetConfiguration(OutputConsumer output, String userEntry, SymbolsToWin symbolsToWin) {
         try{
             symbolsToWin.setSymbolsToWin(Integer.parseInt(userEntry));
         } catch (IncorrectAmountOfSymbolsToWinException e) {

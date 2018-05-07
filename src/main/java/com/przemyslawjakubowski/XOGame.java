@@ -6,6 +6,7 @@ import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.Incorr
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForWonException;
 import com.przemyslawjakubowski.gameConfiguration.PointsConfiguration;
 import com.przemyslawjakubowski.gameConfiguration.SymbolsToWin;
+import com.przemyslawjakubowski.output.OutputConsumer;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.player.Point;
@@ -18,7 +19,7 @@ import java.util.function.Supplier;
 public class XOGame {
 
     private final Supplier<String> userInputSupplier;
-    private final Consumer<String> output;
+    private final OutputConsumer output;
     private GameState currentGameState;
     private BoardStatus boardStatus;
     private Players players;
@@ -28,7 +29,7 @@ public class XOGame {
     private EndRequest endRequest;
 
 
-    public XOGame(Supplier<String> userInputSupplier, Consumer<String> output) {
+    public XOGame(Supplier<String> userInputSupplier, OutputConsumer output) {
         this.userInputSupplier = userInputSupplier;
         this.currentGameState = new InitialState();
         this.output = output;
