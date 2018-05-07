@@ -18,7 +18,7 @@ public class Judge {
         this.boardStatus = boardStatus;
         this.isWinner = false;
         this.symbolsToWin = symbolsToWin;
-        this.symbolsCounter = 0;
+        this.symbolsCounter = boardStatus.getPossibleAmountOfSymbols();
     }
 
     public boolean isWinnerPresent() {
@@ -38,12 +38,12 @@ public class Judge {
             isWinner = true;
         }
 
-        symbolsCounter++;
+        symbolsCounter--;
     }
 
     public boolean isTie(){
 
-        if(symbolsCounter == boardStatus.getPossibleAmountOfSymbols()){
+        if(symbolsCounter == 0){
             return true;
         }
         return false;

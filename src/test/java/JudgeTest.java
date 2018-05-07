@@ -161,4 +161,38 @@ public class JudgeTest {
         // then
         Assert.assertFalse(judge.isWinnerPresent());
     }
+
+    @Test
+    public void isTie_boardWithTie_returnsTrue(){
+        // given
+        BoardStatus boardStatus = new BoardStatus(new BoardConfiguration());
+        Consumer<String> output = System.out::println;
+        boardStatus.setBoardColumns(3, output);
+        boardStatus.setBoardRows(3, output);
+        Judge judge = new Judge(boardStatus, new SymbolsToWin(3, boardStatus));
+
+        // when
+        boardStatus.addSymbolAtCoordinate(Symbol.O, new Coordinate(0,0));
+        judge.checkWin(new Coordinate(0,0));
+        boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(0,1));
+        judge.checkWin(new Coordinate(0,1));
+        boardStatus.addSymbolAtCoordinate(Symbol.O, new Coordinate(0,2));
+        judge.checkWin(new Coordinate(0,2));
+        boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(1,0));
+        judge.checkWin(new Coordinate(1,0));
+        boardStatus.addSymbolAtCoordinate(Symbol.O, new Coordinate(1,1));
+        judge.checkWin(new Coordinate(1,1));
+        boardStatus.addSymbolAtCoordinate(Symbol.O, new Coordinate(1,2));
+        judge.checkWin(new Coordinate(1,2));
+        boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(2,0));
+        judge.checkWin(new Coordinate(2,0));
+        boardStatus.addSymbolAtCoordinate(Symbol.O, new Coordinate(2,1));
+        judge.checkWin(new Coordinate(2,1));
+        boardStatus.addSymbolAtCoordinate(Symbol.X, new Coordinate(2,2));
+        judge.checkWin(new Coordinate(2,2));
+
+
+        // then
+        Assert.assertTrue(judge.isTie());
+    }
 }
