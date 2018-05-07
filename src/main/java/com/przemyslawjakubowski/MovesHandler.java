@@ -8,7 +8,6 @@ import com.przemyslawjakubowski.board.boardExceptions.IncorrectCoordinateExcepti
 import com.przemyslawjakubowski.output.OutputConsumer;
 import com.przemyslawjakubowski.player.Player;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

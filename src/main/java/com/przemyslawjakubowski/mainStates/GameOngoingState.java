@@ -7,7 +7,6 @@ import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.print.Printer;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class GameOngoingState implements GameState {

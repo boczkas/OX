@@ -6,7 +6,6 @@ import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.player.Point;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class GameFinishedState implements GameState{

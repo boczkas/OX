@@ -13,7 +13,6 @@ import com.przemyslawjakubowski.player.Point;
 import com.przemyslawjakubowski.mainStates.GameState;
 import com.przemyslawjakubowski.mainStates.InitialState;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class XOGame {

@@ -9,7 +9,6 @@ import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Symbol;
 import com.przemyslawjakubowski.XOGame;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class InitialState implements GameState {

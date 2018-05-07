@@ -8,7 +8,6 @@ import com.przemyslawjakubowski.player.StartingPlayerConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameState;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class SymbolsToWinConfigurationState implements GameConfigurationState {

@@ -7,7 +7,6 @@ import com.przemyslawjakubowski.mainStates.GameOngoingState;
 import com.przemyslawjakubowski.mainStates.GameState;
 import com.przemyslawjakubowski.output.OutputConsumer;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class StartingPlayerConfigurationState implements GameConfigurationState {
