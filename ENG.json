@@ -18,12 +18,9 @@
       "exception_file_not_empty": "Field is not empty. Specify empty field",
       "exception_incorrect_symbol_exception": "Incorrect symbol\n. You should specify one of X/O.\n Entry: ",
       "exception_incorrect_coordinate": " value is incorrect",
-      "exception_incorrect_amount_of_symbols_to_win_1": "It is not possible to won on board",
-      "exception_incorrect_amount_of_symbols_to_win_2": "using",
-      "exception_incorrect_amount_of_symbols_to_win_3": " symbols",
-      "exception_incorrect_points_for_tie_1": "Value ",
-      "exception_incorrect_points_for_tie_2": " can not be set as \n value of points got for tie, it has to be \nbigger than ammount of points for win: ",
-      "exception_incorrect_points_for_won_exception": " can not be set as \n value of points got for win, \nit has to be > 0\n",
+      "exception_incorrect_amount_of_symbols_to_win": "It is not possible to won on board %rows%x%columns% using %symbolsToWin% symbols",
+      "exception_incorrect_points_for_tie": "Value %pointsForTie% can not be set as \n value of points got for tie, it has to be \nbigger than amount of points for win: %pointsForWin%",
+      "exception_incorrect_points_for_won_exception": "%pointsForWin% can not be set as \n value of points got for win, \nit has to be > 0\n",
       "exception_board_dimension": "Table size has to be greater than 0"
    }
 ]
