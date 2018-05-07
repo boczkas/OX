@@ -13,7 +13,7 @@ congratulation : Congratulation
 round_won_by_player : Round won by player
 tie : Tie
 exception_board_index_out_of_bound : Index out of board bound
-exception_field_not_empty : Field is not empty. Specify empty field
+exception_field_not_empty : Field %field% is not empty. Specify empty field
 exception_incorrect_symbol : Incorrect symbol\n. You should specify one of X/O.\n Entry : 
 exception_incorrect_coordinate :  value is incorrect
 exception_incorrect_amount_of_symbols_to_win : It is not possible to won on board %rows%x%columns% using %symbolsToWin% symbols

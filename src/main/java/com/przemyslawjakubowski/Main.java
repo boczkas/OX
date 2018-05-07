@@ -11,6 +11,7 @@ public class Main {
         Supplier<String> userInputProvider = new Scanner(System.in)::nextLine;
         OutputConsumer outputConsumer = new OutputConsumer(System.out::println);
         LanguageFileReader languageFileReader = new LanguageFileReader("PL.lang", outputConsumer);
+        outputConsumer = new OutputConsumer(System.out::println, languageFileReader.getLanguageStrings());
         new XOGame(userInputProvider, outputConsumer).start();
     }
 }

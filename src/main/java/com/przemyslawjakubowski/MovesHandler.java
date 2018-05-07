@@ -62,7 +62,7 @@ public class MovesHandler {
                 try{
                     throw new BoardIndexOutOfBoundsException();
                 } catch (BoardIndexOutOfBoundsException e){
-                    output.accept(e.toString());
+                    e.printExceptionMessage(output);
                     handleMoves(userInput, output, player, judge);
                 }
             }
