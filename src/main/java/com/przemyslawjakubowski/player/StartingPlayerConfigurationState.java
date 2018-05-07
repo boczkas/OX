@@ -2,11 +2,9 @@ package com.przemyslawjakubowski.player;
 
 import com.przemyslawjakubowski.XOGame;
 import com.przemyslawjakubowski.board.boardExceptions.IncorrectSymbolException;
-import com.przemyslawjakubowski.player.Player;
-import com.przemyslawjakubowski.player.Players;
-import com.przemyslawjakubowski.states.GameConfigurationState;
-import com.przemyslawjakubowski.states.GameOngoingState;
-import com.przemyslawjakubowski.states.GameState;
+import com.przemyslawjakubowski.mainStates.GameConfigurationState;
+import com.przemyslawjakubowski.mainStates.GameOngoingState;
+import com.przemyslawjakubowski.mainStates.GameState;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;

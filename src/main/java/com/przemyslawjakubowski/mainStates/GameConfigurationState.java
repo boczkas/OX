@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski.states;
+package com.przemyslawjakubowski.mainStates;
 
 import java.util.function.Supplier;
 

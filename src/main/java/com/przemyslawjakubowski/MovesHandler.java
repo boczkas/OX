@@ -25,13 +25,17 @@ public class MovesHandler {
         this.boardStatus = boardStatus;
     }
 
-    public void handleMoves(Supplier<String> userInput, Consumer<String> output, Player player, Judge judge) {
+    public EndRequest handleMoves(Supplier<String> userInput, Consumer<String> output, Player player, Judge judge) {
         output.accept("Ruch wykonuje gracz: " + player.getName() + " (" + player.getSymbol() + ")");
-        handleCoordinateInput(userInput, output, player, judge);
+        return handleCoordinateInput(userInput, output, player, judge);
     }
 
-    private void handleCoordinateInput(Supplier<String> userInput, Consumer<String> output, Player player, Judge judge) {
+    private EndRequest handleCoordinateInput(Supplier<String> userInput, Consumer<String> output, Player player, Judge judge) {
         String userInputString = userInput.get().trim();
+        if(userInputString.contains("end") || userInputString.contains("koniec")){
+            return EndRequest.YES;
+        }
+
         Matcher matcher = inputPattern.matcher(userInputString.replaceAll("\\s+", " "));
 
         if(matcher.matches()) {
@@ -44,7 +48,7 @@ public class MovesHandler {
 
                 if (boardStatus.checkIfFieldIsEmpty(coordinate)) {
                     boardStatus.addSymbolAtCoordinate(player.getSymbol(), coordinate);
-                    judge.checkWinner(coordinate);
+                    judge.checkWin(coordinate);
                 } else {
                     try {
                         throw new FieldNotEmptyException(coordinate.toString());
@@ -72,6 +76,7 @@ public class MovesHandler {
             }
 
         }
+        return EndRequest.NO;
     }
 
     private boolean areSpecifiedCoordinatesCorrect(Integer x, Integer y) {

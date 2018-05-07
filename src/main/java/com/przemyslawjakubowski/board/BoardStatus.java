@@ -140,4 +140,12 @@ public class BoardStatus {
         }
 
     }
+
+    public int getPossibleAmountOfSymbols(){
+        return boardConfiguration.getColumns() * boardConfiguration.getRows();
+    }
+
+    public void resetBoardSymbols(){
+        this.symbolsAtCoordinates = new HashMap<>();
+    }
 }
