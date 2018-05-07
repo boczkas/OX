@@ -1,0 +1,29 @@
+[
+   {
+      "starting": "Bedziem zaczynać",
+      "first_player_name_question": "Podaj imię pierwszego gracza",
+      "second_player_name_question": "Podaj imię drugiego gracza",
+      "starting_player_question": "Który gracz zaczyna? X czy O",
+      "width_question": "A plansza to jaka szeroka ma być?",
+      "length_question": "A plansza to jaka długa ma być?",
+      "symbols_amount_question": "Ile symboli daje zwycięztwo?",
+      "incorrect_value": "Niepoprawna wartość",
+      "currently_playing": "Ruch wykonuje gracz",
+      "player": "Gracz",
+      "score": "ilość punktów",
+      "congratulation": "Gratulacje",
+      "round_won_by_player": "Rundę wygrywa gracz: ",
+      "tie": "Remis",
+      "exception_board_index_out_of_bound": "Przekroczono rozmiar tablicy",
+      "exception_file_not_empty": "Pole nie jest puste. Wybierz puste pole",
+      "exception_incorrect_symbol_exception": "Niepoprawny symbol\n. Powinineneś wyspecyfikować jeden z X/O.\n Wpisano: ",
+      "exception_incorrect_coordinate": "nie jest prawidłową wartością",
+      "exception_incorrect_amount_of_symbols_to_win_1": "Nie da się wygrać na tablicy",
+      "exception_incorrect_amount_of_symbols_to_win_2": "przy pomocy ",
+      "exception_incorrect_amount_of_symbols_to_win_3": " symboli",
+      "exception_incorrect_points_for_tie_1": "Wartość ",
+      "exception_incorrect_points_for_tie_2": " nie może być ustawiona jako\n wartość punktów otrzymywanych za remis, musi być \nona większa od punktów za zwycięztwo: ",
+      "exception_incorrect_points_for_won_exception": " nie może być ustawiona jako \n wartość punktów otrzymywanych za zwycięztwo, \nmusi być ona > 0\n",
+      "exception_board_dimension": "Wartość wymiaru tablicy musi być większa od 0"
+   }
+]
