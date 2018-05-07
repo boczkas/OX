@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         Supplier<String> userInputProvider = new Scanner(System.in)::nextLine;
         OutputConsumer outputConsumer = new OutputConsumer(System.out::println);
-        LanguageFileReader languageFileReader = new LanguageFileReader();
+        LanguageFileReader languageFileReader = new LanguageFileReader("PL.lang", outputConsumer);
         new XOGame(userInputProvider, outputConsumer).start();
     }
 }
