@@ -7,7 +7,7 @@ width_question : How wide should board be?
 length_question : How long should board be?
 symbols_amount_question : How many symbols to win?
 incorrect_value : Incorrect value
-currently_playing : Currently playing: %playerName% (%playerSymbol%). To end game enter: end
+currently_playing : Currently playing: %playerName% (%playerSymbol%)
 player_score : Player: %playerName% score: %playerScore% 
 congratulation : Congratulation
 round_won : Round won: %winnerSymbol%. %winnerSymbol%: %winnerScore% %loserSymbol%: %loserScore%
@@ -20,4 +20,4 @@ exception_incorrect_coordinate : Value %text% is incorrect
 exception_incorrect_amount_of_symbols_to_win : It is not possible to win on a board %rows%x%columns% using %symbolsToWin% symbols
 exception_incorrect_points_for_tie : Value %pointsForTie% cannot be set as value of points for tie.\n It has to be bigger than amount of points for win : %pointsForWin%
 exception_incorrect_points_for_won : %pointsForWin% can not be set as value of points got for win.\n It has to be > 0
-exception_board_dimension : Table size has to be greater than 0
+exception_board_dimension : Table size has to be greater than 0 and smaller than 200

@@ -35,7 +35,7 @@ public class LanguageStrings {
         languageStrings.put(OutputOption.EXCEPTION_INCORRECT_AMOUNT_OF_SYMBOLS_TO_WIN, "It is not possible to won on board %rows%x%columns% using %symbolsToWin% symbols");
         languageStrings.put(OutputOption.EXCEPTION_INCORRECT_POINTS_FOR_TIE, "Value %pointsForTie% can not be set as \n value of points got for tie it has to be \nbigger than amount of points for win : %pointsForWin%");
         languageStrings.put(OutputOption.EXCEPTION_INCORRECT_POINTS_FOR_WON, "%pointsForWin% can not be set as \n value of points got for win \nit has to be > 0\n!");
-        languageStrings.put(OutputOption.EXCEPTION_BOARD_DIMENSION, "%pointsForWin% can not be set as \n value of points got for win \nit has to be > 0\n!");
+        languageStrings.put(OutputOption.EXCEPTION_BOARD_DIMENSION, "Table size has to be greater than 0 and smaller than 200");
     }
 
     void addLanguageString(OutputOption key, String value){
