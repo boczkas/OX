@@ -20,7 +20,7 @@ public class BoardConfiguration {
     }
 
     public void setRows(int rows) throws BoardDimensionException {
-        if(rows > 0){
+        if(rows > 0 && rows < 200){
             this.rows = rows;
         }
         else{
@@ -29,7 +29,7 @@ public class BoardConfiguration {
     }
 
     public void setColumns(int columns) throws BoardDimensionException {
-        if(columns > 0){
+        if(columns > 0 && columns < 200){
             this.columns = columns;
         }
         else{
