@@ -41,7 +41,7 @@ public class MovesHandler {
     }
 
     private void handleCoordinateInput(UserInputProvider userInput, OutputConsumer output, Player player, Judge judge) {
-        String userInputString = userInput.get().trim();
+        String userInputString = userInput.get();
         Matcher matcher = inputPattern.matcher(userInputString.replaceAll("\\s+", " "));
 
         if(matcher.matches()) {

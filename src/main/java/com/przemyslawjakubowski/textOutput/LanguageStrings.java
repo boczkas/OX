@@ -22,7 +22,7 @@ public class LanguageStrings {
         languageStrings.put(OutputOption.LENGTH_QUESTION, "How long should board be?");
         languageStrings.put(OutputOption.SYMBOLS_AMOUNT_QUESTION, "How many symbols give won?");
         languageStrings.put(OutputOption.INCORRECT_VALUE, "Incorrect value");
-        languageStrings.put(OutputOption.CURRENTLY_PLAYING, "Currently playing: %playerName% (%playerSymbol%)");
+        languageStrings.put(OutputOption.CURRENTLY_PLAYING, "Currently playing: %playerName% (%playerSymbol%). To end game enter: end");
         languageStrings.put(OutputOption.PLAYER_SCORE, "Player: %playerName% score: %playerScore%");
         languageStrings.put(OutputOption.CONGRATULATION, "Congratulation");
         languageStrings.put(OutputOption.WON, "Win: %winnerSymbol%. %winnerSymbol%: %winnerScore% %loserSymbol%: %loserScore%");

@@ -7,7 +7,7 @@ width_question : How wide should board be?
 length_question : How long should board be?
 symbols_amount_question : How many symbols to win?
 incorrect_value : Incorrect value
-currently_playing : Currently playing: %playerName% (%playerSymbol%)
+currently_playing : Currently playing: %playerName% (%playerSymbol%). To end game enter: end
 player_score : Player: %playerName% score: %playerScore% 
 congratulation : Congratulation
 round_won : Round won: %winnerSymbol%. %winnerSymbol%: %winnerScore% %loserSymbol%: %loserScore%

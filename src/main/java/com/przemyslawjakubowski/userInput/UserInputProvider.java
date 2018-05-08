@@ -10,6 +10,6 @@ public class UserInputProvider {
     }
 
     public String get(){
-        return userInputProvider.get();
+        return userInputProvider.get().trim();
     }
 }
