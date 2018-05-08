@@ -11,7 +11,15 @@ public class Main {
     public static void main(String[] args) {
         Supplier<String> userInputProvider = new Scanner(System.in)::nextLine;
         OutputConsumer outputConsumer = new OutputConsumer(System.out::println);
-        LanguageStrings languageStrings = LanguageFileReader.getLanguageStringsFromFile("PL.lang", outputConsumer);
+        LanguageStrings languageStrings;
+
+        if(args.length > 0){
+            languageStrings = LanguageFileReader.getLanguageStringsFromFile(args[0], outputConsumer);
+        }
+        else {
+            languageStrings = LanguageFileReader.getDefaultLanguageStrings(outputConsumer);
+        }
+
         outputConsumer = new OutputConsumer(System.out::println, languageStrings);
         new XOGame(userInputProvider, outputConsumer).start();
     }
