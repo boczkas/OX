@@ -1,6 +1,7 @@
 import com.przemyslawjakubowski.*;
 import com.przemyslawjakubowski.board.BoardRowsConfigurationState;
 import com.przemyslawjakubowski.output.LanguageFileReader;
+import com.przemyslawjakubowski.output.LanguageStrings;
 import com.przemyslawjakubowski.output.OutputConsumer;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.mainStates.GameState;
@@ -38,8 +39,8 @@ public class InitialStateTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         OutputConsumer outputConsumer = new OutputConsumer(System.out::println);
-        LanguageFileReader languageFileReader = new LanguageFileReader("ENG.lang", outputConsumer);
-        outputConsumer = new OutputConsumer(System.out::println, languageFileReader.getLanguageStrings());
+        LanguageStrings languageStrings = LanguageFileReader.getLanguageStringsFromFile("ENG.lang", outputConsumer);
+        outputConsumer = new OutputConsumer(System.out::println, languageStrings);
 
         // when
         XOGame game = new XOGame(userInputProvider, outputConsumer);

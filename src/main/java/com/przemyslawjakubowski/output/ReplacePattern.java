@@ -2,18 +2,18 @@ package com.przemyslawjakubowski.output;
 
 public class ReplacePattern {
     String pattern;
-    String replaceWith;
+    String newValue;
 
-    public ReplacePattern(String pattern, String replaceWith) {
+    public ReplacePattern(String pattern, String newValue) {
         this.pattern = pattern;
-        this.replaceWith = replaceWith;
+        this.newValue = newValue;
     }
 
     public String getPattern() {
         return pattern;
     }
 
-    public String getReplaceWith() {
-        return replaceWith;
+    public String getNewValue() {
+        return newValue;
     }
 }

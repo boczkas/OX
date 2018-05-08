@@ -28,7 +28,7 @@ public class OutputConsumer {
         String outputText = languageStrings.getLanguageString(exceptionFieldNotEmpty);
 
         for(ReplacePattern replacePattern : replacePatterns){
-            outputText = outputText.replace(replacePattern.getPattern(), replacePattern.getReplaceWith());
+            outputText = outputText.replace(replacePattern.getPattern(), replacePattern.getNewValue());
         }
 
         output.accept(outputText);

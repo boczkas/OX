@@ -3,19 +3,10 @@ package com.przemyslawjakubowski.output;
 import java.io.*;
 
 public class LanguageFileReader {
-    OutputConsumer outputConsumer;
-    File languageFile;
-    LanguageStrings languageStrings;
 
-    public LanguageFileReader(String path, OutputConsumer outputConsumer) {
-        this.outputConsumer = outputConsumer;
-        this.languageFile = new File(path);
-        this.languageStrings = new LanguageStrings();
-        parseFile();
-    }
-
-    private void parseFile() {
-        try(BufferedReader reader = new BufferedReader(new FileReader(languageFile))){
+    public static LanguageStrings getLanguageStringsFromFile(String path, OutputConsumer outputConsumer) {
+        LanguageStrings languageStrings = new LanguageStrings();
+        try(BufferedReader reader = new BufferedReader(new FileReader(new File(path)))){
             String line;
             String textName;
             String textContent;
@@ -34,9 +25,6 @@ public class LanguageFileReader {
         } catch (IOException e) {
             outputConsumer.accept("Problem with file, setting default language - english");
         }
-    }
-
-    public LanguageStrings getLanguageStrings() {
         return languageStrings;
     }
 }

@@ -17,6 +17,6 @@ exception_field_not_empty : Pole %field% nie jest puste. Wybierz puste pole
 exception_incorrect_symbol : Niepoprawny symbol.\n Powinineneś wyspecyfikować jeden z X/O. \n Wpisano : %symbol%
 exception_incorrect_coordinate : %text% nie jest prawidłową wartością
 exception_incorrect_amount_of_symbols_to_win : Nie da się wygrać na tablicy %rows%x%columns%\nprzy pomocy %symbolsToWin% symboli\n
-exception_incorrect_points_for_tie : Wartość %pointsForTie% nie może być ustawiona jako\n wartość punktów otrzymywanych za remis musi być \nona większa od punktów za zwycięztwo : %pointsForWin%
-exception_incorrect_points_for_won : %pointsForWin% nie może być ustawiona jako \n wartość punktów otrzymywanych za zwycięztwo \nmusi być ona > 0\n
+exception_incorrect_points_for_tie : Wartość %pointsForTie% nie może być ustawiona jako wartość punktów otrzymywanych za remis.\n Musi być ona większa od punktów za zwycięztwo : %pointsForWin%
+exception_incorrect_points_for_won : %pointsForWin% nie może być ustawiona jako wartość punktów otrzymywanych za zwycięztwo.\n Musi być ona > 0
 exception_board_dimension : Wartość wymiaru tablicy musi być większa od 0
