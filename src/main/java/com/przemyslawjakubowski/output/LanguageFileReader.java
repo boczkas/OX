@@ -27,5 +27,10 @@ public class LanguageFileReader {
         }
         return languageStrings;
     }
+
+    public static LanguageStrings getDefaultLanguageStrings(OutputConsumer outputConsumer) {
+        outputConsumer.accept("Language file not specified. Starting with default language - english\n");
+        return new LanguageStrings();
+    }
 }
 
