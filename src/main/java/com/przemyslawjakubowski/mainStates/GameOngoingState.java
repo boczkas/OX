@@ -2,6 +2,8 @@ package com.przemyslawjakubowski.mainStates;
 
 import com.przemyslawjakubowski.*;
 import com.przemyslawjakubowski.board.BoardStatus;
+import com.przemyslawjakubowski.mainStates.GameState;
+import com.przemyslawjakubowski.mainStates.RoundFinishedState;
 import com.przemyslawjakubowski.output.OutputConsumer;
 import com.przemyslawjakubowski.output.OutputOption;
 import com.przemyslawjakubowski.output.ReplacePattern;

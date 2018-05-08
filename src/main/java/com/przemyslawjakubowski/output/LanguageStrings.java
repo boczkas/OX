@@ -29,7 +29,7 @@ public class LanguageStrings {
         languageStrings.put(OutputOption.TIE, "Tie!");
         languageStrings.put(OutputOption.EXCEPTION_BOARD_INDEX_OUT_OF_BOUND, "Index out of board bound!");
         languageStrings.put(OutputOption.EXCEPTION_FIELD_NOT_EMPTY, "Field %field% is not empty. Specify empty field");
-        languageStrings.put(OutputOption.EXCEPTION_INCORRECT_SYMBOL, "Incorrect symbol\n You should specify one of X/O.\n Entry : %symbol%Incorrect symbol\n You should specify one of X/O.\n Entry : %symbol%");
+        languageStrings.put(OutputOption.EXCEPTION_INCORRECT_SYMBOL, "Incorrect symbol\n You should specify one of X/O.\n Entry : %symbol%");
         languageStrings.put(OutputOption.EXCEPTION_INCORRECT_COORDINATE, "%text% value is incorrect!");
         languageStrings.put(OutputOption.EXCEPTION_INCORRECT_AMOUNT_OF_SYMBOLS_TO_WIN, "It is not possible to won on board %rows%x%columns% using %symbolsToWin% symbols");
         languageStrings.put(OutputOption.EXCEPTION_INCORRECT_POINTS_FOR_TIE, "Value %pointsForTie% can not be set as \n value of points got for tie it has to be \nbigger than amount of points for win : %pointsForWin%");

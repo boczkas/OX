@@ -21,12 +21,4 @@ public class IncorrectAmountOfSymbolsToWinException extends Throwable {
                                                                                          new ReplacePattern("%symbolsToWin%", String.valueOf(symbolsToWin)));
         outputConsumer.accept("=============================================\n");
     }
-
-    @Override
-    public String toString() {
-        return "==================================================\n" +
-                "Nie da się wygrać na tablicy " + boardStatus.getRows() + "x" + boardStatus.getColumns() + "\n" +
-                "przy pomocy " + symbolsToWin + " symboli" + "\n" +
-                "=================================================\n";
-    }
 }

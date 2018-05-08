@@ -5,7 +5,6 @@ import com.przemyslawjakubowski.XOGame;
 import com.przemyslawjakubowski.board.BoardStatus;
 import com.przemyslawjakubowski.output.OutputConsumer;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class RoundFinishedState implements GameState {
