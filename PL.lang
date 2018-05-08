@@ -7,7 +7,7 @@ width_question : A plansza to jaka szeroka ma być?
 length_question : A plansza to jaka długa ma być?
 symbols_amount_question : Ile symboli daje zwycięztwo?
 incorrect_value : Niepoprawna wartość
-currently_playing : Ruch wykonuje gracz: %playerName% (%playerSymbol%)
+currently_playing : Ruch wykonuje gracz: %playerName% (%playerSymbol%). Aby zakończyc wpisz: koniec
 player_score : Gracz: %playerName% ilość punktów: %playerScore% 
 congratulation : Gratulacje
 round_won : Rundę wygrywa: %winnerSymbol%. %winnerSymbol%: %winnerScore% %loserSymbol%: %loserScore%
