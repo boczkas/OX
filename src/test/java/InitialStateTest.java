@@ -1,5 +1,6 @@
 import com.przemyslawjakubowski.*;
 import com.przemyslawjakubowski.board.BoardRowsConfigurationState;
+import com.przemyslawjakubowski.output.LanguageFileReader;
 import com.przemyslawjakubowski.output.OutputConsumer;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.mainStates.GameState;
@@ -36,13 +37,15 @@ public class InitialStateTest {
         Supplier<String> userInputProvider = new Scanner(System.in)::nextLine;
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        OutputConsumer output = new OutputConsumer(System.out::println);
+        OutputConsumer outputConsumer = new OutputConsumer(System.out::println);
+        LanguageFileReader languageFileReader = new LanguageFileReader("ENG.lang", outputConsumer);
+        outputConsumer = new OutputConsumer(System.out::println, languageFileReader.getLanguageStrings());
 
         // when
-        XOGame game = new XOGame(userInputProvider, output);
+        XOGame game = new XOGame(userInputProvider, outputConsumer);
 
         InitialState initialState = new InitialState();
-        initialState.performAction(userInputProvider, output, game);
+        initialState.performAction(userInputProvider, outputConsumer, game);
 
         // then
         Players players = game.getPlayers();
