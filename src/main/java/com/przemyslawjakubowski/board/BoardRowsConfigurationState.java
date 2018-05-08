@@ -4,8 +4,8 @@ import com.przemyslawjakubowski.XOGame;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.BoardDimensionException;
 import com.przemyslawjakubowski.mainStates.GameConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameState;
-import com.przemyslawjakubowski.output.OutputConsumer;
-import com.przemyslawjakubowski.output.OutputOption;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputOption;
 
 import java.util.function.Supplier;
 

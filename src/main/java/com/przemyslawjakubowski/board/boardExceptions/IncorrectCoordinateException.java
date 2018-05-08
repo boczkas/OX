@@ -1,8 +1,8 @@
 package com.przemyslawjakubowski.board.boardExceptions;
 
-import com.przemyslawjakubowski.output.OutputConsumer;
-import com.przemyslawjakubowski.output.OutputOption;
-import com.przemyslawjakubowski.output.ReplacePattern;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputOption;
+import com.przemyslawjakubowski.textOutput.ReplacePattern;
 
 public class IncorrectCoordinateException extends Throwable {
     String exceptionMessage;

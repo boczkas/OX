@@ -1,9 +1,9 @@
 package com.przemyslawjakubowski.mainStates;
 
 import com.przemyslawjakubowski.XOGame;
-import com.przemyslawjakubowski.output.OutputConsumer;
-import com.przemyslawjakubowski.output.OutputOption;
-import com.przemyslawjakubowski.output.ReplacePattern;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputOption;
+import com.przemyslawjakubowski.textOutput.ReplacePattern;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.player.Point;

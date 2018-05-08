@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski.output;
+package com.przemyslawjakubowski.textOutput;
 
 public class ReplacePattern {
     String pattern;

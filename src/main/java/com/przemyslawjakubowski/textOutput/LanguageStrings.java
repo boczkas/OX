@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski.output;
+package com.przemyslawjakubowski.textOutput;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +25,7 @@ public class LanguageStrings {
         languageStrings.put(OutputOption.PLAYER_SCORE, "Player: %playerName% score: %playerScore%");
         languageStrings.put(OutputOption.CONGRATULATION, "Congratulation");
         languageStrings.put(OutputOption.WON, "Win: %winnerSymbol%. %winnerSymbol%: %winnerScore% %loserSymbol%: %loserScore%");
-        languageStrings.put(OutputOption.ROUND_WON_BY_PLAYER, "Round won by player: %playerName%!");
+        languageStrings.put(OutputOption.ROUND_WON, "Round won: %winnerSymbol%. %winnerSymbol%: %winnerScore% %loserSymbol%: %loserScore%");
         languageStrings.put(OutputOption.TIE, "Tie!");
         languageStrings.put(OutputOption.EXCEPTION_BOARD_INDEX_OUT_OF_BOUND, "Index out of board bound!");
         languageStrings.put(OutputOption.EXCEPTION_FIELD_NOT_EMPTY, "Field %field% is not empty. Specify empty field");

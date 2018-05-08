@@ -5,9 +5,9 @@ import com.przemyslawjakubowski.board.Coordinate;
 import com.przemyslawjakubowski.board.boardExceptions.BoardIndexOutOfBoundsException;
 import com.przemyslawjakubowski.board.boardExceptions.FieldNotEmptyException;
 import com.przemyslawjakubowski.board.boardExceptions.IncorrectCoordinateException;
-import com.przemyslawjakubowski.output.OutputConsumer;
-import com.przemyslawjakubowski.output.OutputOption;
-import com.przemyslawjakubowski.output.ReplacePattern;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputOption;
+import com.przemyslawjakubowski.textOutput.ReplacePattern;
 import com.przemyslawjakubowski.player.Player;
 
 import java.util.function.Supplier;

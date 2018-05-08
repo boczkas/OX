@@ -1,7 +1,7 @@
 package com.przemyslawjakubowski.board;
 
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.BoardDimensionException;
-import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
 import com.przemyslawjakubowski.player.Symbol;
 
 import java.util.*;

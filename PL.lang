@@ -9,7 +9,7 @@ incorrect_value : Niepoprawna wartość
 currently_playing : Ruch wykonuje gracz: %playerName% (%playerSymbol%)
 player_score : Gracz: %playerName% ilość punktów: %playerScore% 
 congratulation : Gratulacje
-round_won_by_player : Rundę wygrywa gracz: %playerName%! 
+round_won : Rundę wygrywa: %winnerSymbol%. %winnerSymbol%: %winnerScore% %loserSymbol%: %loserScore%
 won : Wygrywa: %winnerSymbol%. %winnerSymbol%: %winnerScore% %loserSymbol%: %loserScore%
 tie : Remis
 exception_board_index_out_of_bound : Przekroczono rozmiar tablicy

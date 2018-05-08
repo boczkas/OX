@@ -6,7 +6,7 @@ import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.Incorr
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForWonException;
 import com.przemyslawjakubowski.gameConfiguration.PointsConfiguration;
 import com.przemyslawjakubowski.gameConfiguration.SymbolsToWin;
-import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.player.Point;

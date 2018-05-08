@@ -1,9 +1,9 @@
 package com.przemyslawjakubowski.gameConfiguration.configurationExceptions;
 
 import com.przemyslawjakubowski.board.BoardStatus;
-import com.przemyslawjakubowski.output.OutputConsumer;
-import com.przemyslawjakubowski.output.OutputOption;
-import com.przemyslawjakubowski.output.ReplacePattern;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputOption;
+import com.przemyslawjakubowski.textOutput.ReplacePattern;
 
 public class IncorrectAmountOfSymbolsToWinException extends Throwable {
     int symbolsToWin;

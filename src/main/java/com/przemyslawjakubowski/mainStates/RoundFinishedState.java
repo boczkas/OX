@@ -3,7 +3,7 @@ package com.przemyslawjakubowski.mainStates;
 import com.przemyslawjakubowski.EndRequest;
 import com.przemyslawjakubowski.XOGame;
 import com.przemyslawjakubowski.board.BoardStatus;
-import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
 
 import java.util.function.Supplier;
 

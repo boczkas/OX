@@ -1,4 +1,4 @@
-package com.przemyslawjakubowski.output;
+package com.przemyslawjakubowski.textOutput;
 
 import java.util.function.Consumer;
 

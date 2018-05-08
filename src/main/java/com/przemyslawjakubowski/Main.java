@@ -1,8 +1,8 @@
 package com.przemyslawjakubowski;
 
-import com.przemyslawjakubowski.output.LanguageFileReader;
-import com.przemyslawjakubowski.output.LanguageStrings;
-import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.LanguageFileReader;
+import com.przemyslawjakubowski.textOutput.LanguageStrings;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
 
 import java.util.Scanner;
 import java.util.function.Supplier;

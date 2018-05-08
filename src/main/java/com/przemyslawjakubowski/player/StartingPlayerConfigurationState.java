@@ -5,8 +5,8 @@ import com.przemyslawjakubowski.board.boardExceptions.IncorrectSymbolException;
 import com.przemyslawjakubowski.mainStates.GameConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameOngoingState;
 import com.przemyslawjakubowski.mainStates.GameState;
-import com.przemyslawjakubowski.output.OutputConsumer;
-import com.przemyslawjakubowski.output.OutputOption;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputOption;
 
 import java.util.function.Supplier;
 
