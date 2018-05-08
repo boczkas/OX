@@ -42,9 +42,9 @@ public class GameFinishedState implements GameState{
     }
 
     private void printTieString(OutputConsumer output) {
-        output.accept("!!!!!!!!!!!!!!!  ");
+        output.accept("=======");
         output.accept(OutputOption.TIE);
-        output.accept("   !!!!!!!!!!!!!!!\n");
+        output.accept("=======\n");
     }
 
     private void printResultStringWhenWinnerIsPresent(OutputConsumer output, Player winner, Player loser) {
