@@ -1,9 +1,10 @@
 package com.przemyslawjakubowski.mainStates;
 
-import java.util.function.Supplier;
+import com.przemyslawjakubowski.userInput.UserInputProvider;
+
 
 public interface GameConfigurationState extends GameState {
 
-    String askUserForInput(Supplier<String> userInput);
+    String askUserForInput(UserInputProvider userInput);
 
 }

@@ -2,19 +2,20 @@ package com.przemyslawjakubowski.mainStates;
 
 import com.przemyslawjakubowski.*;
 import com.przemyslawjakubowski.board.BoardStatus;
-import com.przemyslawjakubowski.output.OutputConsumer;
-import com.przemyslawjakubowski.output.OutputOption;
-import com.przemyslawjakubowski.output.ReplacePattern;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputOption;
+import com.przemyslawjakubowski.textOutput.ReplacePattern;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.print.Printer;
+import com.przemyslawjakubowski.userInput.UserInputProvider;
 
 import java.util.function.Supplier;
 
 public class GameOngoingState implements GameState {
 
     @Override
-    public void performAction(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
+    public void performAction(UserInputProvider userInput, OutputConsumer output, XOGame xoGame) {
 
         BoardStatus boardStatus = xoGame.getBoardStatus();
         MovesHandler movesHandler = new MovesHandler(boardStatus);
@@ -31,8 +32,8 @@ public class GameOngoingState implements GameState {
         }
 
         if(endRequest.equals(EndRequest.NO)){
-            printWinningMessage(player, judge, output, boardStatus);
             addPointsFromRound(players, judge.isWinnerPresent());
+            printWinningMessage(players, judge, output, boardStatus);
             players.setStartingPlayerForNextRound();
         }
 
@@ -52,10 +53,16 @@ public class GameOngoingState implements GameState {
         }
     }
 
-    private void printWinningMessage(Player player, Judge judge, OutputConsumer output, BoardStatus boardStatus) {
+    private void printWinningMessage(Players players, Judge judge, OutputConsumer output, BoardStatus boardStatus) {
         Printer.printBoard(boardStatus, output);
+        Player loser = players.getNextPlayer();
+        Player winner = players.getNextPlayer();
+
         if(judge.isWinnerPresent()){
-            output.accept(OutputOption.ROUND_WON_BY_PLAYER, new ReplacePattern("%playerName%", player.getName()));
+            output.accept(OutputOption.ROUND_WON, new ReplacePattern("%winnerSymbol%", winner.getSymbol().toString()),
+                                                  new ReplacePattern("%winnerScore%", winner.getScore().toString()),
+                                                  new ReplacePattern("%loserSymbol%", loser.getSymbol().toString()),
+                                                  new ReplacePattern("%loserScore%", loser.getScore().toString()));
         }
         else{
             output.accept(OutputOption.TIE);

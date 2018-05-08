@@ -3,12 +3,10 @@ import com.przemyslawjakubowski.board.BoardStatus;
 import com.przemyslawjakubowski.board.Coordinate;
 import com.przemyslawjakubowski.Judge;
 import com.przemyslawjakubowski.gameConfiguration.SymbolsToWin;
-import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
 import com.przemyslawjakubowski.player.Symbol;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.function.Consumer;
 
 public class JudgeTest {
     @Test

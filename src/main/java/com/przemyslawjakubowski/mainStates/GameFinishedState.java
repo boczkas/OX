@@ -1,18 +1,19 @@
 package com.przemyslawjakubowski.mainStates;
 
 import com.przemyslawjakubowski.XOGame;
-import com.przemyslawjakubowski.output.OutputConsumer;
-import com.przemyslawjakubowski.output.OutputOption;
-import com.przemyslawjakubowski.output.ReplacePattern;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputOption;
+import com.przemyslawjakubowski.textOutput.ReplacePattern;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.player.Point;
+import com.przemyslawjakubowski.userInput.UserInputProvider;
 
 import java.util.function.Supplier;
 
 public class GameFinishedState implements GameState{
     @Override
-    public void performAction(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
+    public void performAction(UserInputProvider userInput, OutputConsumer output, XOGame xoGame) {
         Players players = xoGame.getPlayers();
 
         Player firstPlayer = players.getNextPlayer();
@@ -42,9 +43,9 @@ public class GameFinishedState implements GameState{
     }
 
     private void printTieString(OutputConsumer output) {
-        output.accept("!!!!!!!!!!!!!!!  ");
+        output.accept("=======");
         output.accept(OutputOption.TIE);
-        output.accept("   !!!!!!!!!!!!!!!\n");
+        output.accept("=======\n");
     }
 
     private void printResultStringWhenWinnerIsPresent(OutputConsumer output, Player winner, Player loser) {

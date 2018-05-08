@@ -1,7 +1,7 @@
 package com.przemyslawjakubowski.gameConfiguration.configurationExceptions;
 
-import com.przemyslawjakubowski.output.OutputConsumer;
-import com.przemyslawjakubowski.output.OutputOption;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputOption;
 
 public class BoardDimensionException extends Throwable {
 

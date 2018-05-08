@@ -2,6 +2,7 @@ starting : Starting
 first_player_name_question : Specify first player name
 second_player_name_question : Specify second player name
 starting_player_question : Which player should start? X or O
+empty_player_name : Player name cannot be empty
 width_question : How wide should board be?
 length_question : How long should board be?
 symbols_amount_question : How many symbols to win?
@@ -9,7 +10,7 @@ incorrect_value : Incorrect value
 currently_playing : Currently playing: %playerName% (%playerSymbol%)
 player_score : Player: %playerName% score: %playerScore% 
 congratulation : Congratulation
-round_won_by_player : Round won by player: %playerName%! 
+round_won : Round won: %winnerSymbol%. %winnerSymbol%: %winnerScore% %loserSymbol%: %loserScore%
 won : Win: %winnerSymbol%. %winnerSymbol%: %winnerScore% %loserSymbol%: %loserScore%
 tie : Tie
 exception_board_index_out_of_bound : Index out of board bound

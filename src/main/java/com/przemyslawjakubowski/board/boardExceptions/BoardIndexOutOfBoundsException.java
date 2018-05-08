@@ -1,7 +1,7 @@
 package com.przemyslawjakubowski.board.boardExceptions;
 
-import com.przemyslawjakubowski.output.OutputConsumer;
-import com.przemyslawjakubowski.output.OutputOption;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputOption;
 
 public class BoardIndexOutOfBoundsException extends Throwable {
 

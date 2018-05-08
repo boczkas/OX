@@ -1,10 +1,11 @@
-package com.przemyslawjakubowski.output;
+package com.przemyslawjakubowski.textOutput;
 
 public enum OutputOption {
     STARTING,
     FIRST_PLAYER_NAME_QUESTION,
     SECOND_PLAYER_NAME_QUESTION,
     STARTING_PLAYER_QUESTION,
+    EMPTY_PLAYER_NAME,
     WIDTH_QUESTION,
     LENGTH_QUESTION,
     SYMBOLS_AMOUNT_QUESTION,
@@ -13,7 +14,7 @@ public enum OutputOption {
     PLAYER_SCORE,
     CONGRATULATION,
     WON,
-    ROUND_WON_BY_PLAYER,
+    ROUND_WON,
     TIE,
     EXCEPTION_BOARD_INDEX_OUT_OF_BOUND,
     EXCEPTION_FIELD_NOT_EMPTY,

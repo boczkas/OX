@@ -1,8 +1,8 @@
 package com.przemyslawjakubowski.gameConfiguration.configurationExceptions;
 
-import com.przemyslawjakubowski.output.OutputConsumer;
-import com.przemyslawjakubowski.output.OutputOption;
-import com.przemyslawjakubowski.output.ReplacePattern;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputOption;
+import com.przemyslawjakubowski.textOutput.ReplacePattern;
 
 public class IncorrectPointsForWonException extends Throwable {
     String exceptionMessage;

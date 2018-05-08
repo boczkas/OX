@@ -2,7 +2,7 @@ package com.przemyslawjakubowski.print;
 
 import com.przemyslawjakubowski.board.BoardStatus;
 import com.przemyslawjakubowski.board.Coordinate;
-import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.textOutput.OutputConsumer;
 import com.przemyslawjakubowski.player.Symbol;
 
 import java.util.Optional;
