@@ -5,8 +5,9 @@ import com.przemyslawjakubowski.board.boardExceptions.IncorrectSymbolException;
 import com.przemyslawjakubowski.mainStates.GameConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameOngoingState;
 import com.przemyslawjakubowski.mainStates.GameState;
+import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.output.OutputOption;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class StartingPlayerConfigurationState implements GameConfigurationState {
@@ -14,19 +15,19 @@ public class StartingPlayerConfigurationState implements GameConfigurationState 
     boolean startingPlayerSetCorrectly = true;
 
     @Override
-    public void performAction(Supplier<String> userInput, Consumer<String> output, XOGame xoGame) {
+    public void performAction(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
 
         tryToSetConfiguration(userInput, output, xoGame);
     }
 
-    private void tryToSetConfiguration(Supplier<String> userInput, Consumer<String> output, XOGame xoGame) {
+    private void tryToSetConfiguration(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
         try {
             Players players = xoGame.getPlayers();
-            output.accept("Ktory gracz zaczyna? X czy O?");
+            output.accept(OutputOption.STARTING_PLAYER_QUESTION);
             Player player = players.getPlayerBySymbol(askUserForInput(userInput));
             players.setStartingPlayer(player);
-        } catch (IncorrectSymbolException exception){
-            output.accept(exception.toString());
+        } catch (IncorrectSymbolException e){
+            e.printExceptionMessage(output);
             startingPlayerSetCorrectly = false;
         }
     }

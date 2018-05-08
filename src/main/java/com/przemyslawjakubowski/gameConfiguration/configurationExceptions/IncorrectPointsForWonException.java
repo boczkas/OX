@@ -1,5 +1,9 @@
 package com.przemyslawjakubowski.gameConfiguration.configurationExceptions;
 
+import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.output.OutputOption;
+import com.przemyslawjakubowski.output.ReplacePattern;
+
 public class IncorrectPointsForWonException extends Throwable {
     String exceptionMessage;
 
@@ -7,12 +11,9 @@ public class IncorrectPointsForWonException extends Throwable {
         this.exceptionMessage = exceptionMessage;
     }
 
-    @Override
-    public String toString(){
-        return "==================================================\n" +
-                exceptionMessage + " nie może być ustawiona jako  \n" +
-                "wartość punktów otrzymywanych za zwycięztwo,     \n" +
-                "musi być ona > 0\n" +
-                "=================================================\n";
+    public void printExceptionMessage(OutputConsumer outputConsumer){
+        outputConsumer.accept("=============================================");
+        outputConsumer.accept(OutputOption.EXCEPTION_INCORRECT_POINTS_FOR_WON, new ReplacePattern("%pointsForWin%", exceptionMessage));
+        outputConsumer.accept("=============================================\n");
     }
 }

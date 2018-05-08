@@ -3,11 +3,12 @@ package com.przemyslawjakubowski.gameConfiguration;
 import com.przemyslawjakubowski.XOGame;
 import com.przemyslawjakubowski.board.BoardStatus;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectAmountOfSymbolsToWinException;
+import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.output.OutputOption;
 import com.przemyslawjakubowski.player.StartingPlayerConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameState;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class SymbolsToWinConfigurationState implements GameConfigurationState {
@@ -15,13 +16,13 @@ public class SymbolsToWinConfigurationState implements GameConfigurationState {
     boolean isConfiguredCorrectly = true;
 
     @Override
-    public void performAction(Supplier<String> userInput, Consumer<String> output, XOGame xoGame) {
+    public void performAction(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
         SymbolsToWin symbolsToWin = askUserForSymbolsToWin(userInput, output, xoGame.getBoardStatus());
         xoGame.setSymbolsToWin(symbolsToWin);
     }
 
-    private SymbolsToWin askUserForSymbolsToWin(Supplier<String> userInput, Consumer<String> output, BoardStatus boardStatus) {
-        output.accept("Ile symboli w rzędzie daje zwycięztwo?");
+    private SymbolsToWin askUserForSymbolsToWin(Supplier<String> userInput, OutputConsumer output, BoardStatus boardStatus) {
+        output.accept(OutputOption.SYMBOLS_AMOUNT_QUESTION);
         String userEntry = askUserForInput(userInput);
         SymbolsToWin symbolsToWin = new SymbolsToWin(boardStatus);
 
@@ -30,14 +31,14 @@ public class SymbolsToWinConfigurationState implements GameConfigurationState {
         return symbolsToWin;
     }
 
-    private void tryToSetConfiguration(Consumer<String> output, String userEntry, SymbolsToWin symbolsToWin) {
+    private void tryToSetConfiguration(OutputConsumer output, String userEntry, SymbolsToWin symbolsToWin) {
         try{
             symbolsToWin.setSymbolsToWin(Integer.parseInt(userEntry));
         } catch (IncorrectAmountOfSymbolsToWinException e) {
-            output.accept(e.toString());
+            e.printExceptionMessage(output);
             isConfiguredCorrectly = false;
         } catch (NumberFormatException e){
-            output.accept("Niepoprawna wartość");
+            output.accept(OutputOption.INCORRECT_VALUE);
             isConfiguredCorrectly = false;
         }
     }

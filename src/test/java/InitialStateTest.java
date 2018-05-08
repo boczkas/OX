@@ -1,5 +1,8 @@
 import com.przemyslawjakubowski.*;
 import com.przemyslawjakubowski.board.BoardRowsConfigurationState;
+import com.przemyslawjakubowski.output.LanguageFileReader;
+import com.przemyslawjakubowski.output.LanguageStrings;
+import com.przemyslawjakubowski.output.OutputConsumer;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.mainStates.GameState;
 import com.przemyslawjakubowski.mainStates.InitialState;
@@ -10,7 +13,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class InitialStateTest {
@@ -36,13 +38,15 @@ public class InitialStateTest {
         Supplier<String> userInputProvider = new Scanner(System.in)::nextLine;
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        Consumer<String> output = System.out::println;
+        OutputConsumer outputConsumer = new OutputConsumer(System.out::println);
+        LanguageStrings languageStrings = LanguageFileReader.getLanguageStringsFromFile("ENG.lang", outputConsumer);
+        outputConsumer = new OutputConsumer(System.out::println, languageStrings);
 
         // when
-        XOGame game = new XOGame(userInputProvider, output);
+        XOGame game = new XOGame(userInputProvider, outputConsumer);
 
         InitialState initialState = new InitialState();
-        initialState.performAction(userInputProvider, output, game);
+        initialState.performAction(userInputProvider, outputConsumer, game);
 
         // then
         Players players = game.getPlayers();

@@ -1,10 +1,13 @@
 package com.przemyslawjakubowski.gameConfiguration.configurationExceptions;
 
+import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.output.OutputOption;
+
 public class BoardDimensionException extends Throwable {
-    @Override
-    public String toString(){
-        return "==================================================\n" +
-                "Wartość wymiaru tablicy musi być większa od 0    \n" +
-                "=================================================\n";
+
+    public void printExceptionMessage(OutputConsumer outputConsumer){
+        outputConsumer.accept("=============================================");
+        outputConsumer.accept(OutputOption.EXCEPTION_BOARD_DIMENSION);
+        outputConsumer.accept("=============================================\n");
     }
 }

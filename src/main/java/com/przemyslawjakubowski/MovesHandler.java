@@ -5,9 +5,11 @@ import com.przemyslawjakubowski.board.Coordinate;
 import com.przemyslawjakubowski.board.boardExceptions.BoardIndexOutOfBoundsException;
 import com.przemyslawjakubowski.board.boardExceptions.FieldNotEmptyException;
 import com.przemyslawjakubowski.board.boardExceptions.IncorrectCoordinateException;
+import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.output.OutputOption;
+import com.przemyslawjakubowski.output.ReplacePattern;
 import com.przemyslawjakubowski.player.Player;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,12 +27,13 @@ public class MovesHandler {
         this.boardStatus = boardStatus;
     }
 
-    public EndRequest handleMoves(Supplier<String> userInput, Consumer<String> output, Player player, Judge judge) {
-        output.accept("Ruch wykonuje gracz: " + player.getName() + " (" + player.getSymbol() + ")");
+    public EndRequest handleMoves(Supplier<String> userInput, OutputConsumer output, Player player, Judge judge) {
+        output.accept(OutputOption.CURRENTLY_PLAYING, new ReplacePattern("%playerName%", player.getName()),
+                                                      new ReplacePattern("%playerSymbol%", player.getSymbol().toString()));
         return handleCoordinateInput(userInput, output, player, judge);
     }
 
-    private EndRequest handleCoordinateInput(Supplier<String> userInput, Consumer<String> output, Player player, Judge judge) {
+    private EndRequest handleCoordinateInput(Supplier<String> userInput, OutputConsumer output, Player player, Judge judge) {
         String userInputString = userInput.get().trim();
         if(userInputString.contains("end") || userInputString.contains("koniec")){
             return EndRequest.YES;
@@ -53,7 +56,7 @@ public class MovesHandler {
                     try {
                         throw new FieldNotEmptyException(coordinate.toString());
                     } catch (FieldNotEmptyException e) {
-                        output.accept(e.toString());
+                        e.printExceptionMessage(output);
                         handleMoves(userInput, output, player, judge);
                     }
                 }
@@ -62,7 +65,7 @@ public class MovesHandler {
                 try{
                     throw new BoardIndexOutOfBoundsException();
                 } catch (BoardIndexOutOfBoundsException e){
-                    output.accept(e.toString());
+                    e.printExceptionMessage(output);
                     handleMoves(userInput, output, player, judge);
                 }
             }
@@ -71,7 +74,7 @@ public class MovesHandler {
             try {
                 throw new IncorrectCoordinateException(userInputString);
             } catch (IncorrectCoordinateException e){
-                output.accept(e.toString());
+                e.printExceptionMessage(output);
                 handleMoves(userInput, output, player, judge);
             }
 

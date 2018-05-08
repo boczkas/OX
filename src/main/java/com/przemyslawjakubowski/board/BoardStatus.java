@@ -1,10 +1,10 @@
 package com.przemyslawjakubowski.board;
 
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.BoardDimensionException;
+import com.przemyslawjakubowski.output.OutputConsumer;
 import com.przemyslawjakubowski.player.Symbol;
 
 import java.util.*;
-import java.util.function.Consumer;
 
 public class BoardStatus {
     BoardConfiguration boardConfiguration;
@@ -123,20 +123,20 @@ public class BoardStatus {
         }
     }
 
-    public void setBoardRows(int rows, Consumer<String> output) {
+    public void setBoardRows(int rows, OutputConsumer output) {
         try{
             boardConfiguration.setRows(rows);
 
         } catch (BoardDimensionException e) {
-            output.accept(e.toString());
+            e.printExceptionMessage(output);
         }
     }
 
-    public void setBoardColumns(int columns, Consumer<String> output){
+    public void setBoardColumns(int columns, OutputConsumer output){
         try {
             boardConfiguration.setColumns(columns);
         } catch (BoardDimensionException e) {
-            output.accept(e.toString());
+            e.printExceptionMessage(output);
         }
 
     }

@@ -1,5 +1,9 @@
 package com.przemyslawjakubowski.board.boardExceptions;
 
+import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.output.OutputOption;
+import com.przemyslawjakubowski.output.ReplacePattern;
+
 public class FieldNotEmptyException extends Throwable {
     String exceptionMessage;
 
@@ -7,11 +11,9 @@ public class FieldNotEmptyException extends Throwable {
         this.exceptionMessage = exceptionMessage;
     }
 
-    @Override
-    public String toString(){
-        return "=============================================\n" +
-                "Pole " + exceptionMessage + " nie jest puste\n" +
-                "Wybierz puste pole\n" +
-                "============================================\n";
+    public void printExceptionMessage(OutputConsumer outputConsumer){
+        outputConsumer.accept("=============================================");
+        outputConsumer.accept(OutputOption.EXCEPTION_FIELD_NOT_EMPTY, new ReplacePattern("%field%", exceptionMessage));
+        outputConsumer.accept("=============================================\n");
     }
 }
