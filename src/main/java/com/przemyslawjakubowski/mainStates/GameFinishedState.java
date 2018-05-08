@@ -7,12 +7,13 @@ import com.przemyslawjakubowski.textOutput.ReplacePattern;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.player.Point;
+import com.przemyslawjakubowski.userInput.UserInputProvider;
 
 import java.util.function.Supplier;
 
 public class GameFinishedState implements GameState{
     @Override
-    public void performAction(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
+    public void performAction(UserInputProvider userInput, OutputConsumer output, XOGame xoGame) {
         Players players = xoGame.getPlayers();
 
         Player firstPlayer = players.getNextPlayer();

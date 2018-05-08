@@ -6,6 +6,7 @@ import com.przemyslawjakubowski.mainStates.GameConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameState;
 import com.przemyslawjakubowski.textOutput.OutputConsumer;
 import com.przemyslawjakubowski.textOutput.OutputOption;
+import com.przemyslawjakubowski.userInput.UserInputProvider;
 
 import java.util.function.Supplier;
 
@@ -13,13 +14,13 @@ public class BoardRowsConfigurationState implements GameConfigurationState {
     boolean isRowConfigurationSuccessful;
 
     @Override
-    public void performAction(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
+    public void performAction(UserInputProvider userInput, OutputConsumer output, XOGame xoGame) {
         BoardStatus boardStatus = xoGame.getBoardStatus();
         isRowConfigurationSuccessful = true;
         setBoardRows(userInput, output, boardStatus);
     }
 
-    private void setBoardRows(Supplier<String> userInput, OutputConsumer output, BoardStatus boardStatus) {
+    private void setBoardRows(UserInputProvider userInput, OutputConsumer output, BoardStatus boardStatus) {
         output.accept(OutputOption.LENGTH_QUESTION);
         BoardConfiguration boardConfiguration = new BoardConfiguration();
         int userRowsEntry = tryToSetConfiguration(userInput, output, boardConfiguration);
@@ -29,7 +30,7 @@ public class BoardRowsConfigurationState implements GameConfigurationState {
         }
     }
 
-    private int tryToSetConfiguration(Supplier<String> userInput, OutputConsumer output, BoardConfiguration boardConfiguration) {
+    private int tryToSetConfiguration(UserInputProvider userInput, OutputConsumer output, BoardConfiguration boardConfiguration) {
         int userRowsEntry = 0;
         try{
             userRowsEntry = Integer.parseInt(askUserForInput(userInput));
@@ -53,7 +54,7 @@ public class BoardRowsConfigurationState implements GameConfigurationState {
     }
 
     @Override
-    public String askUserForInput(Supplier<String> userInput) {
+    public String askUserForInput(UserInputProvider userInput) {
         return userInput.get().trim();
     }
 }

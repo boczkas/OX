@@ -9,6 +9,7 @@ import com.przemyslawjakubowski.textOutput.OutputConsumer;
 import com.przemyslawjakubowski.textOutput.OutputOption;
 import com.przemyslawjakubowski.textOutput.ReplacePattern;
 import com.przemyslawjakubowski.player.Player;
+import com.przemyslawjakubowski.userInput.UserInputProvider;
 
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
@@ -31,7 +32,7 @@ public class MovesHandler {
         this.endRequest = EndRequest.NO;
     }
 
-    public EndRequest handleMoves(Supplier<String> userInput, OutputConsumer output, Player player, Judge judge) {
+    public EndRequest handleMoves(UserInputProvider userInput, OutputConsumer output, Player player, Judge judge) {
         output.accept(OutputOption.CURRENTLY_PLAYING, new ReplacePattern("%playerName%", player.getName()),
                                                       new ReplacePattern("%playerSymbol%", player.getSymbol().toString()));
 
@@ -39,7 +40,7 @@ public class MovesHandler {
         return endRequest;
     }
 
-    private void handleCoordinateInput(Supplier<String> userInput, OutputConsumer output, Player player, Judge judge) {
+    private void handleCoordinateInput(UserInputProvider userInput, OutputConsumer output, Player player, Judge judge) {
         String userInputString = userInput.get().trim();
         Matcher matcher = inputPattern.matcher(userInputString.replaceAll("\\s+", " "));
 

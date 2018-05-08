@@ -9,12 +9,13 @@ import com.przemyslawjakubowski.player.Point;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Symbol;
 import com.przemyslawjakubowski.XOGame;
+import com.przemyslawjakubowski.userInput.UserInputProvider;
 
 import java.util.function.Supplier;
 
 public class InitialState implements GameState {
     @Override
-    public void performAction(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
+    public void performAction(UserInputProvider userInput, OutputConsumer output, XOGame xoGame) {
         try{
             xoGame.setAmountOfPointsForWinRound(new Point(3));
             xoGame.setAmountOfPointsForTieRound(new Point(1));

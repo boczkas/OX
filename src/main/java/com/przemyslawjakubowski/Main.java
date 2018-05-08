@@ -3,13 +3,14 @@ package com.przemyslawjakubowski;
 import com.przemyslawjakubowski.textOutput.LanguageFileReader;
 import com.przemyslawjakubowski.textOutput.LanguageStrings;
 import com.przemyslawjakubowski.textOutput.OutputConsumer;
+import com.przemyslawjakubowski.userInput.UserInputProvider;
 
 import java.util.Scanner;
-import java.util.function.Supplier;
 
 public class Main {
     public static void main(String[] args) {
-        Supplier<String> userInputProvider = new Scanner(System.in)::nextLine;
+
+        UserInputProvider userInputProviderProvider = new UserInputProvider(new Scanner(System.in)::nextLine);
         OutputConsumer outputConsumer = new OutputConsumer(System.out::println);
         LanguageStrings languageStrings;
 
@@ -21,6 +22,6 @@ public class Main {
         }
 
         outputConsumer = new OutputConsumer(System.out::println, languageStrings);
-        new XOGame(userInputProvider, outputConsumer).start();
+        new XOGame(userInputProviderProvider, outputConsumer).start();
     }
 }

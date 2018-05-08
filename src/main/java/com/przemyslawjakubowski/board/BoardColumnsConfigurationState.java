@@ -7,6 +7,7 @@ import com.przemyslawjakubowski.mainStates.GameConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameState;
 import com.przemyslawjakubowski.textOutput.OutputConsumer;
 import com.przemyslawjakubowski.textOutput.OutputOption;
+import com.przemyslawjakubowski.userInput.UserInputProvider;
 
 import java.util.function.Supplier;
 
@@ -15,13 +16,13 @@ public class BoardColumnsConfigurationState implements GameConfigurationState {
     boolean isColumnsConfigurationSuccessful;
 
     @Override
-    public void performAction(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
+    public void performAction(UserInputProvider userInput, OutputConsumer output, XOGame xoGame) {
         BoardStatus boardStatus = xoGame.getBoardStatus();
         isColumnsConfigurationSuccessful = true;
         setBoardColumns(userInput, output, boardStatus);
     }
 
-    private void setBoardColumns(Supplier<String> userInput, OutputConsumer output, BoardStatus boardStatus) {
+    private void setBoardColumns(UserInputProvider userInput, OutputConsumer output, BoardStatus boardStatus) {
         output.accept(OutputOption.WIDTH_QUESTION);
         BoardConfiguration boardConfiguration = new BoardConfiguration();
         int columns = tryToSetConfiguration(userInput, output, boardConfiguration);
@@ -31,7 +32,7 @@ public class BoardColumnsConfigurationState implements GameConfigurationState {
         }
     }
 
-    private int tryToSetConfiguration(Supplier<String> userInput, OutputConsumer output, BoardConfiguration boardConfiguration) {
+    private int tryToSetConfiguration(UserInputProvider userInput, OutputConsumer output, BoardConfiguration boardConfiguration) {
         int userColumnsEntry = 0;
         try{
             userColumnsEntry = Integer.parseInt(askUserForInput(userInput));
@@ -55,7 +56,7 @@ public class BoardColumnsConfigurationState implements GameConfigurationState {
     }
 
     @Override
-    public String askUserForInput(Supplier<String> userInput) {
+    public String askUserForInput(UserInputProvider userInput) {
         return userInput.get().trim();
     }
 }

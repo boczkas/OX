@@ -8,13 +8,14 @@ import com.przemyslawjakubowski.textOutput.ReplacePattern;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.print.Printer;
+import com.przemyslawjakubowski.userInput.UserInputProvider;
 
 import java.util.function.Supplier;
 
 public class GameOngoingState implements GameState {
 
     @Override
-    public void performAction(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
+    public void performAction(UserInputProvider userInput, OutputConsumer output, XOGame xoGame) {
 
         BoardStatus boardStatus = xoGame.getBoardStatus();
         MovesHandler movesHandler = new MovesHandler(boardStatus);

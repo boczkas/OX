@@ -8,6 +8,7 @@ import com.przemyslawjakubowski.textOutput.OutputOption;
 import com.przemyslawjakubowski.player.StartingPlayerConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameState;
+import com.przemyslawjakubowski.userInput.UserInputProvider;
 
 import java.util.function.Supplier;
 
@@ -16,12 +17,12 @@ public class SymbolsToWinConfigurationState implements GameConfigurationState {
     boolean isConfiguredCorrectly = true;
 
     @Override
-    public void performAction(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
+    public void performAction(UserInputProvider userInput, OutputConsumer output, XOGame xoGame) {
         SymbolsToWin symbolsToWin = askUserForSymbolsToWin(userInput, output, xoGame.getBoardStatus());
         xoGame.setSymbolsToWin(symbolsToWin);
     }
 
-    private SymbolsToWin askUserForSymbolsToWin(Supplier<String> userInput, OutputConsumer output, BoardStatus boardStatus) {
+    private SymbolsToWin askUserForSymbolsToWin(UserInputProvider userInput, OutputConsumer output, BoardStatus boardStatus) {
         output.accept(OutputOption.SYMBOLS_AMOUNT_QUESTION);
         String userEntry = askUserForInput(userInput);
         SymbolsToWin symbolsToWin = new SymbolsToWin(boardStatus);
@@ -52,7 +53,7 @@ public class SymbolsToWinConfigurationState implements GameConfigurationState {
     }
 
     @Override
-    public String askUserForInput(Supplier<String> userInput) {
+    public String askUserForInput(UserInputProvider userInput) {
         return userInput.get().trim();
     }
 }

@@ -6,6 +6,7 @@ import com.przemyslawjakubowski.textOutput.OutputConsumer;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.mainStates.GameState;
 import com.przemyslawjakubowski.mainStates.InitialState;
+import com.przemyslawjakubowski.userInput.UserInputProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -34,8 +35,8 @@ public class InitialStateTest {
         // given
         String playersNames = "winner\nloser\n";
         System.setIn(new ByteArrayInputStream(playersNames.getBytes()));
-      
-        Supplier<String> userInputProvider = new Scanner(System.in)::nextLine;
+
+        UserInputProvider userInputProvider = new UserInputProvider(new Scanner(System.in)::nextLine);
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         OutputConsumer outputConsumer = new OutputConsumer(System.out::println);
