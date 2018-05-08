@@ -2,6 +2,7 @@ starting : Starting
 first_player_name_question : Specify first player name
 second_player_name_question : Specify second player name
 starting_player_question : Which player should start? X or O
+empty_player_name : Player name cannot be empty
 width_question : How wide should board be?
 length_question : How long should board be?
 symbols_amount_question : How many symbols to win?

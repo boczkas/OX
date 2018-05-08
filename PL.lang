@@ -2,6 +2,7 @@ starting : Bedziem zaczynać
 first_player_name_question : Podaj imię pierwszego gracza
 second_player_name_question : Podaj imię drugiego gracza
 starting_player_question : Który gracz zaczyna? X czy O
+empty_player_name : Nazwa gracza nie może być pusta
 width_question : A plansza to jaka szeroka ma być?
 length_question : A plansza to jaka długa ma być?
 symbols_amount_question : Ile symboli daje zwycięztwo?

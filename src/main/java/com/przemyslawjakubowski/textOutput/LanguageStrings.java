@@ -17,6 +17,7 @@ public class LanguageStrings {
         languageStrings.put(OutputOption.FIRST_PLAYER_NAME_QUESTION, "Specify first player name");
         languageStrings.put(OutputOption.SECOND_PLAYER_NAME_QUESTION, "Specify second player name");
         languageStrings.put(OutputOption.STARTING_PLAYER_QUESTION, "Which player should start? X or O");
+        languageStrings.put(OutputOption.EMPTY_PLAYER_NAME, "Player name cannot be empty");
         languageStrings.put(OutputOption.WIDTH_QUESTION, "How wide should board be?");
         languageStrings.put(OutputOption.LENGTH_QUESTION, "How long should board be?");
         languageStrings.put(OutputOption.SYMBOLS_AMOUNT_QUESTION, "How many symbols give won?");

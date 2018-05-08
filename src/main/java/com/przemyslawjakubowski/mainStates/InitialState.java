@@ -26,11 +26,27 @@ public class InitialState implements GameState {
             e.printExceptionMessage(output);
         }
 
+
         output.accept(OutputOption.STARTING);
+
+        String playerName;
         output.accept(OutputOption.FIRST_PLAYER_NAME_QUESTION);
-        xoGame.addPlayer(new Player(userInput.get(), Symbol.X, new Point(0)));
+
+        while ((playerName = userInput.get()).equals("")){
+            output.accept(OutputOption.EMPTY_PLAYER_NAME);
+            output.accept(OutputOption.FIRST_PLAYER_NAME_QUESTION);
+        }
+
+        xoGame.addPlayer(new Player(playerName, Symbol.X, new Point(0)));
+
         output.accept(OutputOption.SECOND_PLAYER_NAME_QUESTION);
-        xoGame.addPlayer(new Player(userInput.get(), Symbol.O, new Point(0)));
+        while ((playerName = userInput.get()).equals("")){
+            output.accept(OutputOption.EMPTY_PLAYER_NAME);
+            output.accept(OutputOption.SECOND_PLAYER_NAME_QUESTION);
+        }
+
+
+        xoGame.addPlayer(new Player(playerName, Symbol.O, new Point(0)));
 
     }
 
