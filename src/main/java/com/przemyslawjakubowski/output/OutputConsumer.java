@@ -20,12 +20,12 @@ public class OutputConsumer {
     }
 
     public void accept(OutputOption outputOption) {
-        String outputText = languageStrings.getLangueString(outputOption);
+        String outputText = languageStrings.getLanguageString(outputOption);
         output.accept(outputText);
     }
 
     public void accept(OutputOption exceptionFieldNotEmpty, ReplacePattern... replacePatterns) {
-        String outputText = languageStrings.getLangueString(exceptionFieldNotEmpty);
+        String outputText = languageStrings.getLanguageString(exceptionFieldNotEmpty);
 
         for(ReplacePattern replacePattern : replacePatterns){
             outputText = outputText.replace(replacePattern.getPattern(), replacePattern.getReplaceWith());

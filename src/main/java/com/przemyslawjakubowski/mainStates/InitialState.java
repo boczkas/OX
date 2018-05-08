@@ -4,6 +4,7 @@ import com.przemyslawjakubowski.board.BoardRowsConfigurationState;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForTieException;
 import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.IncorrectPointsForWonException;
 import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.output.OutputOption;
 import com.przemyslawjakubowski.player.Point;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Symbol;
@@ -18,14 +19,17 @@ public class InitialState implements GameState {
             xoGame.setAmountOfPointsForWinRound(new Point(3));
             xoGame.setAmountOfPointsForTieRound(new Point(1));
         }
-        catch (IncorrectPointsForTieException|IncorrectPointsForWonException e){
-            output.accept(e.toString());
+        catch (IncorrectPointsForTieException e){
+            e.printExceptionMessage(output);
+        }
+        catch (IncorrectPointsForWonException e){
+            e.printExceptionMessage(output);
         }
 
-        output.accept("Bedziem zaczynac!\n");
-        output.accept("Podaj imię pierwszego gracza (X)!");
+        output.accept(OutputOption.STARTING);
+        output.accept(OutputOption.FIRST_PLAYER_NAME_QUESTION);
         xoGame.addPlayer(new Player(userInput.get(), Symbol.X, new Point(0)));
-        output.accept("Podaj imię drugiego gracza (O)!");
+        output.accept(OutputOption.SECOND_PLAYER_NAME_QUESTION);
         xoGame.addPlayer(new Player(userInput.get(), Symbol.O, new Point(0)));
 
     }

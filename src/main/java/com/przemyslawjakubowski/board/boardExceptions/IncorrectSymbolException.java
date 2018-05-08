@@ -1,5 +1,9 @@
 package com.przemyslawjakubowski.board.boardExceptions;
 
+import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.output.OutputOption;
+import com.przemyslawjakubowski.output.ReplacePattern;
+
 public class IncorrectSymbolException extends Throwable{
 
     String exceptionMessage;
@@ -8,13 +12,9 @@ public class IncorrectSymbolException extends Throwable{
         this.exceptionMessage = exceptionMessage;
     }
 
-    @Override
-    public String toString(){
-        return "==========================================\n" +
-                "Niepoprawny symbol.\n" +
-                "Powinenes wyspecyfikowac jeden z X/O.\n" +
-                "Wpisano: " + exceptionMessage + "\n" +
-                "==========================================\n";
+    public void printExceptionMessage(OutputConsumer outputConsumer){
+        outputConsumer.accept("=============================================");
+        outputConsumer.accept(OutputOption.EXCEPTION_INCORRECT_SYMBOL, new ReplacePattern("%symbol%", exceptionMessage));
+        outputConsumer.accept("=============================================\n");
     }
-
 }

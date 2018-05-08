@@ -6,6 +6,7 @@ import com.przemyslawjakubowski.mainStates.GameConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameOngoingState;
 import com.przemyslawjakubowski.mainStates.GameState;
 import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.output.OutputOption;
 
 import java.util.function.Supplier;
 
@@ -22,11 +23,11 @@ public class StartingPlayerConfigurationState implements GameConfigurationState 
     private void tryToSetConfiguration(Supplier<String> userInput, OutputConsumer output, XOGame xoGame) {
         try {
             Players players = xoGame.getPlayers();
-            output.accept("Ktory gracz zaczyna? X czy O?");
+            output.accept(OutputOption.STARTING_PLAYER_QUESTION);
             Player player = players.getPlayerBySymbol(askUserForInput(userInput));
             players.setStartingPlayer(player);
-        } catch (IncorrectSymbolException exception){
-            output.accept(exception.toString());
+        } catch (IncorrectSymbolException e){
+            e.printExceptionMessage(output);
             startingPlayerSetCorrectly = false;
         }
     }

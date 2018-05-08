@@ -14,7 +14,7 @@ public class LanguageStrings {
         languageStrings.put(key, value);
     }
 
-    String getLangueString(OutputOption key){
+    String getLanguageString(OutputOption key){
         return languageStrings.get(key);
     }
 }

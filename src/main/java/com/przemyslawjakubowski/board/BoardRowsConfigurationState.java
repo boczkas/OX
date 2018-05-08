@@ -5,6 +5,7 @@ import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.BoardD
 import com.przemyslawjakubowski.mainStates.GameConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameState;
 import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.output.OutputOption;
 
 import java.util.function.Supplier;
 
@@ -19,7 +20,7 @@ public class BoardRowsConfigurationState implements GameConfigurationState {
     }
 
     private void setBoardRows(Supplier<String> userInput, OutputConsumer output, BoardStatus boardStatus) {
-        output.accept("A plansza to jaka długa ma być?");
+        output.accept(OutputOption.LENGTH_QUESTION);
         BoardConfiguration boardConfiguration = new BoardConfiguration();
         int userRowsEntry = tryToSetConfiguration(userInput, output, boardConfiguration);
 
@@ -34,10 +35,10 @@ public class BoardRowsConfigurationState implements GameConfigurationState {
             userRowsEntry = Integer.parseInt(askUserForInput(userInput));
             boardConfiguration.setRows(userRowsEntry);
         } catch (BoardDimensionException e) {
-            output.accept(e.toString());
+            e.printExceptionMessage(output);
             isRowConfigurationSuccessful = false;
         } catch (NumberFormatException e){
-            output.accept("Niepoprawna wartość");
+            output.accept(OutputOption.INCORRECT_VALUE);
             isRowConfigurationSuccessful = false;
         }
         return userRowsEntry;

@@ -6,18 +6,17 @@ width_question : A plansza to jaka szeroka ma być?
 length_question : A plansza to jaka długa ma być?
 symbols_amount_question : Ile symboli daje zwycięztwo?
 incorrect_value : Niepoprawna wartość
-currently_playing : Ruch wykonuje gracz
-player : Gracz
-score : ilość punktów
+currently_playing : Ruch wykonuje gracz: %playerName% (%playerSymbol%)
+player_score : Gracz: %playerName% ilość punktów: %playerScore% 
 congratulation : Gratulacje
-round_won_by_player : Rundę wygrywa gracz : 
+round_won_by_player : Rundę wygrywa gracz: %playerName%! 
+won : Wygrywa: %winnerSymbol%. %winnerSymbol%: %winnerScore% %loserSymbol%: %loserScore%
 tie : Remis
 exception_board_index_out_of_bound : Przekroczono rozmiar tablicy
 exception_field_not_empty : Pole %field% nie jest puste. Wybierz puste pole
-exception_incorrect_symbol : Niepoprawny symbol\n. Powinineneś wyspecyfikować jeden z X/O.\n Wpisano : 
-exception_incorrect_coordinate : nie jest prawidłową wartością
+exception_incorrect_symbol : Niepoprawny symbol.\n Powinineneś wyspecyfikować jeden z X/O. \n Wpisano : %symbol%
+exception_incorrect_coordinate : %text% nie jest prawidłową wartością
 exception_incorrect_amount_of_symbols_to_win : Nie da się wygrać na tablicy %rows%x%columns%\nprzy pomocy %symbolsToWin% symboli\n
 exception_incorrect_points_for_tie : Wartość %pointsForTie% nie może być ustawiona jako\n wartość punktów otrzymywanych za remis musi być \nona większa od punktów za zwycięztwo : %pointsForWin%
 exception_incorrect_points_for_won : %pointsForWin% nie może być ustawiona jako \n wartość punktów otrzymywanych za zwycięztwo \nmusi być ona > 0\n
 exception_board_dimension : Wartość wymiaru tablicy musi być większa od 0
-

@@ -11,15 +11,9 @@ public class FieldNotEmptyException extends Throwable {
         this.exceptionMessage = exceptionMessage;
     }
 
-    public void printExceptionMessage(OutputConsumer outputConsumer, String exceptionMessage){
+    public void printExceptionMessage(OutputConsumer outputConsumer){
+        outputConsumer.accept("=============================================");
         outputConsumer.accept(OutputOption.EXCEPTION_FIELD_NOT_EMPTY, new ReplacePattern("%field%", exceptionMessage));
-    }
-
-    @Override
-    public String toString(){
-        return "=============================================\n" +
-                "Pole " + exceptionMessage + " nie jest puste\n" +
-                "Wybierz puste pole\n" +
-                "============================================\n";
+        outputConsumer.accept("=============================================\n");
     }
 }

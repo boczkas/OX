@@ -22,6 +22,7 @@ public class LanguageFileReader {
             while ((line = reader.readLine()) != null && !line.equals("")){
                 textName = line.substring(0, line.indexOf(":")).trim();
                 textContent = line.substring(line.indexOf(":") + 1).trim();
+                textContent = textContent.replaceAll("\\\\n", System.lineSeparator());
                 try{
                     languageStrings.addLanguageString(OutputOption.valueOf(textName.toUpperCase()), textContent);
                 } catch (IllegalArgumentException e){

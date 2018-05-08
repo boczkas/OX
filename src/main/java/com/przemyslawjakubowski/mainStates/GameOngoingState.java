@@ -3,6 +3,8 @@ package com.przemyslawjakubowski.mainStates;
 import com.przemyslawjakubowski.*;
 import com.przemyslawjakubowski.board.BoardStatus;
 import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.output.OutputOption;
+import com.przemyslawjakubowski.output.ReplacePattern;
 import com.przemyslawjakubowski.player.Player;
 import com.przemyslawjakubowski.player.Players;
 import com.przemyslawjakubowski.print.Printer;
@@ -53,10 +55,10 @@ public class GameOngoingState implements GameState {
     private void printWinningMessage(Player player, Judge judge, OutputConsumer output, BoardStatus boardStatus) {
         Printer.printBoard(boardStatus, output);
         if(judge.isWinnerPresent()){
-            output.accept("Rundę wygrywa gracz: " + player.getName() + " !\n");
+            output.accept(OutputOption.ROUND_WON_BY_PLAYER, new ReplacePattern("%playerName%", player.getName()));
         }
         else{
-            output.accept("Remis!\n");
+            output.accept(OutputOption.TIE);
         }
     }
 

@@ -6,6 +6,8 @@ import com.przemyslawjakubowski.board.boardExceptions.BoardIndexOutOfBoundsExcep
 import com.przemyslawjakubowski.board.boardExceptions.FieldNotEmptyException;
 import com.przemyslawjakubowski.board.boardExceptions.IncorrectCoordinateException;
 import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.output.OutputOption;
+import com.przemyslawjakubowski.output.ReplacePattern;
 import com.przemyslawjakubowski.player.Player;
 
 import java.util.function.Supplier;
@@ -26,7 +28,8 @@ public class MovesHandler {
     }
 
     public EndRequest handleMoves(Supplier<String> userInput, OutputConsumer output, Player player, Judge judge) {
-        output.accept("Ruch wykonuje gracz: " + player.getName() + " (" + player.getSymbol() + ")");
+        output.accept(OutputOption.CURRENTLY_PLAYING, new ReplacePattern("%playerName%", player.getName()),
+                                                      new ReplacePattern("%playerSymbol%", player.getSymbol().toString()));
         return handleCoordinateInput(userInput, output, player, judge);
     }
 
@@ -53,7 +56,7 @@ public class MovesHandler {
                     try {
                         throw new FieldNotEmptyException(coordinate.toString());
                     } catch (FieldNotEmptyException e) {
-                        output.accept(e.toString());
+                        e.printExceptionMessage(output);
                         handleMoves(userInput, output, player, judge);
                     }
                 }
@@ -71,7 +74,7 @@ public class MovesHandler {
             try {
                 throw new IncorrectCoordinateException(userInputString);
             } catch (IncorrectCoordinateException e){
-                output.accept(e.toString());
+                e.printExceptionMessage(output);
                 handleMoves(userInput, output, player, judge);
             }
 

@@ -6,6 +6,7 @@ import com.przemyslawjakubowski.gameConfiguration.configurationExceptions.BoardD
 import com.przemyslawjakubowski.mainStates.GameConfigurationState;
 import com.przemyslawjakubowski.mainStates.GameState;
 import com.przemyslawjakubowski.output.OutputConsumer;
+import com.przemyslawjakubowski.output.OutputOption;
 
 import java.util.function.Supplier;
 
@@ -21,7 +22,7 @@ public class BoardColumnsConfigurationState implements GameConfigurationState {
     }
 
     private void setBoardColumns(Supplier<String> userInput, OutputConsumer output, BoardStatus boardStatus) {
-        output.accept("A plansza to jaka szeroka ma być?");
+        output.accept(OutputOption.WIDTH_QUESTION);
         BoardConfiguration boardConfiguration = new BoardConfiguration();
         int columns = tryToSetConfiguration(userInput, output, boardConfiguration);
 
@@ -36,10 +37,10 @@ public class BoardColumnsConfigurationState implements GameConfigurationState {
             userColumnsEntry = Integer.parseInt(askUserForInput(userInput));
             boardConfiguration.setColumns(userColumnsEntry);
         } catch (BoardDimensionException e) {
-            output.accept(e.toString());
+            e.printExceptionMessage(output);
             isColumnsConfigurationSuccessful = false;
         } catch (NumberFormatException e){
-            output.accept("Niepoprawna wartość");
+            output.accept(OutputOption.INCORRECT_VALUE);
             isColumnsConfigurationSuccessful = false;
         }
         return userColumnsEntry;

@@ -128,7 +128,7 @@ public class BoardStatus {
             boardConfiguration.setRows(rows);
 
         } catch (BoardDimensionException e) {
-            output.accept(e.toString());
+            e.printExceptionMessage(output);
         }
     }
 
@@ -136,7 +136,7 @@ public class BoardStatus {
         try {
             boardConfiguration.setColumns(columns);
         } catch (BoardDimensionException e) {
-            output.accept(e.toString());
+            e.printExceptionMessage(output);
         }
 
     }
