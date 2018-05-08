@@ -1,4 +1,7 @@
 # OXGame
+
+git@github.com:boczkas/OX.git
+
 --
 Prosta gra kółko krzyżyk
 
